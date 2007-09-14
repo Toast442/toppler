@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -51,10 +51,10 @@ void sts_init(int sn, int nstar) {
       return;
     } else sts_done();
   }
-  assert(nstar > 1, "sts_init with too few stars!");
+  assert_msg(nstar > 1, "sts_init with too few stars!");
 
   stars = new _star[nstar];
-  assert(stars, "Failed to alloc memory!");
+  assert_msg(stars, "Failed to alloc memory!");
   num_stars = nstar;
 
   for (int t = 0; t < num_stars; t++) {

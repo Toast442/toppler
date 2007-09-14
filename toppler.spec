@@ -1,9 +1,9 @@
 Name: toppler
-Version: 1.1.1
+Version: 1.1.3
 Release: 1
 
 
-URL: http://toppler.soureforge.net
+URL: http://toppler.sourceforge.net/
 
 License: GPL
 Group: Amusements/Games
@@ -20,7 +20,7 @@ Source0: %{name}-%{version}.tar.gz
 
 Summary: Tower Toppler
 
-%description 
+%description
 Reimplementation of the old game (aka Nebulous). In the game you have
 to climb a tower with lots of strange inhabitants that try to push you
 down. Your only defence is a snowball you can throw and your skill to
@@ -35,7 +35,7 @@ avoid these beings.
 
 %build
 
-%configure
+%configure --program-prefix= --localstatedir=/var
 %{__make}
 
 
@@ -51,23 +51,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 
-%doc README COPYING AUTHORS NEWS ChangeLog
-
 %{_bindir}/*
 %{_datadir}/*
+%{_localstatedir}/*
 
 
 %changelog
 * Sun Oct  6 2002 Chong Kai Xiong <descender@phreaker.net>
 - Initial build.
 
-%post
-chgrp games /usr/bin/toppler;
-chmod g+s /usr/bin/toppler
-install -d /usr/var/toppler
-touch /usr/var/toppler/toppler.hsc
-chgrp games /usr/var/toppler
-chmod g+rw /usr/var/toppler
-chgrp games /usr/var/toppler/toppler.hsc
-chmod g+rw /usr/var/toppler/toppler.hsc
 
+%post
+chgrp games /usr/bin/toppler
+chmod 2755 /usr/bin/toppler
+chgrp games /var/toppler/toppler.hsc
+chmod 0664 /var/toppler/toppler.hsc

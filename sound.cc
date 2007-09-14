@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -61,3 +61,16 @@ void snd_done(void) {
   ttsounds::instance()->closesound();
 }
 
+
+void snd_playTitle(void) {
+  ttsounds::instance()->playmusic("toppler.ogg");
+}
+
+
+void snd_stopTitle(void) {
+  ttsounds::instance()->stopmusic();
+}
+
+void snd_musicVolume(int vol) {
+  ttsounds::instance()->fadeToVol(vol);
+}

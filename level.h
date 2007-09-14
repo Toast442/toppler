@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,10 +20,6 @@
 #define LEVEL_H
 
 #include <SDL_types.h>
-
-#if (SYSTEM == SYS_WINDOWS)
-#include "decl.h"
-#endif
 
 /* handles one mission with towers and the necessary manipulations
  on the towerlayout when the game is going on */
@@ -287,4 +283,3 @@ void lev_mission_addtower(char * name);
 void lev_mission_finish();
 
 #endif
-

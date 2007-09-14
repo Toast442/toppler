@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-14 20:59+0100\n"
+"POT-Creation-Date: 2007-07-19 16:28+0200\n"
 "PO-Revision-Date: 2004-02-08 10:56+0100\n"
 "Last-Translator: Bill Allombert <ballombe@debian.org>\n"
 "Language-Team: French <fr@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 msgid "Pause"
 msgstr "Pause"
 
-#: decl.h:200
+#. for errorchecking
+#: decl.h:207
 #, c-format
 msgid "Assertion failure: %s\n"
 msgstr "Échec de l'assertion : %s\n"
@@ -63,10 +64,11 @@ msgid "Lifes:     ~t3505000 X %3d"
 msgstr "Vies :    ~t3505000 X %3d"
 
 #: keyb.cc:161
+#, c-format
 msgid "Wheee!!\n"
 msgstr "Woooaaaa !\n"
 
-#: leveledit.cc:103 menu.cc:923
+#: leveledit.cc:103 menu.cc:971
 msgid "Quit"
 msgstr "Quitter"
 
@@ -404,7 +406,7 @@ msgstr "Ajuster la hauteur de la tour"
 msgid "Name the tower:"
 msgstr "Nommer la tour"
 
-#: main.cc:45
+#: main.cc:42
 #, c-format
 msgid ""
 "\n"
@@ -421,180 +423,189 @@ msgstr ""
 "  -s\tSilence, désactiver les sons\n"
 "  -dX\tNiveau de débuggage à X  (défaut : %i)\n"
 
-#: main.cc:55
+#: main.cc:52
 #, c-format
 msgid "Debug level is now %c.\n"
 msgstr "Le niveau de débuggage est maintenant %c.\n"
 
-#: main.cc:57
+#: main.cc:54
+#, c-format
 msgid "Illegal debug level value, using default.\n"
 msgstr "Niveau de débuggage illégal, utilise la valeur par défaut.\n"
 
-#: main.cc:102
+#: main.cc:103
 #, c-format
 msgid "Nebulous version %s"
 msgstr "Version de Nebulous %s"
 
-#: main.cc:104 main.cc:112
+#: main.cc:111
 msgid "Nebulous"
 msgstr "Nebulous"
 
-#: main.cc:119
+#: main.cc:118
+#, c-format
 msgid "Thanks for playing!\n"
 msgstr "Merci d'avoir joué !\n"
 
-#: menu.cc:78
+#: menu.cc:69
 msgid "Extra Life"
 msgstr "Vie supplémentaire"
 
-#: menu.cc:83
+#: menu.cc:74
 msgid "+200 Points"
 msgstr "+200 Points"
 
-#: menu.cc:102
+#: menu.cc:93
 msgid "Up"
 msgstr "Haut"
 
-#: menu.cc:102
+#: menu.cc:93
 msgid "Down"
 msgstr "Bas"
 
-#: menu.cc:102
+#: menu.cc:93
 msgid "Left"
 msgstr "Gauche"
 
-#: menu.cc:102
+#: menu.cc:93
 msgid "Right"
 msgstr "Droite"
 
-#: menu.cc:102
+#: menu.cc:93
 msgid "Fire"
 msgstr "Feu"
 
-#: menu.cc:154
+#: menu.cc:145
 #, c-format
 msgid "Password: %s"
 msgstr "Mot de passe : %s"
 
-#: menu.cc:163 menu.cc:164
+#: menu.cc:154 menu.cc:155
 msgid "Status on top"
 msgstr "Statut au sommet"
 
-#: menu.cc:185
+#: menu.cc:176
+#, c-format
 msgid "Lives: "
 msgstr "Vies :"
 
-#: menu.cc:213
+#: menu.cc:204
 #, c-format
 msgid "Game Speed: %i"
 msgstr "Vitesse de jeu : %i"
 
-#: menu.cc:224 menu.cc:225
+#: menu.cc:215 menu.cc:216
 msgid "Bonus"
 msgstr "Bonus"
 
-#: menu.cc:232
+#: menu.cc:223
 msgid "Game Options"
 msgstr "Options du jeu"
 
-#: menu.cc:245 menu.cc:265 menu.cc:437 menu.cc:461 menu.cc:485 menu.cc:642
+#: menu.cc:236 menu.cc:256 menu.cc:451 menu.cc:475 menu.cc:500 menu.cc:657
 msgid "Back"
 msgstr "Retour"
 
-#: menu.cc:256 menu.cc:271
+#: menu.cc:247 menu.cc:262
 msgid "Redefine Keys"
 msgstr "Redéfinir les touches"
 
-#: menu.cc:283 menu.cc:284
+#: menu.cc:274 menu.cc:275
 msgid "Fullscreen"
 msgstr "Plein écran"
 
-#: menu.cc:302 menu.cc:303
+#: menu.cc:297 menu.cc:298
 msgid "Sounds"
 msgstr "Sons"
 
-#: menu.cc:337 menu.cc:338
+#: menu.cc:316 menu.cc:317
+msgid "Music"
+msgstr ""
+
+#: menu.cc:351 menu.cc:352
 msgid "Font alpha"
 msgstr "Polices transparentes"
 
-#: menu.cc:351 menu.cc:352
+#: menu.cc:365 menu.cc:366
 msgid "Sprites alpha"
 msgstr "Sprites transparents"
 
-#: menu.cc:365 menu.cc:366
+#: menu.cc:379 menu.cc:380
 msgid "Scroller alpha"
 msgstr "Défilement transparent"
 
-#: menu.cc:378 menu.cc:379
+#: menu.cc:392 menu.cc:393
 msgid "Shadowing"
 msgstr "Ombres"
 
-#: menu.cc:404
+#: menu.cc:418
 msgid "Nonreflecting waves"
 msgstr "Vagues sans reflets"
 
-#: menu.cc:405
+#: menu.cc:419
 msgid "Simple waves"
 msgstr "Vagues simples"
 
-#: menu.cc:406
+#: menu.cc:420
 msgid "Expensive waves"
 msgstr "Vagues coûteuses"
 
-#: menu.cc:407
+#: menu.cc:421
 msgid "Error"
 msgstr "Erreur"
 
-#: menu.cc:417
+#: menu.cc:431
 msgid "Complete Scroller"
 msgstr "Défilement complet"
 
-#: menu.cc:418
+#: menu.cc:432
 msgid "2 layers Scoller"
 msgstr "Défilement deux couches"
 
-#: menu.cc:424
+#: menu.cc:438
 msgid "Alpha Options"
 msgstr "Options de transparence"
 
-#: menu.cc:448
+#: menu.cc:462
 msgid "Graphics"
 msgstr "Graphismes"
 
-#: menu.cc:472
+#: menu.cc:486
 msgid "Options"
 msgstr "Options"
 
-#: menu.cc:615
+#: menu.cc:630
 msgid "HighScores"
 msgstr "Meilleurs scores"
 
-#: menu.cc:620
+#: menu.cc:635
 #, c-format
 msgid "Scores for %s"
 msgstr "Scores pour %s"
 
-#: menu.cc:644
+#: menu.cc:659
 msgid "OK"
 msgstr "OK"
 
-#: menu.cc:657
-msgid "Congratulations! You are"
-msgstr "Félicitations ! Vous êtes"
+#. you can use up to 4 lines of text here, but please check
+#. * if the text fits onto the screen
+#.
+#: menu.cc:675
+msgid ""
+"Congratulations! You are\n"
+"probably good enough to\n"
+"enter the highscore table!"
+msgstr ""
+"Félicitations ! Vous êtes\n"
+"Probablement suffisament\n"
+"bon pour entrer dans le\n"
+"tableau des scores !"
 
-#: menu.cc:658
-msgid "probably good enough to"
-msgstr "Probablement suffisament bon pour"
-
-#: menu.cc:659
-msgid "enter the highscore table!"
-msgstr "entrer dans le tableau des scores !"
-
-#: menu.cc:661
+#: menu.cc:707
 msgid "Please enter your name"
 msgstr "Veuillez entrer votre nom"
 
-#: menu.cc:715
+#: menu.cc:761
 msgid ""
 "This mission contains\n"
 "unknown building blocks.\n"
@@ -608,36 +619,36 @@ msgstr ""
 "version de Tower Toppler.\n"
 "Voulez-vous continuer ?"
 
-#: menu.cc:772
+#: menu.cc:818
 msgid "Hunt the Fish"
 msgstr "À la pêche"
 
-#: menu.cc:793
+#: menu.cc:841
 #, c-format
 msgid "%c Start: %s %c"
 msgstr "%c Démarrer : %s %c"
 
-#: menu.cc:803
+#: menu.cc:851
 msgid "Highscores"
 msgstr "Meilleurs scores"
 
-#: menu.cc:815
+#: menu.cc:863
 msgid "Level Editor"
 msgstr "Éditeur de niveau"
 
-#: menu.cc:871
+#: menu.cc:919
 msgid "Return to Game"
 msgstr "Retourner au jeu"
 
-#: menu.cc:881
+#: menu.cc:929
 msgid "Quit Game"
 msgstr "Quitter le jeu"
 
-#: menu.cc:888
+#: menu.cc:936
 msgid "DEBUG MENU"
 msgstr "MENU DE DÉBUGGAGE"
 
-#: menu.cc:893
+#: menu.cc:941
 msgid "Back to Game"
 msgstr "Retour au jeu"
 
@@ -657,11 +668,11 @@ msgstr "Oui"
 msgid "No"
 msgstr "Non"
 
-#: screen.cc:1581
+#: screen.cc:1615
 msgid "REC"
 msgstr "ENREG"
 
-#: screen.cc:1582
+#: screen.cc:1616
 msgid "DEMO"
 msgstr "DÉMO"
 
@@ -669,214 +680,321 @@ msgstr "DÉMO"
 msgid "Mission 1"
 msgstr "Mission 1"
 
-#: levelnames.txt:2
+#. Tower name, you can translate freely
+#: levelnames.txt:3
 msgid "Tower of eyes"
 msgstr "La tour des yeux"
 
-#: levelnames.txt:3
+#. Tower name, you can translate freely
+#: levelnames.txt:5
 msgid "Realm of robots"
 msgstr "Le royaume des robots"
 
-#: levelnames.txt:4
+#. Tower name, you can translate freely
+#: levelnames.txt:7
 msgid "Trap of tricks"
 msgstr "Le Piège des combines"
 
-#: levelnames.txt:5
+#. Tower name, you can translate freely
+#: levelnames.txt:9
 msgid "Slippery slide"
 msgstr "Le passage glissant"
 
-#: levelnames.txt:6
+#. Tower name, you can translate freely
+#: levelnames.txt:11
 msgid "Broken path"
 msgstr "Le chemin interrompu"
 
-#: levelnames.txt:7
+#. Tower name, you can translate freely
+#: levelnames.txt:13
 msgid "Swimmers delight"
 msgstr "Le délice des nageurs"
 
-#: levelnames.txt:8
+#. Tower name, you can translate freely
+#: levelnames.txt:15
 msgid "Nasty one"
 msgstr "Le vicieux"
 
-#: levelnames.txt:9
+#. Tower name, you can translate freely
+#: levelnames.txt:17
 msgid "Edge of doom"
 msgstr "L'arète du destin"
 
-#: levelnames.txt:11
+#: levelnames.txt:19
 msgid "Mission 2"
 msgstr "Mission 2"
 
-#: levelnames.txt:12
+#. Tower name, you can translate freely
+#: levelnames.txt:21
 msgid "Blink of the eye"
 msgstr "Le clignement de l'½il"
 
-#: levelnames.txt:13
+#. Tower name, you can translate freely
+#: levelnames.txt:23
 msgid "Robot's heaven"
 msgstr "Le paradis des robots"
 
-#: levelnames.txt:14
+#. Tower name, you can translate freely
+#: levelnames.txt:25
 msgid "Trick of traps"
 msgstr "La Combine des pièges"
 
-#: levelnames.txt:15
+#. Tower name, you can translate freely
+#: levelnames.txt:27
 msgid "No man's land"
 msgstr "Le no man's land"
 
-#: levelnames.txt:16
+#. Tower name, you can translate freely
+#: levelnames.txt:29
 msgid "Oh, *******!!"
 msgstr "Oh, *******!!"
 
-#: levelnames.txt:17
+#. Tower name, you can translate freely
+#: levelnames.txt:31
 msgid "Riddle of reason"
 msgstr "L'énigme de la raison"
 
-#: levelnames.txt:18
+#. Tower name, you can translate freely
+#: levelnames.txt:33
 msgid "Maze of mistakes"
 msgstr "Le dédale des erreurs"
 
-#: levelnames.txt:19
+#. Tower name, you can translate freely
+#: levelnames.txt:35
 msgid "Last trump"
 msgstr "Le dernier atout"
 
-#: levelnames.txt:21
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:38
 msgid "Ball 1"
 msgstr "Ball 1"
 
-#: levelnames.txt:22
+#. Tower name, you can translate freely
+#: levelnames.txt:40
 msgid "Run and don't stop"
 msgstr "Courez et ne vous arrêtez pas"
 
-#: levelnames.txt:23
+#. Tower name, you can translate freely
+#: levelnames.txt:42
 msgid "Watch your step"
 msgstr "Regardez où vous mettez les pieds"
 
-#: levelnames.txt:24
+#. Tower name, you can translate freely
+#: levelnames.txt:44
 msgid "Short, but deadly"
 msgstr "Court, mais mortel"
 
-#: levelnames.txt:25
+#. Tower name, you can translate freely
+#: levelnames.txt:46
 msgid "The maddening"
 msgstr "À rendre fou"
 
-#: levelnames.txt:26
+#. Tower name, you can translate freely
+#: levelnames.txt:48
 msgid "Doom at every step"
 msgstr "La mort à chaque pas"
 
-#: levelnames.txt:27
+#. Tower name, you can translate freely
+#: levelnames.txt:50
 msgid "Enemies everywhere"
 msgstr "Des ennemis partout"
 
-#: levelnames.txt:28
+#. Tower name, you can translate freely
+#: levelnames.txt:52
 msgid "You will loose"
 msgstr "Vous allez perdre"
 
-#: levelnames.txt:29
+#. Tower name, you can translate freely
+#: levelnames.txt:54
 msgid "Mind destroyer"
 msgstr "Le destructeur d'esprit"
 
-#: levelnames.txt:31
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:57
 msgid "Ball 2"
 msgstr "Ball 2"
 
-#: levelnames.txt:32
+#. Tower name, you can translate freely
+#: levelnames.txt:59
 msgid "Mind Trap"
 msgstr "Piège à Esprit"
 
-#: levelnames.txt:33
+#. Tower name, you can translate freely
+#: levelnames.txt:61
 msgid "Breaking Tower"
 msgstr "La Tour Interrompue"
 
-#: levelnames.txt:34
+#. Tower name, you can translate freely
+#: levelnames.txt:63
 msgid "Great Fall"
 msgstr "La Belle Chute"
 
-#: levelnames.txt:35
+#. Tower name, you can translate freely
+#: levelnames.txt:65
 msgid "Tower of Intrigue"
 msgstr "La tour de l'Intrigue"
 
-#: levelnames.txt:36
+#. Tower name, you can translate freely
+#: levelnames.txt:67
 msgid "Massacre"
 msgstr "Massacre"
 
-#: levelnames.txt:37
+#. Tower name, you can translate freely
+#: levelnames.txt:69
 msgid "Bouncing Murders"
 msgstr "Meutres Rebondissants"
 
-#: levelnames.txt:38
+#. Tower name, you can translate freely
+#: levelnames.txt:71
 msgid "Trial and error"
 msgstr "Essai et erreur"
 
-#: levelnames.txt:39
+#. Tower name, you can translate freely
+#: levelnames.txt:73
 msgid "Tower of Pure Evil"
 msgstr "La tour du Mal Pur"
 
-#: levelnames.txt:41
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:76
 msgid "Ball 3"
 msgstr "Ball 3"
 
-#: levelnames.txt:42
+#. Tower name, you can translate freely
+#: levelnames.txt:78
 msgid "Annoying Tower"
 msgstr "La Tour Agassante"
 
-#: levelnames.txt:43
+#. Tower name, you can translate freely
+#: levelnames.txt:80
 msgid "Cave of Failure"
 msgstr "La Caverne de l'Échec"
 
-#: levelnames.txt:44
+#. Tower name, you can translate freely
+#: levelnames.txt:82
 msgid "Dividing path"
 msgstr "Le chemin qui bifurque"
 
-#: levelnames.txt:45
+#. Tower name, you can translate freely
+#: levelnames.txt:84
 msgid "No Way Out?"
 msgstr "Pas De Sortie ?"
 
-#: levelnames.txt:46
+#. Tower name, you can translate freely
+#: levelnames.txt:86
 msgid "Trap"
 msgstr "Piège"
 
-#: levelnames.txt:47
+#. Tower name, you can translate freely
+#: levelnames.txt:88
 msgid "Tower of Mystery"
 msgstr "La tour des Mystères"
 
-#: levelnames.txt:48
+#. Tower name, you can translate freely
+#: levelnames.txt:90
 msgid "Slip ... and die"
 msgstr "Glissez... et mourez"
 
-#: levelnames.txt:49
+#. Tower name, you can translate freely
+#: levelnames.txt:92
 msgid "Mission Impossible"
 msgstr "Mission Impossible"
 
-#: levelnames.txt:51
+#: levelnames.txt:94
 msgid "ABC Towers"
 msgstr "Tours pour débuter"
 
-#: levelnames.txt:52
+#. Tower name, you can translate freely
+#: levelnames.txt:96
 msgid "Slices"
 msgstr "Passages"
 
-#: levelnames.txt:53
+#. Tower name, you can translate freely
+#: levelnames.txt:98
 msgid "Corridors"
 msgstr "Couloirs"
 
-#: levelnames.txt:54
+#. Tower name, you can translate freely
+#: levelnames.txt:100
 msgid "Higher Ground"
 msgstr "Terrain Élevé"
 
-#: levelnames.txt:55
+#. Tower name, you can translate freely
+#: levelnames.txt:102
 msgid "No Icing"
 msgstr "Pas de Glaçage"
 
-#: levelnames.txt:56
+#. Tower name, you can translate freely
+#: levelnames.txt:104
 msgid "Three Layers"
 msgstr "Trois Niveaux"
 
-#: levelnames.txt:57
+#. Tower name, you can translate freely
+#: levelnames.txt:106
 msgid "Two Ways"
 msgstr "Deux Voies"
 
-#: levelnames.txt:58
+#. Tower name, you can translate freely
+#: levelnames.txt:108
 msgid "Spiral"
 msgstr "La spirale"
 
-#: levelnames.txt:59
+#. Tower name, you can translate freely
+#: levelnames.txt:110
 msgid "Skygazer"
 msgstr "Le regarde-ciel"
+
+#. David is the name of the autor and should not be translated
+#: levelnames.txt:113
+msgid "David 1"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:115
+msgid "Difficult jumps!"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:117
+msgid "Washout"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:119
+msgid "Climbing and tricks"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:121
+msgid "Watch the robots"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:123
+#, fuzzy
+msgid "Two Halves"
+msgstr "Deux Voies"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:125
+msgid "Turning up the heat"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:127
+msgid "Confusing"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:129
+#, fuzzy
+msgid "Short but dangerous"
+msgstr "Court, mais mortel"
+
+#~ msgid "Congratulations! You are"
+#~ msgstr "Félicitations ! Vous êtes"
+
+#~ msgid "probably good enough to"
+#~ msgstr "Probablement suffisament bon pour"
+
+#~ msgid "enter the highscore table!"
+#~ msgstr "entrer dans le tableau des scores !"

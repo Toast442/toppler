@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,6 @@
 #ifndef CREATOR
 
 #include "level.h"
-
 #include "points.h"
 #include "archi.h"
 #include "configuration.h"
@@ -30,6 +29,7 @@
 #include "decl.h"
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #define TOWERWID 16
 
@@ -242,10 +242,10 @@ void lev_findmissions() {
     delete n;
   }
 
-#if (SYSTEM == SYS_WINDOWS)
+#ifdef WIN32
   {
     char n[100];
-    GetCurrentDirectory(100, n);
+    getcwd(n, 100);
     sprintf(pathname, "%s\\", n);
   }
 #else
@@ -269,7 +269,7 @@ void lev_findmissions() {
   free(eps);
   eps = NULL;
 
-#if (SYSTEM != SYS_WINDOWS)
+#ifndef WIN32
 
   snprintf(pathname, 100, "%s/.toppler/", getenv("HOME"));
   n = alpha_scandir(pathname, &eps, missionfiles);
@@ -764,6 +764,15 @@ bool lev_is_robot(int row, int col) {
   return ((towerblockdata[tower[row][col]].tf & TBF_ROBOT) != 0);
 }
 
+
+static bool inside_cyclic_intervall(int x, int start, int end, int cycle) {
+
+  while (x < start) x += cycle;
+  while (x >= end) x -= cycle;
+
+  return (x >= start) && (x < end);
+}
+
 #ifndef CREATOR
 
 /* returns true, if the given figure can be at the given position
@@ -800,11 +809,11 @@ bool lev_testfigure(long angle, long vert, long back,
         return false;
       } else if (lev_is_stick(k + y, hinten)) {
         t = hinten * 8 + height;
-        if ((angle >= t) && (angle < t + width))
+        if (inside_cyclic_intervall(angle, t, t+width, 0x80))
           return false;
       } else if (lev_is_box(k + y, hinten)) {
         t = hinten * 8 + height;
-        if ((angle >= t) && (angle < t + width)) {
+        if (inside_cyclic_intervall(angle, t, t+width, 0x80)) {
           if (typ == 2) {
             // the snowball removes the box
             lev_clear(k + y, hinten);
@@ -1308,7 +1317,7 @@ static Uint8 nmission = 0;
 static Uint32 missionidx[256];
 
 bool lev_mission_new(char * name, Uint8 prio) {
-  assert(!fmission, "called mission_finish twice");
+  assert_msg(!fmission, "called mission_finish twice");
 
   char fname[200];
   snprintf(fname, 200, "%s.ttm", name);
@@ -1349,7 +1358,7 @@ void write_fmission_section(Uint8 section, Uint32 section_len) {
 }
 
 void lev_mission_addtower(char * name) {
-  assert(fmission, "called mission_addtower without mission_new");
+  assert_msg(fmission, "called mission_addtower without mission_new");
 
   Uint8 rows, col;
   Sint16 row;
@@ -1479,7 +1488,7 @@ void lev_mission_addtower(char * name) {
 }
 
 void lev_mission_finish() {
-  assert(fmission, "called mission_finish without mission_new");
+  assert_msg(fmission, "called mission_finish without mission_new");
 
   Uint8 c;
 

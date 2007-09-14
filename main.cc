@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,18 +28,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
-#if ENABLE_NLS == 1
-#include <langinfo.h>
-#endif
-
+#include <unistd.h>
 
 #include <stdexcept>
 
-#if (SYSTEM != SYS_WINDOWS)
-#include <unistd.h>
+#if ENABLE_NLS == 1
+#include <libintl.h>
+#include <sys/types.h>
+#include <dirent.h>
 #endif
-
 
 static void printhelp(void) {
   printf(_("\n\tOptions:\n\n  -f\tEnable fullscreen mode\n  -s\tSilence, disable all sound\n  -dX\tSet debug level to X  (default: %i)\n"), config.debug_level());
@@ -69,7 +66,11 @@ static void startgame(void) {
   gam_init();
   men_init();
   snd_init();
+  if (!config.nomusic())
+    snd_playTitle();
   men_main();
+  if (!config.nomusic())
+    snd_stopTitle();
   lev_done();
   snd_done();
   gam_done();
@@ -93,18 +94,16 @@ int main(int argc, char *argv[]) {
   setlocale(LC_MESSAGES, "");
   setlocale(LC_CTYPE, "");
 
-  bindtextdomain("toppler", LOCALEDIR"/locale");
-//  bindtextdomain("toppler", "po");
+  DIR *dir = opendir("locale");
+  bindtextdomain("toppler", dir == NULL ? LOCALEDIR : "locale");
+  closedir(dir);
   textdomain("toppler");
 #endif
 
-#ifdef VERSION
   printf(_("Nebulous version %s"), VERSION);
-#else
-  printf(_("Nebulous"));
-#endif
   printf("\n");
 
+  printf("hsc init\n");
   hsc_init();
 
   if (parse_arguments(argc, argv)) {

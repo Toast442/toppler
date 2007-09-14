@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -549,10 +549,10 @@ static void loadscroller(void) {
 
   num_scrolllayers = layers;
 
-  assert(num_scrolllayers > 1, "Must have at least 2 scroll layers!");
+  assert_msg(num_scrolllayers > 1, "Must have at least 2 scroll layers!");
 
   scroll_layers = new _scroll_layer[layers];
-  assert(scroll_layers, "Failed to alloc memory for bonus scroller!");
+  assert_msg(scroll_layers, "Failed to alloc memory for bonus scroller!");
     
   towerpos = fi.getbyte();
     
@@ -640,7 +640,7 @@ void scr_init(void) {
 
 void scr_reinit() {
   display = SDL_SetVideoMode(SCREENWID, SCREENHEI, 16, (config.fullscreen()) ? (SDL_FULLSCREEN) : (0));
-  assert(display, "could not open display");
+  assert_msg(display, "could not open display");
 }
 
 void scr_done(void) {
@@ -832,18 +832,6 @@ static void putwater(long height) {
   wavetime++;
 }
 
-#if (SYSTEM == SYS_MACOSX)
-
-//typedef unsigned long mbstate_t;
-
-size_t
-mbrtowc(wchar_t * pwc, const char * s, size_t n,
-	mbstate_t * ps) 
-{
-	return mbtowc(pwc,s,n);	
-}
-#endif
-
 int scr_textlength(const char *s, int chars) {
   int len = 0;
   int pos = 0;
@@ -863,9 +851,9 @@ int scr_textlength(const char *s, int chars) {
       if (fontchars[tmp & 0xffff].width != 0)
         len += fontchars[tmp & 0xffff].width + 3;
     }
-    pos++;
 
-    chars--;
+    pos += nbytes;
+    chars -= nbytes;
   }
 
   return len;
@@ -873,6 +861,40 @@ int scr_textlength(const char *s, int chars) {
 
 void scr_writetext_center(long y, const char *s) {
   scr_writetext ((SCREENWID - scr_textlength(s)) / 2, y, s);
+}
+
+void scr_writetext_broken_center(long y, const char *s) {
+
+  // ok, we try to break the text into several lines, if the lines are longer then the
+  // screenwidth
+  
+  int len = strlen(s);
+  int start = 0;
+  int end = len;
+
+  while (start < len) {
+    
+    while (scr_textlength(s+start, end-start+1) > SCREENWID) {
+      end--;
+      while ((end > start) && (s[end] != ' ')) end--;
+
+      if (end == start) {
+        while ((end < len) && (s[end] != ' ')) end++;
+        break;
+      }
+    }
+    
+    if (s[end] == ' ') end--;
+    
+    scr_writetext((SCREENWID - scr_textlength(s+start, end-start+1)) / 2, y, s+start, end-start+1);
+
+    start = end+1;
+    end = len;
+    while ((start < len) && (s[start] == ' ')) start++;
+
+    y += 40;
+    
+  }
 }
 
 void scr_putbar(int x, int y, int br, int h, Uint8 colr, Uint8 colg, Uint8 colb, Uint8 alpha) {
@@ -1230,10 +1252,10 @@ void scr_writeformattext(long x, long y, const char *s) {
   memset (&state, '\0', sizeof (state));
   wchar_t tmp;
 
-  size_t len = strlen(s);
+  int len = strlen(s);
 
   int origx = x;
-  size_t t = 0;
+  int t = 0;
   Uint8 towerblock = 0;
   while (t < len) {
 
@@ -1335,7 +1357,7 @@ void scr_writeformattext(long x, long y, const char *s) {
         x += 32;
         break;
       default:
-        assert(0, "Wrong command in formatted text.");
+        assert_msg(0, "Wrong command in formatted text.");
       }
       break;
     default:
@@ -1352,10 +1374,10 @@ long scr_formattextlength(long x, long y, const char *s) {
   memset (&state, '\0', sizeof (state));
   wchar_t tmp;
 
-  size_t len = strlen(s);
+  int len = strlen(s);
 
   int origx = x;
-  size_t t = 0;
+  int t = 0;
   while (t < len) {
 
     size_t nbytes = mbrtowc (&tmp, &s[t], len-t, &state);
@@ -1421,7 +1443,7 @@ long scr_formattextlength(long x, long y, const char *s) {
         x += 32;
         break;
       default:
-        assert(0, "Wrong command in formatted text.");
+        assert_msg(0, "Wrong command in formatted text.");
       }
       break;
     default:

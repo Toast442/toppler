@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,7 +33,7 @@
 class archive;
 
 /* this class is used to handle the access to the different files inside
- * the archive(s) 
+ * the archive(s)
  */
 class file {
 
@@ -90,7 +90,7 @@ private:
 };
 
 /* this class handles one archive, each archive can contain any number of
- * files with 0 terminated names. 
+ * files with 0 terminated names.
  */
 class archive {
 

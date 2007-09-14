@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,16 +24,16 @@
 #include <string.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
+
+#ifdef __QNXNTO__
+   #include <strings.h>
+#endif // __QNXNTO__
 
 #define NUMHISCORES 10
 
 #define SCOREFNAME "toppler.hsc"
 
-#if (SYSTEM != SYS_LINUX && SYSTEM != SYS_MACOSX)
-#define gid_t int
-#else
-#include <unistd.h>
-#endif
 /* the group ids of the game */
 static gid_t UserGroupID, GameGroupID;
 
@@ -57,7 +57,7 @@ static _scores scores[NUMHISCORES];
 /* this is the name of the surrenlty selected mission */
 static char missionname[100];
 
-#if (SYSTEM != SYS_LINUX && SYSTEM != SYS_MACOSX)
+#ifdef WIN32
 #define setegid(x)
 #endif
 
@@ -118,7 +118,7 @@ static void loadscores(FILE *f) {
 static char * homedir()
 {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   return getenv("HOME");
 
@@ -132,7 +132,7 @@ static char * homedir()
 
 static bool hsc_lock(void) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   if (globalHighscore) {
 
@@ -162,7 +162,7 @@ static bool hsc_lock(void) {
 
 static void hsc_unlock(void) {
 
-#if (SYSTEM == SYS_LINUX)
+#ifndef WIN32
 
   if (globalHighscore) {
     setegid(GameGroupID);
@@ -181,7 +181,7 @@ void hsc_init(void) {
     scores[t].tower = 0;
   }
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   /* fine at first save the group ids and drom group privileges */
   UserGroupID = getgid ();
@@ -193,7 +193,7 @@ void hsc_init(void) {
   globalHighscore = false;
   snprintf(highscoreName, 199, "%s/.toppler/%s", homedir(), SCOREFNAME);
 
-  /* now check if wen have access to a global highscore table */
+  /* now check if we have access to a global highscore table */
 
 #ifdef HISCOREDIR
 
@@ -243,13 +243,13 @@ void hsc_init(void) {
   else
     debugprintf(2, "using local highscore at %s\n", highscoreName);
 
-#else // (SYSTEM == SYS_LINUX)
+#else // ifdef WIN32
 
   /* for non unix systems we use only local highscore tables */
   globalHighscore = false;
   snprintf(highscoreName, 200, SCOREFNAME);
 
-#endif // (SYSTEM == SYS_LINUX)
+#endif
 
 }
 

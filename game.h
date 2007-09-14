@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -43,11 +43,15 @@ void gam_loadtower(Uint8 tow);
 /* leave toppler at the base of the tower */
 void gam_arrival(void);
 
-/* plays the towergame. 
-   if demo is > 0, then demo == demo length, shows demo, 
-                   getting keys from demobuf. 
-   if demo < 0, then records a demo, and returns the demo length
-                   in demo, and the allocated buffer in demobuf. */
+/* plays the towergame.
+   if demo is > 0, then demo == demo length, shows demo,
+                   getting keys from demobuf.
+   if demo == -1, then records a demo, and returns the demo length
+                   in demo, and the allocated buffer in demobuf.
+   if demo == -2, then a testplay is done, just like demo recording, but
+                  without the recording
+   if demo == 0, normal game
+*/
 gam_result gam_towergame(Uint8 &anglepos, Uint16 &resttime, int &demo, void *demobuf);
 
 /* pick up the toppler at the base of the tower */

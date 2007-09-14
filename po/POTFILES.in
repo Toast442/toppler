@@ -2,7 +2,6 @@ archi.cc
 archi.h
 bonus.cc
 bonus.h
-config.h
 configuration.cc
 configuration.h
 decl.cc

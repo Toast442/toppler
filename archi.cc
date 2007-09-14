@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,12 +18,6 @@
 
 #include "archi.h"
 #include "decl.h"
-
-#if (SYSTEM == SYS_WINDOWS)
-//#define _WINDOWS
-//#define ZLIB_DLL
-#endif
-
 #include <zlib.h>
 #include <string.h>
 #include <stdlib.h>
@@ -34,14 +28,14 @@
 
 archive::archive(FILE *stream) : f(stream) {
 
-  assert(f, "Data file not found");
+  assert_msg(f, "Data file not found");
 
   /* find out the number of files inside the archive
    * alloce the neccessary memory
    */
   fread(&filecount, 1, 1, f);
   files = new fileindex[filecount];
-  assert(files, "Failed to alloc memory for archive index.");
+  assert_msg(files, "Failed to alloc memory for archive index.");
 
   /* read the information for each file */
   for (Uint8 file = 0; file < filecount; file++) {
@@ -55,7 +49,7 @@ archive::archive(FILE *stream) : f(stream) {
 
       do {
         strlen++;
-        assert(strlen <= FNAMELEN, "Filename too long, datafile corrupt?");
+        assert_msg(strlen <= FNAMELEN, "Filename too long, datafile corrupt?");
         fread(&c, 1, 1, f);
       } while (c);
 
@@ -130,8 +124,8 @@ file::file(const archive *arc, const char *name) : bufferpos(0) {
       fread(b, arc->files[i].compress, 1, arc->f);
 
       /* decompress it and check results */
-      assert(uncompress(buffer, &fsize, b, arc->files[i].compress) == Z_OK, "Decompression problem, data file corrupt?");
-      assert(fsize == arc->files[i].size, "Data file corrupt.");
+      assert_msg(uncompress(buffer, &fsize, b, arc->files[i].compress) == Z_OK, "Decompression problem, data file corrupt?");
+      assert_msg(fsize == arc->files[i].size, "Data file corrupt.");
 
       /* free temporary buffer */
       delete [] b;
@@ -141,7 +135,7 @@ file::file(const archive *arc, const char *name) : bufferpos(0) {
   }
 
   /* if we arrive here we couldn't find the file we looked for */
-  assert(0, "File not found in archive!");
+  assert_msg(0, "File not found in archive!");
 }
 
 file::~file() { delete [] buffer; }

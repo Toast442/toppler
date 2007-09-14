@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,10 +19,11 @@
 #ifndef DECL_H
 #define DECL_H
 
-#include "config.h"
+#include <config.h>
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <dirent.h>
 
 #if ENABLE_NLS == 1
 #include <libintl.h>
@@ -104,7 +105,7 @@
 #define SPR_FISHHEI  40
 
 /* submarine sprite size */
-#define SPR_SUBMWID 120 
+#define SPR_SUBMWID 120
 #define SPR_SUBMHEI 80
 
 /* submarine ammunition, torpedo */
@@ -136,7 +137,7 @@
 #define GAME_DEBUG_KEYS
 #endif
 
-/*   define this if you want the bonus game to be accessible 
+/*   define this if you want the bonus game to be accessible
  from the main menu. */
 #ifdef TESTER
 #define HUNT_THE_FISH
@@ -187,6 +188,12 @@ FILE *create_local_config_file(const char *name);
 FILE *open_local_data_file(const char *name);
 FILE *create_local_data_file(const char *name);
 
+/* returns the filename that would be opened with open_data_file in
+ * f, f is max len characters
+ * returns true, if the file pointer of open_data_file would be not NULL
+ */
+bool get_data_file_path(const char * fname, char * f, int len);
+
 /* Is the TT window active? */
 extern bool tt_has_focus;
 
@@ -197,25 +204,9 @@ extern bool tt_has_focus;
 int dcl_update_speed(int spd);
 
 /* for errorchecking */
-#define assert(cond,text) if (!(cond)) { printf(_("Assertion failure: %s\n"), text); exit(1); }
+#define assert_msg(cond,text) if (!(cond)) { printf(_("Assertion failure: %s\n"), text); exit(1); }
 
 //#define CONFIGDIR "/etc"
-
-#if (SYSTEM == SYS_WINDOWS)
-
-#include <windows.h>
-#include <ctype.h>
-
-typedef struct dirent {
-  char d_name[200];
-} dirent;
-
-#define strcasecmp stricmp
-#define snprintf _snprintf
-#define M_PI 3.1415926535897932384626433832795
-#else
-#include <dirent.h>
-#endif
 
 /* a function that returns a alphabetically sorted list of
  files in the given dir filtered dith the function given at
@@ -224,11 +215,8 @@ typedef struct dirent {
 int alpha_scandir(const char *dir, struct dirent ***namelist,
                   int (*select)(const struct dirent *));
 
-
 /* for internationalisation */
-
 #if ENABLE_NLS == 1
-
 #define _(x) gettext(x)
 #define N_(x) x
 #else
@@ -236,5 +224,9 @@ int alpha_scandir(const char *dir, struct dirent ***namelist,
 #define N_(x) x
 #endif
 
+#ifdef WIN32
+typedef int mbstate_t;
+size_t mbrtowc (wchar_t * out, const char *s, int n, mbstate_t * st);
+#endif
 
 #endif

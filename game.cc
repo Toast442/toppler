@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -85,9 +85,9 @@ void gam_arrival(void) {
     scr_writetext_center((SCREENHEI / 6), _("You are entering the"));
 
     if (strlen(lev_towername()))
-      scr_writetext_center((SCREENHEI*2 / 6), _(lev_towername()));
+      scr_writetext_broken_center((SCREENHEI*2 / 6), _(lev_towername()));
     else
-      scr_writetext_center((SCREENHEI*2 / 6), _("Nameless Tower"));
+      scr_writetext_broken_center((SCREENHEI*2 / 6), _("Nameless Tower"));
 
     if (passwd && lev_show_passwd(lev_towernr())) {
       char buf[50];
@@ -411,7 +411,6 @@ static void akt_time(int &time, int &timecount, gam_states &state) {
     timecount++;
     if (timecount == 5) {
       timecount = 0;
-      if(time > 1)
       time--;
       if ((time >= 0) && (time <= 20 || (time <= 40 && (time % 2))))
 	  ttsounds::instance()->startsound(SND_ALARM);
@@ -515,10 +514,10 @@ gam_result gam_towergame(Uint8 &anglepos, Uint16 &resttime, int &demo, void *dem
   /* time left for the player to reach the tower */
   int time = lev_towertime();
 
-  if (demo < 0) drawflags = SF_REC;
+  if (demo == -1) drawflags = SF_REC;
   else if (demo > 0) drawflags = SF_DEMO;
 
-  assert(!(demo && !demobuf), "Trying to play or record a null demo.");
+  assert_msg(!(((demo == -1) || (demo > 0)) && !demobuf), "Trying to play or record a null demo.");
 
   top_init();
 
@@ -543,7 +542,7 @@ gam_result gam_towergame(Uint8 &anglepos, Uint16 &resttime, int &demo, void *dem
       get_keys(left_right, up_down, space, demokeys);
     }
 
-    if (demo < 0) {
+    if (demo == -1) {
       if ((demolen >= demo_alloc) || (dbuf == NULL)) {
         demo_alloc += 200;
         Uint16 *tmp = new Uint16[demo_alloc];
@@ -649,7 +648,7 @@ gam_result gam_towergame(Uint8 &anglepos, Uint16 &resttime, int &demo, void *dem
   resttime = time;
   key_readkey();
 
-  if (demo < 0) {
+  if (demo == -1) {
     demo = demolen;
   }
   if (demo) state = STATE_ABORTED;

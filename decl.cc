@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,14 +24,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
-#if (SYSTEM != SYS_WINDOWS)
-
 #include <unistd.h>
-#include <pwd.h>
 #include <dirent.h>
 
+#ifndef WIN32
+#include <pwd.h>
 #endif
+
 
 static bool wait_overflow = false;
 /* Not read from config file */
@@ -94,7 +93,7 @@ bool dcl_fileexists(const char *n) {
 char * homedir()
 {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   return getenv("HOME");
 
@@ -109,7 +108,7 @@ char * homedir()
 /* checks if home/.toppler exists and creates it, if not */
 static void checkdir(void) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   char n[200];
 
@@ -128,7 +127,7 @@ static void checkdir(void) {
 FILE *open_data_file(const char *name) {
 
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
   // look into actual directory
   if (dcl_fileexists(name))
     return fopen(name, "rb");
@@ -152,9 +151,41 @@ FILE *open_data_file(const char *name) {
 #endif
 }
 
+bool get_data_file_path(const char * name, char * f, int len) {
+
+#ifndef WIN32
+  // look into actual directory
+  if (dcl_fileexists(name)) {
+    snprintf(f, len, name);
+    return true;
+  }
+
+  // look into the data dir
+  char n[200];
+
+  snprintf(n, 200, TOP_DATADIR"/%s", name);
+  if (dcl_fileexists(n)) {
+    snprintf(f, len, n);
+    return true;
+  }
+
+  return false;
+
+#else
+
+  if (dcl_fileexists(name)) {
+    snprintf(f, len, name);
+    return true;
+  }
+
+  return false;
+
+#endif
+}
+
 FILE *open_local_config_file(const char *name) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   checkdir();
 
@@ -178,7 +209,7 @@ FILE *open_local_config_file(const char *name) {
 
 FILE *create_local_config_file(const char *name) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   checkdir();
 
@@ -200,7 +231,7 @@ FILE *create_local_config_file(const char *name) {
 
 FILE *open_local_data_file(const char *name) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   checkdir();
 
@@ -220,7 +251,7 @@ FILE *open_local_data_file(const char *name) {
 
 FILE *create_local_data_file(const char *name) {
 
-#if (SYSTEM == SYS_LINUX || SYSTEM == SYS_MACOSX)
+#ifndef WIN32
 
   checkdir();
 
@@ -241,58 +272,6 @@ FILE *create_local_data_file(const char *name) {
 static int sort_by_name(const void *a, const void *b) {
   return(strcmp((*((struct dirent **)a))->d_name, ((*(struct dirent **)b))->d_name));
 }
-
-#if (SYSTEM == SYS_WINDOWS)
-
-int alpha_scandir(const char *dir, struct dirent ***namelist,
-            int (*select)(const struct dirent *)) {
-  HANDLE hand;
-  WIN32_FIND_DATA finddata;
-  int i = 0;
-  size_t entrysize;
-
-  struct dirent entry;
-
-  char name[200];
-
-  snprintf(name, 200, "%s\\*", dir);
-
-  hand = FindFirstFile(name, &finddata);
-
-  if (hand == INVALID_HANDLE_VALUE)
-    return -1;
-
-  *namelist = NULL;
-
-  do {
-    strncpy(entry.d_name, finddata.cFileName, 199);
-    entry.d_name[200] = 0;
-
-    if (select == NULL || (select != NULL && (*select)(&entry)))
-    {
-      *namelist = (struct dirent **)realloc((void *)(*namelist), (size_t)((i + 1) * sizeof(struct dirent *)));
-      if (*namelist == NULL)
-        return(-1);
-      entrysize = sizeof(struct dirent) - sizeof(entry.d_name) + strlen(entry.d_name) + 1;
-      (*namelist)[i] = (struct dirent *)malloc(entrysize);
-      if ((*namelist)[i] == NULL)
-        return(-1);
-      memcpy((*namelist)[i], &entry, entrysize);
-      i++;
-    }
-  } while (FindNextFile(hand, &finddata));
-
-  FindClose(hand);
-
-  if (i == 0)
-    return(-1);
-
-  qsort((void *)(*namelist), (size_t)i, sizeof(struct dirent *), sort_by_name);
-
-  return(i);
-}
-
-#else
 
 int alpha_scandir(const char *dir, struct dirent ***namelist,
             int (*select)(const struct dirent *)) {
@@ -331,5 +310,82 @@ int alpha_scandir(const char *dir, struct dirent ***namelist,
   return(i);
 }
 
-#endif
+#ifdef WIN32
 
+static int
+utf8_mbtowc (void * conv, wchar_t *pwc, const unsigned char *s, int n)
+{
+  unsigned char c = s[0];
+
+  if (c < 0x80) {
+    *pwc = c;
+    return 1;
+  } else if (c < 0xc2) {
+    return -1;
+  } else if (c < 0xe0) {
+    if (n < 2)
+      return -2;
+    if (!((s[1] ^ 0x80) < 0x40))
+      return -1;
+    *pwc = ((wchar_t) (c & 0x1f) << 6)
+           | (wchar_t) (s[1] ^ 0x80);
+    return 2;
+  } else if (c < 0xf0) {
+    if (n < 3)
+      return -2;
+    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+          && (c >= 0xe1 || s[1] >= 0xa0)))
+      return -1;
+    *pwc = ((wchar_t) (c & 0x0f) << 12)
+           | ((wchar_t) (s[1] ^ 0x80) << 6)
+           | (wchar_t) (s[2] ^ 0x80);
+    return 3;
+  } else if (c < 0xf8 && sizeof(wchar_t)*8 >= 32) {
+    if (n < 4)
+      return -2;
+    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+          && (s[3] ^ 0x80) < 0x40
+          && (c >= 0xf1 || s[1] >= 0x90)))
+      return -1;
+    *pwc = ((wchar_t) (c & 0x07) << 18)
+           | ((wchar_t) (s[1] ^ 0x80) << 12)
+           | ((wchar_t) (s[2] ^ 0x80) << 6)
+           | (wchar_t) (s[3] ^ 0x80);
+    return 4;
+  } else if (c < 0xfc && sizeof(wchar_t)*8 >= 32) {
+    if (n < 5)
+      return -2;
+    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+          && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
+          && (c >= 0xf9 || s[1] >= 0x88)))
+      return -1;
+    *pwc = ((wchar_t) (c & 0x03) << 24)
+           | ((wchar_t) (s[1] ^ 0x80) << 18)
+           | ((wchar_t) (s[2] ^ 0x80) << 12)
+           | ((wchar_t) (s[3] ^ 0x80) << 6)
+           | (wchar_t) (s[4] ^ 0x80);
+    return 5;
+  } else if (c < 0xfe && sizeof(wchar_t)*8 >= 32) {
+    if (n < 6)
+      return -2;
+    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+          && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
+          && (s[5] ^ 0x80) < 0x40
+          && (c >= 0xfd || s[1] >= 0x84)))
+      return -1;
+    *pwc = ((wchar_t) (c & 0x01) << 30)
+           | ((wchar_t) (s[1] ^ 0x80) << 24)
+           | ((wchar_t) (s[2] ^ 0x80) << 18)
+           | ((wchar_t) (s[3] ^ 0x80) << 12)
+           | ((wchar_t) (s[4] ^ 0x80) << 6)
+           | (wchar_t) (s[5] ^ 0x80);
+    return 6;
+  } else
+    return -1;
+}
+
+size_t mbrtowc (wchar_t * out, const char *s, int n, mbstate_t * st) {
+  return utf8_mbtowc(0, out, (const unsigned char *)s, n);
+}
+
+#endif

@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,15 +38,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-
-/* really required? */
-#if 0
-#include <ctype.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
 
 #define NUMHISCORES 10
 #define HISCORES_PER_PAGE 5
@@ -294,13 +285,36 @@ men_options_sounds(_menusystem *ms)
     if (config.nosound()) {
       config.nosound(false);
       snd_init();
+      if (!config.nomusic())
+        snd_playTitle();
     } else {
+      if (!config.nomusic())
+        snd_stopTitle();
       snd_done();
       config.nosound(true);
     }
   }
   if (config.nosound()) sprintf(txt, "%s %c", _("Sounds"), 3);
   else sprintf(txt, "%s %c", _("Sounds"), 4);
+
+  return txt;
+}
+
+  static const char *
+men_options_music(_menusystem *ms)
+{
+  static char txt[30];
+  if (ms) {
+    if (config.nomusic()) {
+      config.nomusic(false);
+      snd_playTitle();
+    } else {
+      snd_stopTitle();
+      config.nomusic(true);
+    }
+  }
+  if (config.nomusic()) sprintf(txt, "%s %c", _("Music"), 3);
+  else sprintf(txt, "%s %c", _("Music"), 4);
 
   return txt;
 }
@@ -480,6 +494,7 @@ men_options(_menusystem *mainmenu) {
     ms = add_menu_option(ms, NULL, run_redefine_menu);
     ms = add_menu_option(ms, NULL, men_options_graphic);
     ms = add_menu_option(ms, NULL, men_options_sounds);
+    ms = add_menu_option(ms, NULL, men_options_music);
 
     ms = add_menu_option(ms, NULL, NULL);
     ms = add_menu_option(ms, _("Back"), NULL);
@@ -654,9 +669,40 @@ congrats_background_proc(void)
   scr_blit(restsprites.data(menupicture), 0, 0);
   scr_blit(fontsprites.data(titledata), (SCREENWID - fontsprites.data(titledata)->w) / 2, 20);
 
-  scr_writetext_center(130, _("Congratulations! You are"));
-  scr_writetext_center(170, _("probably good enough to"));
-  scr_writetext_center(210, _("enter the highscore table!"));
+  /* you can use up to 4 lines of text here, but please check
+   * if the text fits onto the screen
+   */
+  const char * text = _("Congratulations! You are\n"
+                        "probably good enough to\n"
+                        "enter the highscore table!");
+
+  int ypos = 210;
+
+  for (int pos = 0; text[pos]; pos++)
+    if (text[pos] == '\n') ypos -= 40;
+
+  char line[200];
+  int pos = 0;
+  int linepos = 0;
+
+  while (text[pos]) {
+
+    if (text[pos] == '\n') {
+      line[linepos] = 0;
+      scr_writetext_center(ypos, line);
+      linepos = 0;
+      ypos += 40;
+    } else {
+      if (linepos < 198) {
+        line[linepos] = text[pos];
+        linepos++;
+      }
+    }
+    pos++;
+  }
+
+  line[linepos] = 0;
+  scr_writetext_center(ypos, line);
 
   scr_writetext_center(270, _("Please enter your name"));
 }
@@ -682,8 +728,14 @@ static void men_highscore(unsigned long pt, int twr) {
 
     char name[SCORENAMELEN+1];
 
+#ifndef WIN32
+    /* copy the login name into the name entered into the highscore table */
+    strncpy(name, getenv("LOGNAME"), SCORENAMELEN);
+    name[SCORENAMELEN] = 0; // to be sure we have a terminated string
+#else
     /* on systems without login we have no name */
     name[0] = 0;
+#endif
 
     while (!men_input(name, SCORENAMELEN)) ;
 
@@ -775,7 +827,9 @@ men_main_startgame_proc(_menusystem *ms)
     switch (key_sdlkey2conv(ms->key, false)) {
     case fire_key:
       dcl_update_speed(config.game_speed());
+      snd_musicVolume(MIX_MAX_VOLUME/4);
       main_game_loop();
+      snd_musicVolume(MIX_MAX_VOLUME);
       dcl_update_speed(MENU_DCLSPEED);
       break;
     case right_key: currentmission = (currentmission + 1) % missioncount; break;

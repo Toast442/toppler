@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-#include "config.h"
+#include <config.h>
 #include "soundsys.h"
 
 #ifdef HAVE_LIBSDL_MIXER
@@ -54,6 +54,10 @@ enum {
 
 void snd_init(void);
 void snd_done(void);
+
+void snd_playTitle(void);
+void snd_stopTitle(void);
+void snd_musicVolume(int vol);
 
 #endif
 

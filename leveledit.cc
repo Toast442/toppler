@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -790,7 +790,7 @@ void le_edit(void) {
         {
           Uint8 dummy1;
           Uint16 dummy2;
-	  int dummy3 = 0;
+	  int dummy3 = -2;
 	  int speed = dcl_update_speed(config.game_speed());
 	  Uint16 *dummybuf = NULL;
           unsigned char *p;

@@ -57,7 +57,7 @@ void configuration::parse(FILE * in) {
             if (atoi(param) > 0)
               key_redefine((ttkey)t->maxlen, (SDLKey)atoi(param));
             break;
-          default: assert(0, "Unknown config data type.");
+          default: assert_msg(0, "Unknown config data type.");
           }
           break;
         }
@@ -110,6 +110,7 @@ configuration::configuration(FILE *glob, FILE *local) {
 
   CNF_BOOL( "fullscreen",          &i_fullscreen );
   CNF_BOOL( "nosound",             &i_nosound );
+  CNF_BOOL( "nomusic",             &i_nomusic );
   CNF_CHAR( "editor_towername",    &i_editor_towername, TOWERNAMELEN );
   CNF_BOOL( "use_alpha_sprites",   &i_use_alpha_sprites );
   CNF_BOOL( "use_alpha_font",      &i_use_alpha_font );
@@ -171,7 +172,7 @@ configuration::~configuration(void) {
       case CT_KEY:
         fprintf(f, "%i", (int)key_conv2sdlkey((ttkey)t->maxlen, true));
         break;
-      default: assert(0, "Unknown config data type.");
+      default: assert_msg(0, "Unknown config data type.");
       }
 
       fprintf(f, "\n");

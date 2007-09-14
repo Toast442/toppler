@@ -15,17 +15,17 @@ then you need to call
 
 make global_highscore
 
-afterwards. This changes to binary owner to root:games and sets the
+afterwards. This changes the binary owner to root:games and sets the
 sticky bit for group. It also creates a directory in /usr/local/var
-named toppler and a file names toppler.hsc inside this directory. The
+named toppler and a file named toppler.hsc inside this directory. The
 binary will have write access to this directory and the file. But the
-normal user shouldn't (to prevent them from cheating)
+normal user shouldn't. (to prevent them from cheating)
 
 The rpm will install the global highscore file for you.
 
 If the program finds the global highscore file and has the neccessary
-rights to access it, it will always use this list. If not the local
-file will be used. Which table is used, can you find out by looking at
+rights to access it, it will always use this list. Otherwise the local
+file will be used. Which table is used, you can find out by looking at
 the output the program writes on stdout upon startup.
 
 Goal
@@ -216,13 +216,13 @@ w       normal step
 s       vanishing step        shown as flashing step
 x       sliding step          shown as sideways moving step
 
-e       elevator top station  
+e       elevator top station
 d       elevator middle station
 c       elevator top station
 
 the elevator stations are shown by a moving platform. The platform is
 moving into the direction the elevator can move. So for the bottom
-stations the platform is repeatingly moving up and jumping down. 
+stations the platform is repeatingly moving up and jumping down.
 
 1-7     the different kinds of robots
 
@@ -331,7 +331,7 @@ And another paragraph for the interested ones. Here the format of the
 mission files is explained.
 
 First in the mission files is the mission name. The first byte is the
-lenght of the string followed by the text itself. Then comed a
+lenght of the string followed by the text itself. Then comes a
 priority. This value is used to sort the missions in the game menu.
 Then comes the number of towers in the mission followed by the offset
 of the tower offset table (b bytes). This table contains 4 bytes for

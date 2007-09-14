@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -78,6 +78,11 @@ void scr_writetext(long x, long y, const char *s, int maxchars = -1);
 
 /* centers the text horizontally */
 void scr_writetext_center(long y, const char *s);
+
+/* like scr_writetext_center, but tries to break the lines of text so
+ * that they are not longer than the screen is wide
+ */
+void scr_writetext_broken_center(long y, const char *s);
 
 /* output text that can be interleaved with commands. these commands
  have the form ~ followed by letter followed by a fixed set of parameters.

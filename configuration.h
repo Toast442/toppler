@@ -43,6 +43,9 @@ public:
   bool nosound() const { return i_nosound; }
   void nosound(bool on) { need_save = true; i_nosound = on; }
 
+  bool nomusic() const { return i_nomusic; }
+  void nomusic(bool on) { need_save = true; i_nomusic = on; }
+
   bool use_water() const { return i_use_water; }
   void use_water(bool on) { need_save = true; i_use_water = on; }
 
@@ -125,6 +128,7 @@ private:
 
   bool i_fullscreen;
   bool i_nosound;
+  bool i_nomusic;
   bool i_use_water;
   char i_editor_towername[TOWERNAMELEN+1];
   bool i_use_alpha_sprites;

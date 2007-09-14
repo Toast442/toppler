@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -42,7 +42,7 @@ Uint16 spritecontainer::save(SDL_Surface *s) {
   if (usage == size) {
     SDL_Surface **array2 = new SDL_Surface*[size + 200];
 
-    assert(array2, "could not alloc memory for sprite array");
+    assert_msg(array2, "could not alloc memory for sprite array");
 
     if (usage)
       memcpy(array2, array, usage * sizeof(SDL_Surface*));

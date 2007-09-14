@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2006  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -60,7 +60,7 @@ void ele_init(void) {
 
 void ele_select(Uint16 row, Uint8 col) {
 
-  assert(active_ele == -1, "Select more than one elevator.");
+  assert_msg(active_ele == -1, "Select more than one elevator.");
 
   Uint8 what = 0;
 
@@ -87,7 +87,7 @@ void ele_select(Uint16 row, Uint8 col) {
 
 void ele_activate(Sint8 dir) {
 
-  assert(active_ele != -1, "Work with unselected elevator, activate.");
+  assert_msg(active_ele != -1, "Work with unselected elevator, activate.");
 
   lev_platform2stick(elevators[active_ele].vertical, elevators[active_ele].angle);
   ele_dir = dir;
@@ -96,7 +96,7 @@ void ele_activate(Sint8 dir) {
 
 void ele_move(void) {
 
-  assert(active_ele != -1, "Work with unselected elevator, move.");
+  assert_msg(active_ele != -1, "Work with unselected elevator, move.");
 
   if (ele_dir == 1) {
     elevators[active_ele].vertical++;
@@ -111,7 +111,7 @@ void ele_move(void) {
 
 bool ele_is_atstop(void) {
 
-  assert(active_ele != -1, "Work with unselected elevator, is_atstop.");
+  assert_msg(active_ele != -1, "Work with unselected elevator, is_atstop.");
 
   if (ele_dir == 1)
     return lev_is_station(elevators[active_ele].vertical + 1, elevators[active_ele].angle);
@@ -121,7 +121,7 @@ bool ele_is_atstop(void) {
 
 void ele_deactivate(void) {
 
-  assert(active_ele != -1, "Deselected an inactive elevator.");
+  assert_msg(active_ele != -1, "Deselected an inactive elevator.");
 
   if (ele_dir == 1) ele_move();
 
