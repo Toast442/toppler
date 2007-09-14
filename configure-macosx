@@ -1,0 +1,3 @@
+#!/bin/sh
+
+CFLAGS="-arch ppc -arch i386" CPPFLAGS="-arch i386 -arch ppc" CXXFLAGS="-arch i386 -arch ppc"  LDFLAGS="-arch i386 -arch ppc" LIBS="-lintl" ./configure --disable-dependency-tracking --prefix="./Toppler.app/Contents/Resources/toppler" --exec-prefix="./Toppler.app/Contents/MacOS" --bindir="./Toppler.app/Contents/MacOS"

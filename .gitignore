@@ -1,0 +1,4 @@
+*.o
+toppler
+Toppler.app
+.DS_Store
