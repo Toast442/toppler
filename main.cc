@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
 
   DIR *dir = opendir("locale");
   bindtextdomain("toppler", dir == NULL ? LOCALEDIR : "locale");
-  closedir(dir);
+  if(dir) closedir(dir);
   textdomain("toppler");
 #endif
 

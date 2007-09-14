@@ -268,7 +268,7 @@ target_os = @target_os@
 target_vendor = @target_vendor@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CXXFLAGS = -Wall -DTOP_DATADIR=\"$(pkgdatadir)\" -DHISCOREDIR=\"$(pkglocalstatedir)\" -DLOCALEDIR=\"$(localedir)\"
+AM_CXXFLAGS = -Wall -DTOP_DATADIR=\"./Toppler.app/Content/Resources/toppler/share/\" -DHISCOREDIR=\"~/.toppler\" -DLOCALEDIR=\"./Toppler.app/Content/Resources/toppler/share/locale\"
 SUBDIRS = po m4
 ACLOCAL_AMFLAGS = -I m4
 toppler_LDFLAGS = $(LIBINTL)

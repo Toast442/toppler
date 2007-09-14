@@ -136,6 +136,9 @@ FILE *open_data_file(const char *name) {
   char n[200];
 
   snprintf(n, 200, TOP_DATADIR"/%s", name);
+
+  fprintf(stderr,"Opening %s\n",n);
+  
   if (dcl_fileexists(n))
     return fopen(n, "rb");
 
