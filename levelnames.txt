@@ -1,0 +1,130 @@
+_("Mission 1")
+/* Tower name, you can translate freely */
+_("Tower of eyes")
+/* Tower name, you can translate freely */
+_("Realm of robots")
+/* Tower name, you can translate freely */
+_("Trap of tricks")
+/* Tower name, you can translate freely */
+_("Slippery slide")
+/* Tower name, you can translate freely */
+_("Broken path")
+/* Tower name, you can translate freely */
+_("Swimmers delight")
+/* Tower name, you can translate freely */
+_("Nasty one")
+/* Tower name, you can translate freely */
+_("Edge of doom")
+
+_("Mission 2")
+/* Tower name, you can translate freely */
+_("Blink of the eye")
+/* Tower name, you can translate freely */
+_("Robot's heaven")
+/* Tower name, you can translate freely */
+_("Trick of traps")
+/* Tower name, you can translate freely */
+_("No man's land")
+/* Tower name, you can translate freely */
+_("Oh, *******!!")
+/* Tower name, you can translate freely */
+_("Riddle of reason")
+/* Tower name, you can translate freely */
+_("Maze of mistakes")
+/* Tower name, you can translate freely */
+_("Last trump")
+
+/*Ball is the name of the autor (Clarence Ball) and should not be translated*/
+_("Ball 1")
+/* Tower name, you can translate freely */
+_("Run and don't stop")
+/* Tower name, you can translate freely */
+_("Watch your step")
+/* Tower name, you can translate freely */
+_("Short, but deadly")
+/* Tower name, you can translate freely */
+_("The maddening")
+/* Tower name, you can translate freely */
+_("Doom at every step")
+/* Tower name, you can translate freely */
+_("Enemies everywhere")
+/* Tower name, you can translate freely */
+_("You will loose")
+/* Tower name, you can translate freely */
+_("Mind destroyer")
+
+/*Ball is the name of the autor (Clarence Ball) and should not be translated*/
+_("Ball 2")
+/* Tower name, you can translate freely */
+_("Mind Trap")
+/* Tower name, you can translate freely */
+_("Breaking Tower")
+/* Tower name, you can translate freely */
+_("Great Fall")
+/* Tower name, you can translate freely */
+_("Tower of Intrigue")
+/* Tower name, you can translate freely */
+_("Massacre")
+/* Tower name, you can translate freely */
+_("Bouncing Murders")
+/* Tower name, you can translate freely */
+_("Trial and error")
+/* Tower name, you can translate freely */
+_("Tower of Pure Evil")
+
+/*Ball is the name of the autor (Clarence Ball) and should not be translated*/
+_("Ball 3")
+/* Tower name, you can translate freely */
+_("Annoying Tower")
+/* Tower name, you can translate freely */
+_("Cave of Failure")
+/* Tower name, you can translate freely */
+_("Dividing path")
+/* Tower name, you can translate freely */
+_("No Way Out?")
+/* Tower name, you can translate freely */
+_("Trap")
+/* Tower name, you can translate freely */
+_("Tower of Mystery")
+/* Tower name, you can translate freely */
+_("Slip ... and die")
+/* Tower name, you can translate freely */
+_("Mission Impossible")
+
+_("ABC Towers")
+/* Tower name, you can translate freely */
+_("Slices")
+/* Tower name, you can translate freely */
+_("Corridors")
+/* Tower name, you can translate freely */
+_("Higher Ground")
+/* Tower name, you can translate freely */
+_("No Icing")
+/* Tower name, you can translate freely */
+_("Three Layers")
+/* Tower name, you can translate freely */
+_("Two Ways")
+/* Tower name, you can translate freely */
+_("Spiral")
+/* Tower name, you can translate freely */
+_("Skygazer")
+
+/*David is the name of the autor and should not be translated*/
+_("David 1")
+/* Tower name, you can translate freely */
+_("Difficult jumps!")
+/* Tower name, you can translate freely */
+_("Washout")
+/* Tower name, you can translate freely */
+_("Climbing and tricks")
+/* Tower name, you can translate freely */
+_("Watch the robots")
+/* Tower name, you can translate freely */
+_("Two Halves")
+/* Tower name, you can translate freely */
+_("Turning up the heat")
+/* Tower name, you can translate freely */
+_("Confusing")
+/* Tower name, you can translate freely */
+_("Short but dangerous")
+

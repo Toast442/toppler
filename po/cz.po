@@ -1,0 +1,996 @@
+# Czech translation of Tower Toppler.
+# Copyright (C) YEAR Andreas R�ver
+# This file is distributed under the same license as the toppler package.
+# Miroslav Kure <kurem@debian.cz>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: toppler\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-19 16:28+0200\n"
+"PO-Revision-Date: 2006-06-09 19:35+0200\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bonus.cc:104 game.cc:480
+msgid "Pause"
+msgstr "Pauza"
+
+#. for errorchecking
+#: decl.h:207
+#, c-format
+msgid "Assertion failure: %s\n"
+msgstr "Chyba aserce: %s\n"
+
+#: game.cc:85
+msgid "You are entering the"
+msgstr "Vstupujete do"
+
+#: game.cc:90
+msgid "Nameless Tower"
+msgstr "Bezejmenná věž"
+
+#: game.cc:94
+#, c-format
+msgid "Password:   %s"
+msgstr "Heslo:   %s"
+
+#: game.cc:302
+msgid "Time over"
+msgstr "Čas vypršel"
+
+#: game.cc:314 game.cc:323
+#, c-format
+msgid "Time:      ~t35010 X %3d"
+msgstr "Čas:       ~t35010 X %3d"
+
+#: game.cc:316 game.cc:325
+#, c-format
+msgid "Technique: ~t35010 X %3d"
+msgstr "Technika:  ~t35010 X %3d"
+
+#: game.cc:318 game.cc:327
+#, c-format
+msgid "Extra:     ~t35010 X %3d"
+msgstr "Extra:     ~t35010 X %3d"
+
+#: game.cc:320
+#, c-format
+msgid "Lifes:     ~t3505000 X %3d"
+msgstr "Životy:    ~t3505000 X %3d"
+
+#: keyb.cc:161
+#, c-format
+msgid "Wheee!!\n"
+msgstr "Jééé!!\n"
+
+#: leveledit.cc:103 menu.cc:971
+msgid "Quit"
+msgstr "Konec"
+
+#: leveledit.cc:103
+msgid "Move up"
+msgstr "Posun nahoru"
+
+#: leveledit.cc:103
+msgid "Move down"
+msgstr "Posun dolů"
+
+#: leveledit.cc:103
+msgid "Move left"
+msgstr "Posun vlevo"
+
+#: leveledit.cc:104
+msgid "Move right"
+msgstr "Posun vpravo"
+
+#: leveledit.cc:104
+msgid "Insert row"
+msgstr "Vloží řádek"
+
+#: leveledit.cc:104
+msgid "Delete row"
+msgstr "Smaže řádek"
+
+#: leveledit.cc:104
+msgid "Rotate 180"
+msgstr "Rotuje o 180"
+
+#: leveledit.cc:105
+msgid "Put space"
+msgstr "Umístí mezeru"
+
+#: leveledit.cc:105
+msgid "Put step"
+msgstr "Umístí schod"
+
+#: leveledit.cc:105
+msgid "Put vanisher"
+msgstr "Umístí mizící kachli"
+
+#: leveledit.cc:105
+msgid "Put slider left"
+msgstr "Umístí kachli klouzající vlevo"
+
+#: leveledit.cc:106
+msgid "Put slider right"
+msgstr "Umístí kachli klouzající vpravo"
+
+#: leveledit.cc:107
+msgid "Put door"
+msgstr "Umístí bránu"
+
+#: leveledit.cc:107
+msgid "Put goal"
+msgstr "Umístí cíl"
+
+#: leveledit.cc:107
+msgid "Check tower"
+msgstr "Zkontroluje věž"
+
+#: leveledit.cc:107
+msgid "Put rolling ball"
+msgstr "Umístí valící se míč"
+
+#: leveledit.cc:108
+msgid "Put jumping ball moving"
+msgstr "Umístí pohybující se skákající míč"
+
+#: leveledit.cc:108
+msgid "Put jumping ball"
+msgstr "Umístí skákající míč"
+
+#: leveledit.cc:108
+msgid "Put robot up down"
+msgstr "Umístí robota nahoru dolů"
+
+#: leveledit.cc:108
+msgid "Put robot up down fast"
+msgstr "Umístí rychlého robota nahoru dolů"
+
+#: leveledit.cc:109
+msgid "Put robot left right"
+msgstr "Umístí robota vlevo vpravo"
+
+#: leveledit.cc:109
+msgid "Put robot left right fast"
+msgstr "Umístí rychlého robota vlevo vpravo"
+
+#: leveledit.cc:109
+msgid "Put lift"
+msgstr "Umístí zdviž"
+
+#: leveledit.cc:109
+msgid "Lift middle stop"
+msgstr "Střední zastávka zdviže"
+
+#: leveledit.cc:110
+msgid "Lift top stop"
+msgstr "Horní zastávka zdviže"
+
+#: leveledit.cc:110
+msgid "Put pillar"
+msgstr "Umístí sloup"
+
+#: leveledit.cc:110
+msgid "Put box"
+msgstr "Umístí krabici"
+
+#: leveledit.cc:110
+msgid "Load tower"
+msgstr "Nahraje věž"
+
+#: leveledit.cc:111
+msgid "Save tower"
+msgstr "Uloží věž"
+
+#: leveledit.cc:111
+msgid "Test tower"
+msgstr "Otestuje věž"
+
+#: leveledit.cc:111
+msgid "Set tower color"
+msgstr "Nastaví barvu věže"
+
+#: leveledit.cc:111
+msgid "Increase time"
+msgstr "Přidá čas"
+
+#: leveledit.cc:112
+msgid "Decrease time"
+msgstr "Ubere čas"
+
+#: leveledit.cc:112
+msgid "Create mission"
+msgstr "Vytvoří misi"
+
+#: leveledit.cc:112
+msgid "Move page up"
+msgstr "O stranu nahoru"
+
+#: leveledit.cc:112
+msgid "Move page down"
+msgstr "O stranu dolů"
+
+#: leveledit.cc:113
+msgid "Go to start"
+msgstr "Jde na začátek"
+
+#: leveledit.cc:113
+msgid "Show this help"
+msgstr "Nápověda"
+
+#: leveledit.cc:113
+msgid "Name the tower"
+msgstr "Jméno věže"
+
+#: leveledit.cc:113
+msgid "Set tower time"
+msgstr "Nastaví čas"
+
+#: leveledit.cc:114
+msgid "Record demo"
+msgstr "Nahraje demo"
+
+#: leveledit.cc:114
+msgid "Play demo"
+msgstr "Přehraje demo"
+
+#: leveledit.cc:114
+msgid "Adjust tower height"
+msgstr "Upraví výšku věže"
+
+#: leveledit.cc:114
+msgid "Go to end"
+msgstr "Jde na konec"
+
+#: leveledit.cc:115
+msgid "Cut row"
+msgstr "Vyjme řadu"
+
+#: leveledit.cc:115
+msgid "Paste row"
+msgstr "Vloží řadu"
+
+#: leveledit.cc:115
+msgid "Change robot type"
+msgstr "Změní typ robota"
+
+#: leveledit.cc:189
+msgid "Tower changed, really quit"
+msgstr "Věž se změnila, opravdu skončit"
+
+#: leveledit.cc:199
+msgid "Tower changed, really load"
+msgstr "Věž se změnila, opravdu nahrát"
+
+#: leveledit.cc:216
+msgid "Red"
+msgstr "Červená"
+
+#: leveledit.cc:216
+msgid "Green"
+msgstr "Zelená"
+
+#: leveledit.cc:216
+msgid "Blue"
+msgstr "Modrá"
+
+#: leveledit.cc:225
+msgid "Tower Color"
+msgstr "Barva věže"
+
+#: leveledit.cc:305
+msgid "No problems found"
+msgstr "Žádné problémy nenalezeny"
+
+#: leveledit.cc:306
+msgid "No starting step"
+msgstr "Chybí počáteční bod"
+
+#: leveledit.cc:307
+msgid "Start is blocked"
+msgstr "Start je blokován"
+
+#: leveledit.cc:308
+msgid "Unknown block"
+msgstr "Neznámý blok"
+
+#: leveledit.cc:309
+msgid "No elevator stop"
+msgstr "Chybí zarážka výtahu"
+
+#: leveledit.cc:310
+msgid "Elevator is blocked"
+msgstr "Výtah je blokován"
+
+#: leveledit.cc:311
+msgid "No opposing doorway"
+msgstr "Chybí protilehlá brána"
+
+#: leveledit.cc:312
+msgid "Broken doorway"
+msgstr "Porušená brána"
+
+#: leveledit.cc:313
+msgid "No exit"
+msgstr "Chybí východ"
+
+#: leveledit.cc:314
+msgid "Exit is unreachable"
+msgstr "Východ je nedosažitelný"
+
+#: leveledit.cc:315
+msgid "Not enough time"
+msgstr "Nedostatek času"
+
+#: leveledit.cc:316
+msgid "Tower is too short"
+msgstr "Věž je příliš krátká"
+
+#: leveledit.cc:317
+msgid "Tower has no name"
+msgstr "Věž nemá jméno"
+
+#: leveledit.cc:325
+msgid "Tower check:"
+msgstr "Kontrola věže:"
+
+#: leveledit.cc:351 leveledit.cc:367 leveledit.cc:389
+msgid "Mission creation"
+msgstr "Vytváření mise"
+
+#: leveledit.cc:352
+msgid "enter mission name"
+msgstr "zadejte jméno mise"
+
+#: leveledit.cc:353
+msgid "empty to abort"
+msgstr "prázdné pro přerušení"
+
+#: leveledit.cc:369
+msgid "could not create file"
+msgstr "nemohu vytvořit soubor"
+
+#: leveledit.cc:370
+msgid "aborting"
+msgstr "přerušuji"
+
+#: leveledit.cc:390
+msgid "enter name of"
+msgstr "zadejte jméno"
+
+#: leveledit.cc:393
+#, c-format
+msgid "tower no %i"
+msgstr "věž č. %i"
+
+#: leveledit.cc:414
+msgid "Editor Key Help"
+msgstr "Klávesy v editoru"
+
+#: leveledit.cc:532
+msgid "cut#"
+msgstr "řádků"
+
+#: leveledit.cc:571
+#, c-format
+msgid "key: %s, char: %c, action: %i\n"
+msgstr "klávesa: %s, znak: %c, akce: %i\n"
+
+#: leveledit.cc:703
+msgid "Load tower:"
+msgstr "Nahrát věž:"
+
+#: leveledit.cc:724
+msgid "Save tower:"
+msgstr "Uložit věž:"
+
+#: leveledit.cc:785
+msgid "No recorded demo"
+msgstr "Žádné nahrané demo"
+
+#: leveledit.cc:831
+msgid "Enter tower time:"
+msgstr "Zadejte čas věže:"
+
+#: leveledit.cc:847
+msgid "Adjust tower height:"
+msgstr "Upravte výšku věže:"
+
+#: leveledit.cc:927
+msgid "Name the tower:"
+msgstr "Jméno věže:"
+
+#: main.cc:42
+#, c-format
+msgid ""
+"\n"
+"\tOptions:\n"
+"\n"
+"  -f\tEnable fullscreen mode\n"
+"  -s\tSilence, disable all sound\n"
+"  -dX\tSet debug level to X  (default: %i)\n"
+msgstr ""
+"\n"
+"\tVolby:\n"
+"\n"
+"  -f\tPovolí celoobrazovkový režim\n"
+"  -s\tTicho, zakáže veškeré zvuky\n"
+"  -dX\tnastaví ladicí režim na X  (výchozí: %i)\n"
+
+#: main.cc:52
+#, c-format
+msgid "Debug level is now %c.\n"
+msgstr "Ladicí režim je nyní %c.\n"
+
+#: main.cc:54
+#, c-format
+msgid "Illegal debug level value, using default.\n"
+msgstr "Chybná ladicí úroveň, používám výchozí.\n"
+
+#: main.cc:103
+#, c-format
+msgid "Nebulous version %s"
+msgstr "Nebulous verze %s"
+
+#: main.cc:111
+msgid "Nebulous"
+msgstr "Nebulous"
+
+#: main.cc:118
+#, c-format
+msgid "Thanks for playing!\n"
+msgstr "Děkujeme za hraní!\n"
+
+#: menu.cc:69
+msgid "Extra Life"
+msgstr "Další život"
+
+#: menu.cc:74
+msgid "+200 Points"
+msgstr "+200 bodů"
+
+#: menu.cc:93
+msgid "Up"
+msgstr "Nahoru"
+
+#: menu.cc:93
+msgid "Down"
+msgstr "Dolů"
+
+#: menu.cc:93
+msgid "Left"
+msgstr "Vlevo"
+
+#: menu.cc:93
+msgid "Right"
+msgstr "Vpravo"
+
+#: menu.cc:93
+msgid "Fire"
+msgstr "Střelba"
+
+#: menu.cc:145
+#, c-format
+msgid "Password: %s"
+msgstr "Heslo: %s"
+
+#: menu.cc:154 menu.cc:155
+msgid "Status on top"
+msgstr "Stav nahoře"
+
+#: menu.cc:176
+#, c-format
+msgid "Lives: "
+msgstr "Životy: "
+
+#: menu.cc:204
+#, c-format
+msgid "Game Speed: %i"
+msgstr "Rychlost hry: %i"
+
+#: menu.cc:215 menu.cc:216
+msgid "Bonus"
+msgstr "Bonus"
+
+#: menu.cc:223
+msgid "Game Options"
+msgstr "Nastavení hry"
+
+#: menu.cc:236 menu.cc:256 menu.cc:451 menu.cc:475 menu.cc:500 menu.cc:657
+msgid "Back"
+msgstr "Zpět"
+
+#: menu.cc:247 menu.cc:262
+msgid "Redefine Keys"
+msgstr "Předefinovat klávesy"
+
+#: menu.cc:274 menu.cc:275
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+#: menu.cc:297 menu.cc:298
+msgid "Sounds"
+msgstr "Zvuky"
+
+#: menu.cc:316 menu.cc:317
+msgid "Music"
+msgstr "Hudba"
+
+#: menu.cc:351 menu.cc:352
+msgid "Font alpha"
+msgstr "Alfa u fontů"
+
+#: menu.cc:365 menu.cc:366
+msgid "Sprites alpha"
+msgstr "Alfa u spritů"
+
+#: menu.cc:379 menu.cc:380
+msgid "Scroller alpha"
+msgstr "Alfa u posunu"
+
+#: menu.cc:392 menu.cc:393
+msgid "Shadowing"
+msgstr "Stínování"
+
+#: menu.cc:418
+msgid "Nonreflecting waves"
+msgstr "Vlny bez odrazu"
+
+#: menu.cc:419
+msgid "Simple waves"
+msgstr "Jednoduché vlny"
+
+#: menu.cc:420
+msgid "Expensive waves"
+msgstr "Náročné vlny"
+
+#: menu.cc:421
+msgid "Error"
+msgstr "Chyba"
+
+#: menu.cc:431
+msgid "Complete Scroller"
+msgstr "Kompletní posuny"
+
+#: menu.cc:432
+msgid "2 layers Scoller"
+msgstr "2 vrstvé posuny"
+
+#: menu.cc:438
+msgid "Alpha Options"
+msgstr "Nastavení alfy"
+
+#: menu.cc:462
+msgid "Graphics"
+msgstr "Grafika"
+
+#: menu.cc:486
+msgid "Options"
+msgstr "Volby"
+
+#: menu.cc:630
+msgid "HighScores"
+msgstr "Nejvyšší skóre"
+
+#: menu.cc:635
+#, c-format
+msgid "Scores for %s"
+msgstr "Skóre pro %s"
+
+#: menu.cc:659
+msgid "OK"
+msgstr "OK"
+
+#. you can use up to 4 lines of text here, but please check
+#. * if the text fits onto the screen
+#.
+#: menu.cc:675
+msgid ""
+"Congratulations! You are\n"
+"probably good enough to\n"
+"enter the highscore table!"
+msgstr ""
+"Gratulujeme! Jste\n"
+"dobrý i na umístění\n"
+"v tabulce nejlepších!"
+
+#: menu.cc:707
+msgid "Please enter your name"
+msgstr "Zadejte své jméno"
+
+#: menu.cc:761
+msgid ""
+"This mission contains\n"
+"unknown building blocks.\n"
+"You probably need a new\n"
+"version of Tower Toppler.\n"
+"Do you want to continue?"
+msgstr ""
+"Tato mise obsahuje\n"
+"neznámé stavební bloky.\n"
+"Nejspíše potřebuje novější\n"
+"verzi Tower Toppler.\n"
+"Chcete pokračovat?"
+
+#: menu.cc:818
+msgid "Hunt the Fish"
+msgstr "Ulovte rybu"
+
+#: menu.cc:841
+#, c-format
+msgid "%c Start: %s %c"
+msgstr "%c Start: %s %c"
+
+#: menu.cc:851
+msgid "Highscores"
+msgstr "Nejvyšší skóre"
+
+#: menu.cc:863
+msgid "Level Editor"
+msgstr "Editor úrovní"
+
+#: menu.cc:919
+msgid "Return to Game"
+msgstr "Návrat do hry"
+
+#: menu.cc:929
+msgid "Quit Game"
+msgstr "Ukončit hru"
+
+#: menu.cc:936
+msgid "DEBUG MENU"
+msgstr "LADICÍ MENU"
+
+#: menu.cc:941
+msgid "Back to Game"
+msgstr "Zpět do hry"
+
+#: menusys.cc:390
+msgid "Press fire"
+msgstr "Stiskněte střelbu"
+
+#: menusys.cc:390
+msgid "Press space"
+msgstr "Stiskněte mezerník"
+
+#: menusys.cc:554
+msgid "Yes"
+msgstr "Ano"
+
+#: menusys.cc:564
+msgid "No"
+msgstr "Ne"
+
+#: screen.cc:1615
+msgid "REC"
+msgstr "REC"
+
+#: screen.cc:1616
+msgid "DEMO"
+msgstr "DEMO"
+
+#: levelnames.txt:1
+msgid "Mission 1"
+msgstr "1. mise"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:3
+msgid "Tower of eyes"
+msgstr "Věž očí"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:5
+msgid "Realm of robots"
+msgstr "Říše robotů"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:7
+msgid "Trap of tricks"
+msgstr "V pasti triků"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:9
+msgid "Slippery slide"
+msgstr "Klouzavá skluzavka"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:11
+msgid "Broken path"
+msgstr "Narušená cesta"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:13
+msgid "Swimmers delight"
+msgstr "Plavecký ráj"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:15
+msgid "Nasty one"
+msgstr "Ošklivá"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:17
+msgid "Edge of doom"
+msgstr "Hrana osudu"
+
+#: levelnames.txt:19
+msgid "Mission 2"
+msgstr "2. mise"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:21
+msgid "Blink of the eye"
+msgstr "Mrknutí oka"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:23
+msgid "Robot's heaven"
+msgstr "Nebe plné robotů"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:25
+msgid "Trick of traps"
+msgstr "Lesti pastí"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:27
+msgid "No man's land"
+msgstr "Země nikoho"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:29
+msgid "Oh, *******!!"
+msgstr "Ah *******!!"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:31
+msgid "Riddle of reason"
+msgstr "Hádanka důvodu"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:33
+msgid "Maze of mistakes"
+msgstr "Labyrint chyb"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:35
+msgid "Last trump"
+msgstr "Poslední trumf"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:38
+msgid "Ball 1"
+msgstr "Ball 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:40
+msgid "Run and don't stop"
+msgstr "Utíkej a neohlížej se"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:42
+msgid "Watch your step"
+msgstr "Pozor kam šlapeš"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:44
+msgid "Short, but deadly"
+msgstr "Krátká, ale smrtící"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:46
+msgid "The maddening"
+msgstr "Bláznění"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:48
+msgid "Doom at every step"
+msgstr "Osud na každém kroku"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:50
+msgid "Enemies everywhere"
+msgstr "Všude samí nepřátelé"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:52
+msgid "You will loose"
+msgstr "Prohraješ"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:54
+msgid "Mind destroyer"
+msgstr "Zhouba mysli"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:57
+msgid "Ball 2"
+msgstr "Ball 2"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:59
+msgid "Mind Trap"
+msgstr "Myšlenková past"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:61
+msgid "Breaking Tower"
+msgstr "Bortící se věž"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:63
+msgid "Great Fall"
+msgstr "Velký pád"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:65
+msgid "Tower of Intrigue"
+msgstr "Věž intrik"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:67
+msgid "Massacre"
+msgstr "Masakr"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:69
+msgid "Bouncing Murders"
+msgstr "Nestoudné vraždy"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:71
+msgid "Trial and error"
+msgstr "Pokus a omyl"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:73
+msgid "Tower of Pure Evil"
+msgstr "Věž čistého zla"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:76
+msgid "Ball 3"
+msgstr "Ball 3"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:78
+msgid "Annoying Tower"
+msgstr "Protivná věž"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:80
+msgid "Cave of Failure"
+msgstr "Jeskyně selhání"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:82
+msgid "Dividing path"
+msgstr "Rozdělené cesty"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:84
+msgid "No Way Out?"
+msgstr "Není úniku?"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:86
+msgid "Trap"
+msgstr "Past"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:88
+msgid "Tower of Mystery"
+msgstr "Tajemná věž"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:90
+msgid "Slip ... and die"
+msgstr "Uklouzni ... a zemři"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:92
+msgid "Mission Impossible"
+msgstr "Mission Impossible"
+
+#: levelnames.txt:94
+msgid "ABC Towers"
+msgstr "Věže ABC"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:96
+msgid "Slices"
+msgstr "Plátky"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:98
+msgid "Corridors"
+msgstr "Chodby"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:100
+msgid "Higher Ground"
+msgstr "Místo nahoře"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:102
+msgid "No Icing"
+msgstr "Bez námrazy"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:104
+msgid "Three Layers"
+msgstr "Tři vrstvy"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:106
+msgid "Two Ways"
+msgstr "Dvě cesty"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:108
+msgid "Spiral"
+msgstr "Spirála"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:110
+msgid "Skygazer"
+msgstr "Okulár"
+
+#. David is the name of the autor and should not be translated
+#: levelnames.txt:113
+msgid "David 1"
+msgstr "David 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:115
+msgid "Difficult jumps!"
+msgstr "Náročné skoky!"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:117
+msgid "Washout"
+msgstr "Pohroma"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:119
+msgid "Climbing and tricks"
+msgstr "Stoupání a úskoky"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:121
+msgid "Watch the robots"
+msgstr "Pozor na roboty"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:123
+msgid "Two Halves"
+msgstr "Dvě poloviny"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:125
+msgid "Turning up the heat"
+msgstr "Zatopte pod kotli"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:127
+msgid "Confusing"
+msgstr "Zmatená"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:129
+msgid "Short but dangerous"
+msgstr "Krátká a nebezpečná"
+
+#~ msgid "Congratulations! You are"
+#~ msgstr "Gratulujeme! Jste"
+
+#~ msgid "probably good enough to"
+#~ msgstr "dobrý i na umístění"
+
+#~ msgid "enter the highscore table!"
+#~ msgstr "v tabulce nejlepších!"

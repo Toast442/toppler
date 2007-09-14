@@ -1,0 +1,1001 @@
+# Swedish translation of toppler.
+# This file is distributed under the same license as the PACKAGE package.
+# Daniel Nylander <po@danielnylander.se>, 2005
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: toppler 1.1.1-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-19 16:28+0200\n"
+"PO-Revision-Date: 2005-12-30 03:40+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bonus.cc:104 game.cc:480
+msgid "Pause"
+msgstr "Gör paus"
+
+#. for errorchecking
+#: decl.h:207
+#, c-format
+msgid "Assertion failure: %s\n"
+msgstr "Påstående misslyckades: %s\n"
+
+#: game.cc:85
+msgid "You are entering the"
+msgstr "Du kommer nu till"
+
+#: game.cc:90
+msgid "Nameless Tower"
+msgstr "Ej namngivet torn"
+
+#: game.cc:94
+#, c-format
+msgid "Password:   %s"
+msgstr "Lösenord:   %s"
+
+#: game.cc:302
+msgid "Time over"
+msgstr "Slut på tid"
+
+#: game.cc:314 game.cc:323
+#, c-format
+msgid "Time:      ~t35010 X %3d"
+msgstr "Tid:      ~t35010 X %3d"
+
+#: game.cc:316 game.cc:325
+#, c-format
+msgid "Technique: ~t35010 X %3d"
+msgstr "Teknik: ~t35010 X %3d"
+
+#: game.cc:318 game.cc:327
+#, c-format
+msgid "Extra:     ~t35010 X %3d"
+msgstr "Extra:     ~t35010 X %3d"
+
+#: game.cc:320
+#, c-format
+msgid "Lifes:     ~t3505000 X %3d"
+msgstr "Liv:     ~t3505000 X %3d"
+
+#: keyb.cc:161
+#, c-format
+msgid "Wheee!!\n"
+msgstr "Woohooo!!\n"
+
+#: leveledit.cc:103 menu.cc:971
+msgid "Quit"
+msgstr "Avsluta"
+
+#: leveledit.cc:103
+msgid "Move up"
+msgstr "Gå upp"
+
+#: leveledit.cc:103
+msgid "Move down"
+msgstr "Gå ner"
+
+#: leveledit.cc:103
+msgid "Move left"
+msgstr "Gå vänster"
+
+#: leveledit.cc:104
+msgid "Move right"
+msgstr "Gå höger"
+
+#: leveledit.cc:104
+msgid "Insert row"
+msgstr "Infoga rad"
+
+#: leveledit.cc:104
+msgid "Delete row"
+msgstr "Ta bort rad"
+
+#: leveledit.cc:104
+msgid "Rotate 180"
+msgstr "Rotera 180"
+
+#: leveledit.cc:105
+msgid "Put space"
+msgstr "Sätt in tomrum"
+
+#: leveledit.cc:105
+msgid "Put step"
+msgstr "Sätt in steg"
+
+#: leveledit.cc:105
+msgid "Put vanisher"
+msgstr "Sätt in lömskt block"
+
+#: leveledit.cc:105
+msgid "Put slider left"
+msgstr "Sätt in glidare vänster"
+
+#: leveledit.cc:106
+msgid "Put slider right"
+msgstr "Sätt in glidare höger"
+
+#: leveledit.cc:107
+msgid "Put door"
+msgstr "Sätt in dörr"
+
+#: leveledit.cc:107
+msgid "Put goal"
+msgstr "Sätt in mål"
+
+#: leveledit.cc:107
+msgid "Check tower"
+msgstr "Kontrollera torn"
+
+#: leveledit.cc:107
+msgid "Put rolling ball"
+msgstr "Sätt in rullande boll"
+
+#: leveledit.cc:108
+msgid "Put jumping ball moving"
+msgstr "Sätt in hoppande flyttande boll"
+
+#: leveledit.cc:108
+msgid "Put jumping ball"
+msgstr "Sätt in hoppande boll"
+
+#: leveledit.cc:108
+msgid "Put robot up down"
+msgstr "Sätt in robot upp ned"
+
+#: leveledit.cc:108
+msgid "Put robot up down fast"
+msgstr "Sätt in robot upp ned snabb"
+
+#: leveledit.cc:109
+msgid "Put robot left right"
+msgstr "Sätt in robot vänster höger"
+
+#: leveledit.cc:109
+msgid "Put robot left right fast"
+msgstr "Sätt in robot vänster höger snabb"
+
+#: leveledit.cc:109
+msgid "Put lift"
+msgstr "Sätt in hiss"
+
+#: leveledit.cc:109
+msgid "Lift middle stop"
+msgstr "Hiss stoppar mitten"
+
+#: leveledit.cc:110
+msgid "Lift top stop"
+msgstr "Hiss stoppar toppen"
+
+#: leveledit.cc:110
+msgid "Put pillar"
+msgstr "Sätt in pelare"
+
+#: leveledit.cc:110
+msgid "Put box"
+msgstr "Sätt in låda"
+
+#: leveledit.cc:110
+msgid "Load tower"
+msgstr "Läs in torn"
+
+#: leveledit.cc:111
+msgid "Save tower"
+msgstr "Spara torn"
+
+#: leveledit.cc:111
+msgid "Test tower"
+msgstr "Testa torn"
+
+#: leveledit.cc:111
+msgid "Set tower color"
+msgstr "Ställ in färg på torn"
+
+#: leveledit.cc:111
+msgid "Increase time"
+msgstr "Öka tid"
+
+#: leveledit.cc:112
+msgid "Decrease time"
+msgstr "Minska tid"
+
+#: leveledit.cc:112
+msgid "Create mission"
+msgstr "Skapa uppdrag"
+
+#: leveledit.cc:112
+msgid "Move page up"
+msgstr "Flytta sida upp"
+
+#: leveledit.cc:112
+msgid "Move page down"
+msgstr "Flytta sida ned"
+
+#: leveledit.cc:113
+msgid "Go to start"
+msgstr "Gå till start"
+
+#: leveledit.cc:113
+msgid "Show this help"
+msgstr "Visa denna hjälp"
+
+#: leveledit.cc:113
+msgid "Name the tower"
+msgstr "Namnge torn"
+
+#: leveledit.cc:113
+msgid "Set tower time"
+msgstr "Ställ in tid"
+
+#: leveledit.cc:114
+msgid "Record demo"
+msgstr "Spela in demo"
+
+#: leveledit.cc:114
+msgid "Play demo"
+msgstr "Spela demo"
+
+#: leveledit.cc:114
+msgid "Adjust tower height"
+msgstr "Justera tornets höjd"
+
+#: leveledit.cc:114
+msgid "Go to end"
+msgstr "Gå till slutet"
+
+#: leveledit.cc:115
+msgid "Cut row"
+msgstr "Klipp ut rad"
+
+#: leveledit.cc:115
+msgid "Paste row"
+msgstr "Klistra in rad"
+
+#: leveledit.cc:115
+msgid "Change robot type"
+msgstr "Ändra robottyp"
+
+#: leveledit.cc:189
+msgid "Tower changed, really quit"
+msgstr ""
+"Torn ändrat,\n"
+"verkligen avsluta"
+
+#: leveledit.cc:199
+msgid "Tower changed, really load"
+msgstr ""
+"Torn ändrat,\n"
+"verkligen läsa in"
+
+#: leveledit.cc:216
+msgid "Red"
+msgstr "Röd"
+
+#: leveledit.cc:216
+msgid "Green"
+msgstr "Grön"
+
+#: leveledit.cc:216
+msgid "Blue"
+msgstr "Blå"
+
+#: leveledit.cc:225
+msgid "Tower Color"
+msgstr "Tornfärg"
+
+#: leveledit.cc:305
+msgid "No problems found"
+msgstr "Inga problem hittades"
+
+#: leveledit.cc:306
+msgid "No starting step"
+msgstr "Inget steg att börja på"
+
+#: leveledit.cc:307
+msgid "Start is blocked"
+msgstr "Start är blockerad"
+
+#: leveledit.cc:308
+msgid "Unknown block"
+msgstr "Okänd blockering"
+
+#: leveledit.cc:309
+msgid "No elevator stop"
+msgstr "Inget stopp för hiss"
+
+#: leveledit.cc:310
+msgid "Elevator is blocked"
+msgstr "Hiss är blockerad"
+
+#: leveledit.cc:311
+msgid "No opposing doorway"
+msgstr "Ingen motsvarande dörr"
+
+#: leveledit.cc:312
+msgid "Broken doorway"
+msgstr "Trasig väg för dörr"
+
+#: leveledit.cc:313
+msgid "No exit"
+msgstr "Ingen utgång"
+
+#: leveledit.cc:314
+msgid "Exit is unreachable"
+msgstr "Utgång kan ej nås"
+
+#: leveledit.cc:315
+msgid "Not enough time"
+msgstr "Inte tillräcklig tid"
+
+#: leveledit.cc:316
+msgid "Tower is too short"
+msgstr "Torn är för kort"
+
+#: leveledit.cc:317
+msgid "Tower has no name"
+msgstr "Torn saknar namn"
+
+#: leveledit.cc:325
+msgid "Tower check:"
+msgstr "Kontroll av torn:"
+
+#: leveledit.cc:351 leveledit.cc:367 leveledit.cc:389
+msgid "Mission creation"
+msgstr "Skapa uppdrag"
+
+#: leveledit.cc:352
+msgid "enter mission name"
+msgstr "ange uppdragsnamn"
+
+#: leveledit.cc:353
+msgid "empty to abort"
+msgstr "blank för att avbryta"
+
+#: leveledit.cc:369
+msgid "could not create file"
+msgstr "kunde inte skapa fil"
+
+#: leveledit.cc:370
+msgid "aborting"
+msgstr "avbryter"
+
+#: leveledit.cc:390
+msgid "enter name of"
+msgstr "ange namnet för"
+
+#: leveledit.cc:393
+#, c-format
+msgid "tower no %i"
+msgstr "torn nr %i"
+
+#: leveledit.cc:414
+msgid "Editor Key Help"
+msgstr "Hjälp för redigering"
+
+#: leveledit.cc:532
+msgid "cut#"
+msgstr "klipp#"
+
+#: leveledit.cc:571
+#, c-format
+msgid "key: %s, char: %c, action: %i\n"
+msgstr "tangent: %s, tecken: %c, åtgärd: %i\n"
+
+#: leveledit.cc:703
+msgid "Load tower:"
+msgstr "Läs in torn:"
+
+#: leveledit.cc:724
+msgid "Save tower:"
+msgstr "Spara torn:"
+
+#: leveledit.cc:785
+msgid "No recorded demo"
+msgstr "Ingen inspelad demo"
+
+#: leveledit.cc:831
+msgid "Enter tower time:"
+msgstr "Ange tid för torn:"
+
+#: leveledit.cc:847
+msgid "Adjust tower height:"
+msgstr "Justera tornets höjd:"
+
+#: leveledit.cc:927
+msgid "Name the tower:"
+msgstr "Namnge tornet:"
+
+#: main.cc:42
+#, c-format
+msgid ""
+"\n"
+"\tOptions:\n"
+"\n"
+"  -f\tEnable fullscreen mode\n"
+"  -s\tSilence, disable all sound\n"
+"  -dX\tSet debug level to X  (default: %i)\n"
+msgstr ""
+"\n"
+"\tFlaggor:\n"
+"\n"
+"  -f\tAktivera helskärmsläge\n"
+"  -s\tTyst, stäng av allt ljud\n"
+"  -dX\tSätt felsökningsläge til X  (förval: %i)\n"
+
+#: main.cc:52
+#, c-format
+msgid "Debug level is now %c.\n"
+msgstr "Felsökningsnivå är nu %c.\n"
+
+#: main.cc:54
+#, c-format
+msgid "Illegal debug level value, using default.\n"
+msgstr "Ogiltig felsökningsnivå, använder förvald.\n"
+
+#: main.cc:103
+#, c-format
+msgid "Nebulous version %s"
+msgstr "Nebulous version %s"
+
+#: main.cc:111
+msgid "Nebulous"
+msgstr "Nebulous"
+
+#: main.cc:118
+#, c-format
+msgid "Thanks for playing!\n"
+msgstr "Tack för att du spelar!\n"
+
+#: menu.cc:69
+msgid "Extra Life"
+msgstr "Extraliv"
+
+#: menu.cc:74
+msgid "+200 Points"
+msgstr "+200 poäng"
+
+#: menu.cc:93
+msgid "Up"
+msgstr "Upp"
+
+#: menu.cc:93
+msgid "Down"
+msgstr "Ned"
+
+#: menu.cc:93
+msgid "Left"
+msgstr "Vänster"
+
+#: menu.cc:93
+msgid "Right"
+msgstr "Höger"
+
+#: menu.cc:93
+msgid "Fire"
+msgstr "Skjut"
+
+#: menu.cc:145
+#, c-format
+msgid "Password: %s"
+msgstr "Lösenord: %s"
+
+#: menu.cc:154 menu.cc:155
+msgid "Status on top"
+msgstr "Status på topp"
+
+#: menu.cc:176
+#, c-format
+msgid "Lives: "
+msgstr "Liv: "
+
+#: menu.cc:204
+#, c-format
+msgid "Game Speed: %i"
+msgstr "Spelhastighet: %i"
+
+#: menu.cc:215 menu.cc:216
+msgid "Bonus"
+msgstr "Bonus"
+
+#: menu.cc:223
+msgid "Game Options"
+msgstr "Spelalternativ"
+
+#: menu.cc:236 menu.cc:256 menu.cc:451 menu.cc:475 menu.cc:500 menu.cc:657
+msgid "Back"
+msgstr "Tillbaka"
+
+#: menu.cc:247 menu.cc:262
+msgid "Redefine Keys"
+msgstr "Definiera tangenter"
+
+#: menu.cc:274 menu.cc:275
+msgid "Fullscreen"
+msgstr "Helskärmsläge"
+
+#: menu.cc:297 menu.cc:298
+msgid "Sounds"
+msgstr "Ljud"
+
+#: menu.cc:316 menu.cc:317
+msgid "Music"
+msgstr ""
+
+#: menu.cc:351 menu.cc:352
+msgid "Font alpha"
+msgstr "Typsnitt alpha"
+
+#: menu.cc:365 menu.cc:366
+msgid "Sprites alpha"
+msgstr "Sprite alpha"
+
+#: menu.cc:379 menu.cc:380
+msgid "Scroller alpha"
+msgstr "Skroller alpha"
+
+#: menu.cc:392 menu.cc:393
+msgid "Shadowing"
+msgstr "Skuggning"
+
+#: menu.cc:418
+msgid "Nonreflecting waves"
+msgstr "Ej reflekterande vågor"
+
+#: menu.cc:419
+msgid "Simple waves"
+msgstr "Enkla vågor"
+
+#: menu.cc:420
+msgid "Expensive waves"
+msgstr "Kraftiga vågor"
+
+#: menu.cc:421
+msgid "Error"
+msgstr "Fel"
+
+#: menu.cc:431
+msgid "Complete Scroller"
+msgstr "Komplett skroll"
+
+#: menu.cc:432
+msgid "2 layers Scoller"
+msgstr "2-lagers skroll"
+
+#: menu.cc:438
+msgid "Alpha Options"
+msgstr "Alfainställningar"
+
+#: menu.cc:462
+msgid "Graphics"
+msgstr "Grafik"
+
+#: menu.cc:486
+msgid "Options"
+msgstr "Alternativ"
+
+#: menu.cc:630
+msgid "HighScores"
+msgstr "Poängtoppen"
+
+#: menu.cc:635
+#, c-format
+msgid "Scores for %s"
+msgstr "Poäng för %s"
+
+#: menu.cc:659
+msgid "OK"
+msgstr "OK"
+
+#. you can use up to 4 lines of text here, but please check
+#. * if the text fits onto the screen
+#.
+#: menu.cc:675
+msgid ""
+"Congratulations! You are\n"
+"probably good enough to\n"
+"enter the highscore table!"
+msgstr ""
+"Gratulerar! Du är\n"
+"antagligen tillräckligt bra att\n"
+"komma in på poängtoppen!"
+
+#: menu.cc:707
+msgid "Please enter your name"
+msgstr "Ange ditt namn"
+
+#: menu.cc:761
+msgid ""
+"This mission contains\n"
+"unknown building blocks.\n"
+"You probably need a new\n"
+"version of Tower Toppler.\n"
+"Do you want to continue?"
+msgstr ""
+"Detta uppdrag innehåller\n"
+"okända byggblock.\n"
+"Du behöver antagligen en\n"
+"ny version av Tower Toppler.\n"
+"Vill du fortsätta?"
+
+#: menu.cc:818
+msgid "Hunt the Fish"
+msgstr "Jaga fisken"
+
+#: menu.cc:841
+#, c-format
+msgid "%c Start: %s %c"
+msgstr "%c Starta: %s %c"
+
+#: menu.cc:851
+msgid "Highscores"
+msgstr "Poängtoppen"
+
+#: menu.cc:863
+msgid "Level Editor"
+msgstr "Redigera nivå"
+
+#: menu.cc:919
+msgid "Return to Game"
+msgstr "Återvänd till spel"
+
+#: menu.cc:929
+msgid "Quit Game"
+msgstr "Avsluta spel"
+
+#: menu.cc:936
+msgid "DEBUG MENU"
+msgstr "FELSÖKNINGSMENY"
+
+#: menu.cc:941
+msgid "Back to Game"
+msgstr "Tillbaka till spel"
+
+#: menusys.cc:390
+msgid "Press fire"
+msgstr "Tryck skjut"
+
+#: menusys.cc:390
+msgid "Press space"
+msgstr "Tryck blanksteg"
+
+#: menusys.cc:554
+msgid "Yes"
+msgstr "Ja"
+
+#: menusys.cc:564
+msgid "No"
+msgstr "Nej"
+
+#: screen.cc:1615
+msgid "REC"
+msgstr "REC"
+
+#: screen.cc:1616
+msgid "DEMO"
+msgstr "DEMO"
+
+#: levelnames.txt:1
+msgid "Mission 1"
+msgstr "Uppdrag 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:3
+msgid "Tower of eyes"
+msgstr "Ögonens torn"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:5
+msgid "Realm of robots"
+msgstr "Robotarnas värld"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:7
+msgid "Trap of tricks"
+msgstr "Fällor eller tricks"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:9
+msgid "Slippery slide"
+msgstr "Slippery slide"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:11
+msgid "Broken path"
+msgstr "Trasig väg"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:13
+msgid "Swimmers delight"
+msgstr "Simmarnas önskan"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:15
+msgid "Nasty one"
+msgstr "En elaking"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:17
+msgid "Edge of doom"
+msgstr "Helvetets kant"
+
+#: levelnames.txt:19
+msgid "Mission 2"
+msgstr "Uppdrag 2"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:21
+msgid "Blink of the eye"
+msgstr "Ögats blinkning"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:23
+msgid "Robot's heaven"
+msgstr "Robotarnas himmel"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:25
+msgid "Trick of traps"
+msgstr "Trick of traps"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:27
+msgid "No man's land"
+msgstr "Ingenmansland"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:29
+msgid "Oh, *******!!"
+msgstr "Oh, *******!!"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:31
+msgid "Riddle of reason"
+msgstr "Anledningarnas gåta"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:33
+msgid "Maze of mistakes"
+msgstr "Misstagens labyrint"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:35
+msgid "Last trump"
+msgstr "Last trump"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:38
+msgid "Ball 1"
+msgstr "Boll 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:40
+msgid "Run and don't stop"
+msgstr "Spring och stanna inte"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:42
+msgid "Watch your step"
+msgstr "Se var du går"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:44
+msgid "Short, but deadly"
+msgstr "Kort men dödlig"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:46
+msgid "The maddening"
+msgstr "The maddening"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:48
+msgid "Doom at every step"
+msgstr "Doom at every step"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:50
+msgid "Enemies everywhere"
+msgstr "Fiender överallt"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:52
+msgid "You will loose"
+msgstr "Du kommer att förlora"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:54
+msgid "Mind destroyer"
+msgstr "Mind destroyer"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:57
+msgid "Ball 2"
+msgstr "Boll 2"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:59
+msgid "Mind Trap"
+msgstr "Mind Trap"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:61
+msgid "Breaking Tower"
+msgstr "Breaking Tower"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:63
+msgid "Great Fall"
+msgstr "Great Fall"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:65
+msgid "Tower of Intrigue"
+msgstr "Intrigernas torn"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:67
+msgid "Massacre"
+msgstr "Massaker"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:69
+msgid "Bouncing Murders"
+msgstr "Studsande mördare"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:71
+msgid "Trial and error"
+msgstr "Försök och misslyckas"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:73
+msgid "Tower of Pure Evil"
+msgstr "Tornet av ren ondska"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:76
+msgid "Ball 3"
+msgstr "Boll 3"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:78
+msgid "Annoying Tower"
+msgstr "Annoying Tower"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:80
+msgid "Cave of Failure"
+msgstr "Cave of Failure"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:82
+msgid "Dividing path"
+msgstr "Delad stig"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:84
+msgid "No Way Out?"
+msgstr "Ingen väg ut?"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:86
+msgid "Trap"
+msgstr "Fälla"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:88
+msgid "Tower of Mystery"
+msgstr "Mysteriernas torn"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:90
+msgid "Slip ... and die"
+msgstr "Halka ... och dö"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:92
+msgid "Mission Impossible"
+msgstr "Omöjligt uppdrag"
+
+#: levelnames.txt:94
+msgid "ABC Towers"
+msgstr "ABC-tornen"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:96
+msgid "Slices"
+msgstr "Slices"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:98
+msgid "Corridors"
+msgstr "Korridorer"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:100
+msgid "Higher Ground"
+msgstr "Högre mark"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:102
+msgid "No Icing"
+msgstr "No Icing"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:104
+msgid "Three Layers"
+msgstr "Tre lager"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:106
+msgid "Two Ways"
+msgstr "Två vägar"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:108
+msgid "Spiral"
+msgstr "Spiral"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:110
+msgid "Skygazer"
+msgstr "Skygazer"
+
+#. David is the name of the autor and should not be translated
+#: levelnames.txt:113
+msgid "David 1"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:115
+msgid "Difficult jumps!"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:117
+msgid "Washout"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:119
+msgid "Climbing and tricks"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:121
+msgid "Watch the robots"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:123
+#, fuzzy
+msgid "Two Halves"
+msgstr "Två vägar"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:125
+msgid "Turning up the heat"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:127
+msgid "Confusing"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:129
+#, fuzzy
+msgid "Short but dangerous"
+msgstr "Kort men dödlig"
+
+#~ msgid "Congratulations! You are"
+#~ msgstr "Gratulerar! Du är"
+
+#~ msgid "probably good enough to"
+#~ msgstr "antagligen tillräckligt bra att"
+
+#~ msgid "enter the highscore table!"
+#~ msgstr "komma in på poängtoppen!"

@@ -1,0 +1,1054 @@
+# Romanian translation of the Toppler game.
+# Copyright (C) YEAR Andreas R�er
+# This file is distributed under the same license as the Toppler package.
+#
+# Eddy Petrişor <eddy.petrisor@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: toppler_comments\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-19 16:28+0200\n"
+"PO-Revision-Date: 2006-06-20 00:21+0300\n"
+"Last-Translator: Eddy Petrişor <eddy.petrisor@gmail.com>\n"
+"Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms: nplurals=3;plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1))\n"
+
+#: bonus.cc:104 game.cc:480
+msgid "Pause"
+msgstr "Pauză"
+
+#. for errorchecking
+#: decl.h:207
+#, c-format
+msgid "Assertion failure: %s\n"
+msgstr "Eșec la verificare: %s\n"
+
+#: game.cc:85
+msgid "You are entering the"
+msgstr "Intrați în"
+
+#: game.cc:90
+msgid "Nameless Tower"
+msgstr "Turnul Fără Nume"
+
+#: game.cc:94
+#, c-format
+msgid "Password:   %s"
+msgstr "Parola:     %s"
+
+#: game.cc:302
+msgid "Time over"
+msgstr "Timpul a expirat"
+
+#: game.cc:314 game.cc:323
+#, c-format
+msgid "Time:      ~t35010 X %3d"
+msgstr "Timp:         ~t35010 X %3d"
+
+#: game.cc:316 game.cc:325
+#, c-format
+msgid "Technique: ~t35010 X %3d"
+msgstr "Tehnică:      ~t35010 X %3d"
+
+#: game.cc:318 game.cc:327
+#, c-format
+msgid "Extra:     ~t35010 X %3d"
+msgstr "Suplimentar:  ~t35010 X %3d"
+
+#: game.cc:320
+#, c-format
+msgid "Lifes:     ~t3505000 X %3d"
+msgstr "Vieți:        ~t3505000 X %3d"
+
+#: keyb.cc:161
+#, c-format
+msgid "Wheee!!\n"
+msgstr "Uraaaa!!\n"
+
+#: leveledit.cc:103 menu.cc:971
+msgid "Quit"
+msgstr "Ieșire"
+
+#: leveledit.cc:103
+msgid "Move up"
+msgstr "Mișcare în sus"
+
+#: leveledit.cc:103
+msgid "Move down"
+msgstr "Mișcare în jos"
+
+#: leveledit.cc:103
+msgid "Move left"
+msgstr "Mișcare la stânga"
+
+#: leveledit.cc:104
+msgid "Move right"
+msgstr "Mișcare la dreapta"
+
+#: leveledit.cc:104
+msgid "Insert row"
+msgstr "Introducere rând"
+
+#: leveledit.cc:104
+msgid "Delete row"
+msgstr "Ștergere rând"
+
+#: leveledit.cc:104
+msgid "Rotate 180"
+msgstr "Rotire 180"
+
+#: leveledit.cc:105
+msgid "Put space"
+msgstr "Pune spațiu"
+
+#: leveledit.cc:105
+msgid "Put step"
+msgstr "Pune treaptă"
+
+# XXX: nu îmi place idea asta
+#: leveledit.cc:105
+msgid "Put vanisher"
+msgstr "Pune abis"
+
+#: leveledit.cc:105
+msgid "Put slider left"
+msgstr "Pune glisor la stânga"
+
+#: leveledit.cc:106
+msgid "Put slider right"
+msgstr "Pune glisor la dreapta"
+
+#: leveledit.cc:107
+msgid "Put door"
+msgstr "Pune ușă"
+
+#: leveledit.cc:107
+msgid "Put goal"
+msgstr "Pune țintă"
+
+#: leveledit.cc:107
+msgid "Check tower"
+msgstr "Verifică turnul"
+
+#: leveledit.cc:107
+msgid "Put rolling ball"
+msgstr "Pune bară rotitoare"
+
+#: leveledit.cc:108
+msgid "Put jumping ball moving"
+msgstr "Pune minge minge săltăreață mișcătoare"
+
+#: leveledit.cc:108
+msgid "Put jumping ball"
+msgstr "Pune minge minge săltăreață"
+
+#: leveledit.cc:108
+msgid "Put robot up down"
+msgstr "Pune robot sus-jos"
+
+#: leveledit.cc:108
+msgid "Put robot up down fast"
+msgstr "Pune robot sus-jos rapid"
+
+#: leveledit.cc:109
+msgid "Put robot left right"
+msgstr "Pune robot stânga-dreapta"
+
+#: leveledit.cc:109
+msgid "Put robot left right fast"
+msgstr "Pune robot stânga-dreapta rapid"
+
+#: leveledit.cc:109
+msgid "Put lift"
+msgstr "Pune lift"
+
+#: leveledit.cc:109
+msgid "Lift middle stop"
+msgstr "Oprire de mijloc a liftului"
+
+#: leveledit.cc:110
+msgid "Lift top stop"
+msgstr "Oprire de sus a liftului"
+
+#: leveledit.cc:110
+msgid "Put pillar"
+msgstr "Pune sâlp"
+
+#: leveledit.cc:110
+msgid "Put box"
+msgstr "Pune cutie"
+
+#: leveledit.cc:110
+msgid "Load tower"
+msgstr "Încarcă turnul"
+
+#: leveledit.cc:111
+msgid "Save tower"
+msgstr "Salvează turnul"
+
+#: leveledit.cc:111
+msgid "Test tower"
+msgstr "Testează turnul"
+
+#: leveledit.cc:111
+msgid "Set tower color"
+msgstr "Ajustează culoarea turnului"
+
+#: leveledit.cc:111
+msgid "Increase time"
+msgstr "Crește timpul"
+
+#: leveledit.cc:112
+msgid "Decrease time"
+msgstr "Descrește timpul"
+
+#: leveledit.cc:112
+msgid "Create mission"
+msgstr "Creează misiune"
+
+# XXX: sigur asta se vrea?
+#: leveledit.cc:112
+msgid "Move page up"
+msgstr "Mută pagina sus"
+
+# XXX: sigur asta se vrea?
+#: leveledit.cc:112
+msgid "Move page down"
+msgstr "Mută pagina jos"
+
+#: leveledit.cc:113
+msgid "Go to start"
+msgstr "Du-te la start"
+
+#: leveledit.cc:113
+msgid "Show this help"
+msgstr "Afișează acest ajutor"
+
+#: leveledit.cc:113
+msgid "Name the tower"
+msgstr "Numește turnul"
+
+#: leveledit.cc:113
+msgid "Set tower time"
+msgstr "Configurează timpul turnului"
+
+#: leveledit.cc:114
+msgid "Record demo"
+msgstr "Înregistrează demonstrație"
+
+#: leveledit.cc:114
+msgid "Play demo"
+msgstr "Rulează demonstrația"
+
+#: leveledit.cc:114
+msgid "Adjust tower height"
+msgstr "Ajustează înălțimea turnului"
+
+#: leveledit.cc:114
+msgid "Go to end"
+msgstr "Du-te la sfârșit"
+
+#: leveledit.cc:115
+msgid "Cut row"
+msgstr "Taie rând"
+
+#: leveledit.cc:115
+msgid "Paste row"
+msgstr "Lipește rând"
+
+#: leveledit.cc:115
+msgid "Change robot type"
+msgstr "Schimbă tipul robotului"
+
+# XXX: is this a question?
+# AAA: yes!
+#: leveledit.cc:189
+msgid "Tower changed, really quit"
+msgstr "Tunrul s-a schimbat, chiar se iese"
+
+# XXX: is this a question?
+# AAA: yes
+#: leveledit.cc:199
+msgid "Tower changed, really load"
+msgstr "Tunrul s-a schimbat, chiar se încarcă"
+
+#: leveledit.cc:216
+msgid "Red"
+msgstr "Roșu"
+
+#: leveledit.cc:216
+msgid "Green"
+msgstr "Verde"
+
+#: leveledit.cc:216
+msgid "Blue"
+msgstr "Albastru"
+
+#: leveledit.cc:225
+msgid "Tower Color"
+msgstr "Culoarea turnului"
+
+#: leveledit.cc:305
+msgid "No problems found"
+msgstr "Nu s-au găsit probleme"
+
+#: leveledit.cc:306
+msgid "No starting step"
+msgstr "Nu există treaptă de start"
+
+#: leveledit.cc:307
+msgid "Start is blocked"
+msgstr "Startul este blocat"
+
+#: leveledit.cc:308
+msgid "Unknown block"
+msgstr "Bloc necunoscut"
+
+# XXX: shouldn't it be „lift” instead of „elevator”?
+#: leveledit.cc:309
+msgid "No elevator stop"
+msgstr "Nu există oprire pentru lift"
+
+#: leveledit.cc:310
+msgid "Elevator is blocked"
+msgstr "Liftul este blocat"
+
+#: leveledit.cc:311
+msgid "No opposing doorway"
+msgstr "Nu există o ușă la capătul opus"
+
+#: leveledit.cc:312
+msgid "Broken doorway"
+msgstr "Culoar defect"
+
+#: leveledit.cc:313
+msgid "No exit"
+msgstr "Nu există ieșire"
+
+#: leveledit.cc:314
+msgid "Exit is unreachable"
+msgstr "Nu se poate ajunge la ieșire"
+
+#: leveledit.cc:315
+msgid "Not enough time"
+msgstr "Nu este timp suficient"
+
+#: leveledit.cc:316
+msgid "Tower is too short"
+msgstr "Turnul este prea scurt"
+
+#: leveledit.cc:317
+msgid "Tower has no name"
+msgstr "Turnul nu are nume"
+
+#: leveledit.cc:325
+msgid "Tower check:"
+msgstr "Verificarea turnului:"
+
+#: leveledit.cc:351 leveledit.cc:367 leveledit.cc:389
+msgid "Mission creation"
+msgstr "Creare misiune"
+
+#: leveledit.cc:352
+msgid "enter mission name"
+msgstr "introduceți numele misiunii"
+
+#: leveledit.cc:353
+msgid "empty to abort"
+msgstr "nimic pentru abandon"
+
+#: leveledit.cc:369
+msgid "could not create file"
+msgstr "fișierul nu a putut fi creat"
+
+#: leveledit.cc:370
+msgid "aborting"
+msgstr "se abandonează"
+
+# XXX: GAH! is this feminine?
+# if this should be concatenaed with the next, then I need not add a pronoun,
+# while if is not, and is a name, then is needed
+# AAA: yes, this is connected to the next string
+#: leveledit.cc:390
+msgid "enter name of"
+msgstr "introduceți numele"
+
+# XXX: GAH! same as before... is this to be concatenated with the previous?
+# if so, the form is different for "tower"
+# AAA: yes, this is connected to the previous string
+#: leveledit.cc:393
+#, c-format
+msgid "tower no %i"
+msgstr "turnului numărul %i"
+
+# XXX: menu entry?
+# AAA: title for the list of keys for the leveleditor (comes when you press F1)
+#: leveledit.cc:414
+msgid "Editor Key Help"
+msgstr "Ajutor pentru tastele editorului"
+
+# XXX: what is this about?
+# the # symbol is not used in Romanian
+# should this be „cut no.”?
+# AAA: number of rows in the clipboard, each time you press '-' another row is added to the clipboard and '+' add all of them
+# XXX: probably this string should benefit from plural forms (not needed for Romanian)
+#: leveledit.cc:532
+msgid "cut#"
+msgstr "tăieri"
+
+#: leveledit.cc:571
+#, c-format
+msgid "key: %s, char: %c, action: %i\n"
+msgstr "tastă: %s, caracter: %c, acțiune: %i\n"
+
+#: leveledit.cc:703
+msgid "Load tower:"
+msgstr "Încarcă turnul:"
+
+#: leveledit.cc:724
+msgid "Save tower:"
+msgstr "Salvează turnul:"
+
+# XXX; too long?
+#: leveledit.cc:785
+msgid "No recorded demo"
+msgstr "Nu există o demonstrație înregistrată"
+
+#: leveledit.cc:831
+msgid "Enter tower time:"
+msgstr "Introduceți timpul turnului:"
+
+#: leveledit.cc:847
+msgid "Adjust tower height:"
+msgstr "Ajustați înălțimea turnului:"
+
+#: leveledit.cc:927
+msgid "Name the tower:"
+msgstr "Numiți turnul:"
+
+#: main.cc:42
+#, c-format
+msgid ""
+"\n"
+"\tOptions:\n"
+"\n"
+"  -f\tEnable fullscreen mode\n"
+"  -s\tSilence, disable all sound\n"
+"  -dX\tSet debug level to X  (default: %i)\n"
+msgstr ""
+"\n"
+"\tOpțiuni:\n"
+"\n"
+"  -f\tActivează modul „tot-ecranul”\n"
+"  -s\tSilențios, dezactivează toate sunetele\n"
+"  -dX\tAjustează nivelul de depanare la X  (implicit: %i)\n"
+
+#: main.cc:52
+#, c-format
+msgid "Debug level is now %c.\n"
+msgstr "Acum nivelul de depanare este %c.\n"
+
+# XXX: too long?
+#: main.cc:54
+#, c-format
+msgid "Illegal debug level value, using default.\n"
+msgstr ""
+"Valoare ilegală pentru nivelul de depanare, se folosește cel implicit.\n"
+
+#: main.cc:103
+#, c-format
+msgid "Nebulous version %s"
+msgstr "Nebulous, versiunea %s"
+
+# XXX: is this translatable for cyrillic or simillar cases?
+#: main.cc:111
+msgid "Nebulous"
+msgstr "Nebulous"
+
+#: main.cc:118
+#, c-format
+msgid "Thanks for playing!\n"
+msgstr "Mulțumim că v-ați jucat!\n"
+
+#: menu.cc:69
+msgid "Extra Life"
+msgstr "Viață suplimentară"
+
+#: menu.cc:74
+msgid "+200 Points"
+msgstr "+200 de puncte"
+
+#: menu.cc:93
+msgid "Up"
+msgstr "Sus"
+
+#: menu.cc:93
+msgid "Down"
+msgstr "Jos"
+
+#: menu.cc:93
+msgid "Left"
+msgstr "Stânga"
+
+#: menu.cc:93
+msgid "Right"
+msgstr "Dreapta"
+
+#: menu.cc:93
+msgid "Fire"
+msgstr "Foc"
+
+#: menu.cc:145
+#, c-format
+msgid "Password: %s"
+msgstr "Parola: %s"
+
+# XXX: context is necessary
+#: menu.cc:154 menu.cc:155
+msgid "Status on top"
+msgstr "Starea deasupra"
+
+#: menu.cc:176
+#, c-format
+msgid "Lives: "
+msgstr "Vieți: "
+
+#: menu.cc:204
+#, c-format
+msgid "Game Speed: %i"
+msgstr "Viteza jocului: %i"
+
+#: menu.cc:215 menu.cc:216
+msgid "Bonus"
+msgstr "Bonificație"
+
+#: menu.cc:223
+msgid "Game Options"
+msgstr "Opțiunile jocului"
+
+#: menu.cc:236 menu.cc:256 menu.cc:451 menu.cc:475 menu.cc:500 menu.cc:657
+msgid "Back"
+msgstr "Înapoi"
+
+#: menu.cc:247 menu.cc:262
+msgid "Redefine Keys"
+msgstr "Redefinire taste"
+
+#: menu.cc:274 menu.cc:275
+msgid "Fullscreen"
+msgstr "Tot ecranul"
+
+#: menu.cc:297 menu.cc:298
+msgid "Sounds"
+msgstr "Sunete"
+
+#: menu.cc:316 menu.cc:317
+msgid "Music"
+msgstr "Muzică"
+
+# XXX: „what does this button do?” :-)
+# AAA: is enables smoothed, antialiased fonts with alpha blended edges
+#: menu.cc:351 menu.cc:352
+msgid "Font alpha"
+msgstr "Alfa pentru font"
+
+# XXX: cum să traduc sprite?
+# AAA: is enables smoothed, antialiased sprites with alpha blended edges
+#: menu.cc:365 menu.cc:366
+msgid "Sprites alpha"
+msgstr "Alfa pentru elemente"
+
+# XXX: sigur?
+# AAA: is enables smoothed, antialiased layers for the submarine scroller between towers with alpha blended edges
+# XXX: could it be translated as „Background alpha” or „Aquatic alpha”; if so, the correct string for the first is already set, if the second is correct, then the string is „Alfa pentru apă”
+#: menu.cc:379 menu.cc:380
+msgid "Scroller alpha"
+msgstr "Alfa pentru fundal"
+
+#: menu.cc:392 menu.cc:393
+msgid "Shadowing"
+msgstr "Umbrire"
+
+#: menu.cc:418
+msgid "Nonreflecting waves"
+msgstr "Valuri fără reflexii"
+
+#: menu.cc:419
+msgid "Simple waves"
+msgstr "Valuri simple"
+
+#: menu.cc:420
+msgid "Expensive waves"
+msgstr "Valuri costisitoare"
+
+#: menu.cc:421
+msgid "Error"
+msgstr "Eroare"
+
+# XXX: what is this?
+# AAA: the scroller can have many layers (right now 3) which might be too much for slow mashines. So you can
+# choose between complete scroller with all layers or only the bottom and top most layer
+#: menu.cc:431
+msgid "Complete Scroller"
+msgstr "Fundal complet"
+
+#: menu.cc:432
+msgid "2 layers Scoller"
+msgstr "Derulator pe 2 straturi"
+
+#: menu.cc:438
+msgid "Alpha Options"
+msgstr "Opțiuni alfa"
+
+#: menu.cc:462
+msgid "Graphics"
+msgstr "Grafică"
+
+#: menu.cc:486
+msgid "Options"
+msgstr "Opțiuni"
+
+#: menu.cc:630
+msgid "HighScores"
+msgstr "Scoruri mari"
+
+#: menu.cc:635
+#, c-format
+msgid "Scores for %s"
+msgstr "Scoruri pentru %s"
+
+# XXX: nu traducem ok?
+#: menu.cc:659
+msgid "OK"
+msgstr "OK"
+
+#. you can use up to 4 lines of text here, but please check
+#. * if the text fits onto the screen
+#.
+#: menu.cc:675
+msgid ""
+"Congratulations! You are\n"
+"probably good enough to\n"
+"enter the highscore table!"
+msgstr ""
+"Felicitări! Probabil că sunteți\n"
+"îndeajuns de bun(ă) să\n"
+"intrați în tabela de scoruri\n"
+"mari!"
+
+#: menu.cc:707
+msgid "Please enter your name"
+msgstr "Introduceți-vă numele"
+
+#: menu.cc:761
+msgid ""
+"This mission contains\n"
+"unknown building blocks.\n"
+"You probably need a new\n"
+"version of Tower Toppler.\n"
+"Do you want to continue?"
+msgstr ""
+"Această misiune conține\n"
+"blocuri de construcție.\n"
+"Probabil că aveți nevoie\n"
+"de o versiune mai nouă a\n"
+"lui Tower Toppler.\n"
+"Doriți să continuați?"
+
+#: menu.cc:818
+msgid "Hunt the Fish"
+msgstr "Vânați peștele"
+
+# XXX: what do all parameters mean?
+#: menu.cc:841
+#, c-format
+msgid "%c Start: %s %c"
+msgstr "%c Start: %s %c"
+
+# XXX: wasn't this „HighScores” before?
+#: menu.cc:851
+msgid "Highscores"
+msgstr "Scoruri mari"
+
+#: menu.cc:863
+msgid "Level Editor"
+msgstr "Editorul de nivele"
+
+#: menu.cc:919
+msgid "Return to Game"
+msgstr "Intoarcere la joc"
+
+#: menu.cc:929
+msgid "Quit Game"
+msgstr "Ieșire din joc"
+
+#: menu.cc:936
+msgid "DEBUG MENU"
+msgstr "MENIUL DE DEPANARE"
+
+#: menu.cc:941
+msgid "Back to Game"
+msgstr "Înapoi la joc"
+
+#: menusys.cc:390
+msgid "Press fire"
+msgstr "Apăsați foc"
+
+#: menusys.cc:390
+msgid "Press space"
+msgstr "Apăsați spațiu"
+
+#: menusys.cc:554
+msgid "Yes"
+msgstr "Da"
+
+#: menusys.cc:564
+msgid "No"
+msgstr "Nu"
+
+# XXX: cum să traduc?
+#: screen.cc:1615
+msgid "REC"
+msgstr "REC"
+
+#: screen.cc:1616
+msgid "DEMO"
+msgstr "DEMO"
+
+#: levelnames.txt:1
+msgid "Mission 1"
+msgstr "Misiunea 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:3
+msgid "Tower of eyes"
+msgstr "Turnul ochilor"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:5
+msgid "Realm of robots"
+msgstr "Tărâmul roboților"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:7
+msgid "Trap of tricks"
+msgstr "Capcana trucurilor"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:9
+msgid "Slippery slide"
+msgstr "Zona alunecoasă"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:11
+msgid "Broken path"
+msgstr "Cărarea stricată"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:13
+msgid "Swimmers delight"
+msgstr "Încântarea înnotătorilor"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:15
+msgid "Nasty one"
+msgstr "Aia rea"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:17
+msgid "Edge of doom"
+msgstr "Marginea blestemului"
+
+#: levelnames.txt:19
+msgid "Mission 2"
+msgstr "Misiunea 2"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:21
+msgid "Blink of the eye"
+msgstr "Într-o clipă"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:23
+msgid "Robot's heaven"
+msgstr "Raiul roboților"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:25
+msgid "Trick of traps"
+msgstr "Trucul capcanelor"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:27
+msgid "No man's land"
+msgstr "Țara nimănui"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:29
+msgid "Oh, *******!!"
+msgstr "Oo, *******!!"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:31
+msgid "Riddle of reason"
+msgstr "Ghicitoarea rațuinii"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:33
+msgid "Maze of mistakes"
+msgstr "Labirintul greșelilor"
+
+# XXX: cum?
+#. Tower name, you can translate freely
+#: levelnames.txt:35
+msgid "Last trump"
+msgstr "Ultima salt"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:38
+msgid "Ball 1"
+msgstr "Ball 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:40
+msgid "Run and don't stop"
+msgstr "Fugi și nu te opri"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:42
+msgid "Watch your step"
+msgstr "Ai grijă unde calci"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:44
+msgid "Short, but deadly"
+msgstr "Scurt, dar mortal"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:46
+msgid "The maddening"
+msgstr "Înnebunirea"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:48
+msgid "Doom at every step"
+msgstr "Blestem la fiecare pas"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:50
+msgid "Enemies everywhere"
+msgstr "Dușmani peste tot"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:52
+msgid "You will loose"
+msgstr "Vei pierde"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:54
+msgid "Mind destroyer"
+msgstr "Distrugătorul de minți"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:57
+msgid "Ball 2"
+msgstr "Ball 2"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:59
+msgid "Mind Trap"
+msgstr "Capcană pentru minte"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:61
+msgid "Breaking Tower"
+msgstr "Distrugerea turnului"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:63
+msgid "Great Fall"
+msgstr "Marea cădere"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:65
+msgid "Tower of Intrigue"
+msgstr "Tunrnul intrigii"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:67
+msgid "Massacre"
+msgstr "Masacru"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:69
+msgid "Bouncing Murders"
+msgstr "Crime țopăitoare"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:71
+msgid "Trial and error"
+msgstr "Prin încercări repetate"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:73
+msgid "Tower of Pure Evil"
+msgstr "Turnul pur malefic"
+
+#. Ball is the name of the autor (Clarence Ball) and should not be translated
+#: levelnames.txt:76
+msgid "Ball 3"
+msgstr "Ball 3"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:78
+msgid "Annoying Tower"
+msgstr "Turnul enervant"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:80
+msgid "Cave of Failure"
+msgstr "Peștera eșecului"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:82
+msgid "Dividing path"
+msgstr "Calea divizoare"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:84
+msgid "No Way Out?"
+msgstr "Nici o ieșire?"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:86
+msgid "Trap"
+msgstr "Capcana"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:88
+msgid "Tower of Mystery"
+msgstr "Turnul misterului"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:90
+msgid "Slip ... and die"
+msgstr "Aluneci ... și mori"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:92
+msgid "Mission Impossible"
+msgstr "Misiune imposibilă"
+
+#: levelnames.txt:94
+msgid "ABC Towers"
+msgstr "Turnurile ABC"
+
+# XXX: e corect?
+#. Tower name, you can translate freely
+#: levelnames.txt:96
+msgid "Slices"
+msgstr "Felii"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:98
+msgid "Corridors"
+msgstr "Coridoare"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:100
+msgid "Higher Ground"
+msgstr "Tărâm înalt"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:102
+msgid "No Icing"
+msgstr "Nu îngheța"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:104
+msgid "Three Layers"
+msgstr "Trei straturi"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:106
+msgid "Two Ways"
+msgstr "Două căi"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:108
+msgid "Spiral"
+msgstr "Spirala"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:110
+msgid "Skygazer"
+msgstr "Cu privirea spre cer"
+
+#. David is the name of the autor and should not be translated
+#: levelnames.txt:113
+msgid "David 1"
+msgstr "David 1"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:115
+msgid "Difficult jumps!"
+msgstr "Salturi dificile!"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:117
+msgid "Washout"
+msgstr "Curățarea"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:119
+msgid "Climbing and tricks"
+msgstr "Cățărare și trucuri"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:121
+msgid "Watch the robots"
+msgstr "Atenție la roboți"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:123
+msgid "Two Halves"
+msgstr "Două jumătăți"
+
+# XXX: sigur așa trebuie tradus?
+#. Tower name, you can translate freely
+#: levelnames.txt:125
+msgid "Turning up the heat"
+msgstr "Să dăm drumul la căldură"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:127
+msgid "Confusing"
+msgstr "Confuz"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:129
+msgid "Short but dangerous"
+msgstr "Scurt dar periculos"
+
+# XXX: some languages are more verbose :-(
+# AAA: does it fit?, if not I will try to change that...
+# XXX: no, it does not fit, one more line would be helpful
+#~ msgid "Congratulations! You are"
+#~ msgstr "Felicitări! Probabil că sunteți"
+
+# XXX: some languages are more verbose :-(
+# AAA: does it fit?, if not I will try to change that...
+# XXX: no, it does not fit, one more line would be helpful
+#~ msgid "probably good enough to"
+#~ msgstr "îndeajuns de bun(ă) să"
+
+# XXX: some languages are more verbose :-(
+# AAA: does it fit?, if not I will try to change that...
+# XXX: no, it does not fit, one more line would be helpful
+#~ msgid "enter the highscore table!"
+#~ msgstr "intrați în tabela de scoruri mari!"
