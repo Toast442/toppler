@@ -268,7 +268,7 @@ target_os = @target_os@
 target_vendor = @target_vendor@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CXXFLAGS = -Wall -DTOP_DATADIR=\"./Toppler.app/Contents/Resources/toppler/share/\" -DHISCOREDIR=\"~/.toppler\" -DLOCALEDIR=\"./Toppler.app/Contents/Resources/toppler/share/locale\"
+AM_CXXFLAGS = -Wall -DTOP_DATADIR=\"./Toppler.app/Contents/Resources/toppler/share/toppler\" -DHISCOREDIR=\"~/.toppler\" -DLOCALEDIR=\"./Toppler.app/Contents/Resources/toppler/share/locale\"
 SUBDIRS = po m4
 ACLOCAL_AMFLAGS = -I m4
 toppler_LDFLAGS = $(LIBINTL)
@@ -906,13 +906,16 @@ installdirs-am:
 	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man6dir)" "$(DESTDIR)$(applicationsdir)" "$(DESTDIR)$(pixmapsdir)" "$(DESTDIR)$(pkgdatadir)" "$(DESTDIR)$(pkgdocdir)" "$(DESTDIR)$(pkglocalstatedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
-install: install-recursive
+install: install-recursive install-mac
 install-exec: install-exec-recursive
 install-data: install-data-recursive
 uninstall: uninstall-recursive
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+install-mac:
+	@./macfiles/make-bundle.sh
 
 installcheck: installcheck-recursive
 install-strip:
@@ -1032,11 +1035,9 @@ uninstall-man: uninstall-man6
 
 
 install-exec-hook:
-	-chgrp games $(DESTDIR)$(bindir)/toppler
 	-chmod 2755 $(DESTDIR)$(bindir)/toppler
 
 install-data-hook:
-	-chgrp games $(DESTDIR)$(pkglocalstatedir)/$(PACKAGE).hsc
 	-chmod 0664 $(DESTDIR)$(pkglocalstatedir)/$(PACKAGE).hsc
 
 dist-win32: $(PACKAGE).exe
