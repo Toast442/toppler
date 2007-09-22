@@ -152,7 +152,7 @@ CPPFLAGS =  -I/usr/local/include/SDL -D_GNU_SOURCE=1 -D_THREAD_SAFE
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=none
-CXXFLAGS = -arch i386 -arch ppc
+CXXFLAGS = -arch i386 -arch ppc  
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -175,7 +175,7 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 INTLLIBS = -lintl -Wl,-framework -Wl,CoreFoundation
 INTL_MACOSX_LIBS = -Wl,-framework -Wl,CoreFoundation
-LDFLAGS = -arch i386 -arch ppc
+LDFLAGS = -arch i386 -arch ppc 
 LIBICONV = -liconv
 LIBINTL = -lintl -Wl,-framework -Wl,CoreFoundation
 LIBOBJS = 
