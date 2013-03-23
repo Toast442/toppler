@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -185,7 +185,7 @@ Uint16 scr_loadsprites(spritecontainer *spr, file * fi, int num, int w, int h, b
 
     if (sprite & !use_alpha)
       SDL_SetColorKey(z, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(z->format, 1, 1, 1));
-  
+
     for (int y = 0; y < h; y++)
       for (int x = 0; x < w; x++) {
         b = fi->getbyte();
@@ -199,7 +199,7 @@ Uint16 scr_loadsprites(spritecontainer *spr, file * fi, int num, int w, int h, b
               pixel=SDL_MapRGB(z->format,1,1,1);
             else
             {
-              if ((pal[b*3+2] == 1) && (pal[b*3+1] == 1) || (pal[b*3] == 1))
+              if (((pal[b*3+2] == 1) && (pal[b*3+1] == 1)) || (pal[b*3] == 1))
                 pixel=SDL_MapRGB(z->format,pal[b*3 + 0],pal[b*3 + 1],pal[b*3 + 2]+1);
               else
                 /* ok, this is the case where we have a sprite and don't want
@@ -237,7 +237,7 @@ static Uint16 scr_gensprites(spritecontainer *spr, int num, int w, int h, bool s
   for (int t = 0; t < num; t++) {
     z = SDL_CreateRGBSurface(SDL_SWSURFACE | (sprite && use_alpha) ? SDL_SRCALPHA : 0,
                              w, h, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, (sprite && use_alpha) ? 0xFF000000 : 0);
-  
+
     if (sprite & !use_alpha)
       /* SDL_RLEACCEL is not allowed here, because we need to edit the data later
        on for the new colors */
@@ -267,7 +267,7 @@ static void scr_regensprites(Uint8 *data, SDL_Surface * const target, int num, i
   if (screenformat) {
     z = SDL_CreateRGBSurface(SDL_SWSURFACE | (sprite && use_alpha) ? SDL_SRCALPHA : 0,
                              w, h, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, (sprite && use_alpha) ? 0xFF000000 : 0);
-  
+
     if (sprite & !use_alpha)
       /* SDL_RLEACCEL is not allowed here, because we need to edit the data later
        on for the new colors */
@@ -289,7 +289,7 @@ static void scr_regensprites(Uint8 *data, SDL_Surface * const target, int num, i
               pixel=SDL_MapRGB(z->format,1,1,1);
             else
             {
-              if ((pal[b*3+2] == 1) && (pal[b*3+1] == 1) || (pal[b*3] == 1))
+              if (((pal[b*3+2] == 1) && (pal[b*3+1] == 1)) || (pal[b*3] == 1))
                 pixel=SDL_MapRGB(z->format,pal[b*3 + 0],pal[b*3 + 1],pal[b*3 + 2]+1);
               else
                 /* ok, this is the case where we have a sprite and don't want
@@ -312,6 +312,8 @@ static void scr_regensprites(Uint8 *data, SDL_Surface * const target, int num, i
     r.x = 0;
     r.y = 0;
     SDL_BlitSurface(z, &r, target, &r);
+
+    SDL_FreeSurface(z);
   }
 }
 
@@ -332,23 +334,23 @@ static void loadgraphics(Uint8 what) {
   if (what == 0xff) {
 
     file fi(dataarchive, grafdat);
-  
+
     fi.read(towerpal, 2*256);
-  
+
     slicedata = (Uint8*)malloc(SPR_SLICESPRITES * SPR_SLICEWID * SPR_SLICEHEI);
     fi.read(slicedata, SPR_SLICESPRITES * SPR_SLICEWID * SPR_SLICEHEI);
-  
+
     battlementdata = (Uint8*)malloc(SPR_BATTLFRAMES * SPR_BATTLWID * SPR_BATTLHEI);
     fi.read(battlementdata, SPR_BATTLFRAMES * SPR_BATTLWID * SPR_BATTLHEI);
-  
+
     slicestart = scr_gensprites(&restsprites, SPR_SLICESPRITES, SPR_SLICEWID, SPR_SLICEHEI, false, false, true);
     battlementstart = scr_gensprites(&restsprites, SPR_BATTLFRAMES, SPR_BATTLWID, SPR_BATTLHEI, false, false, true);
-  
+
     for (t = -36; t < 37; t++) {
-  
+
       doors[t+36].xstart = fi.getword();
       doors[t+36].width = fi.getword();
-  
+
       for (int et = 0; et < 3; et++)
         if (doors[t+36].width != 0) {
           doors[t+36].s[et] = scr_gensprites(&restsprites, 1, doors[t+36].width, 16, false, false, true);
@@ -359,18 +361,18 @@ static void loadgraphics(Uint8 what) {
           doors[t+36].data[et] = NULL;
         }
     }
-  
+
     for (t = 0; t < 256; t++) {
       unsigned char c1, c2;
-  
+
       c1 = fi.getbyte();
       c2 = fi.getbyte();
-  
+
       pal[3*t] = c1;
       pal[3*t+1] = c2;
       pal[3*t+2] = c2;
     }
-  
+
     step = scr_loadsprites(&restsprites, &fi, SPR_STEPFRAMES, SPR_STEPWID, SPR_STEPHEI, false, pal, false);
     elevatorsprite = scr_loadsprites(&restsprites, &fi, SPR_ELEVAFRAMES, SPR_ELEVAWID, SPR_ELEVAHEI, false, pal, false);
     stick = scr_loadsprites(&restsprites, &fi, 1, SPR_STICKWID, SPR_STICKHEI, false, pal, false);
@@ -378,9 +380,9 @@ static void loadgraphics(Uint8 what) {
 
   {
     file fi(dataarchive, topplerdat);
-    
+
     scr_read_palette(&fi, pal);
-  
+
     topplerstart = scr_loadsprites(&objectsprites, &fi, 74, SPR_HEROWID, SPR_HEROHEI, true, pal, config.use_alpha_sprites());
   }
 
@@ -388,35 +390,35 @@ static void loadgraphics(Uint8 what) {
     file fi(dataarchive, spritedat);
 
     scr_read_palette(&fi, pal);
-  
+
     robotcount = fi.getbyte();
-  
+
     robots = new robot_data[robotcount];
-  
+
     for (t = 0; t < 8; t++) {
       robots[t].count = fi.getbyte();
       robots[t].start = scr_loadsprites(&objectsprites, &fi, robots[t].count, SPR_ROBOTWID, SPR_ROBOTHEI, true, pal, config.use_alpha_sprites());
     }
-  
+
     scr_read_palette(&fi, pal);
     ballst = scr_loadsprites(&objectsprites, &fi, 2, SPR_ROBOTWID, SPR_ROBOTHEI, true, pal, config.use_alpha_sprites());
-  
+
     scr_read_palette(&fi, pal);
     boxst = scr_loadsprites(&objectsprites, &fi, 16, SPR_BOXWID, SPR_BOXHEI, true, pal, config.use_alpha_sprites());
-  
+
     scr_read_palette(&fi, pal);
     snowballst = scr_loadsprites(&objectsprites, &fi, 1, SPR_AMMOWID, SPR_AMMOHEI, true, pal, config.use_alpha_sprites());
-  
+
     scr_read_palette(&fi, pal);
     starst = scr_loadsprites(&objectsprites, &fi, 16, SPR_STARWID, SPR_STARHEI, true, pal, config.use_alpha_sprites());
     sts_init(starst + 9, NUM_STARS);
-  
+
     scr_read_palette(&fi, pal);
     fishst = scr_loadsprites(&objectsprites, &fi, 32*2, SPR_FISHWID, SPR_FISHHEI, true, pal, config.use_alpha_sprites());
-  
+
     scr_read_palette(&fi, pal);
     subst = scr_loadsprites(&objectsprites, &fi, 31, SPR_SUBMWID, SPR_SUBMHEI, true, pal, config.use_alpha_sprites());
-  
+
     scr_read_palette(&fi, pal);
     torb = scr_loadsprites(&objectsprites, &fi, 1, SPR_TORPWID, SPR_TORPHEI, true, pal, config.use_alpha_sprites());
   }
@@ -425,16 +427,16 @@ static void loadgraphics(Uint8 what) {
     file fi(dataarchive, crossdat);
 
     Uint8 numcol = fi.getbyte();
-  
+
     for (t = 0; t < numcol + 1; t++) {
       crosspal[2*t] = fi.getbyte();
       fi.getbyte();
       crosspal[2*t+1] = fi.getbyte();
     }
-  
+
     crossdata = (Uint8*)malloc(120*SPR_CROSSWID*SPR_CROSSHEI*2);
     fi.read(crossdata, 120*SPR_CROSSWID*SPR_CROSSHEI*2);
-  
+
     crossst = scr_gensprites(&objectsprites, 120, SPR_CROSSWID, SPR_CROSSHEI, true, config.use_alpha_sprites(), false);
   }
 }
@@ -553,9 +555,9 @@ static void loadscroller(void) {
 
   scroll_layers = new _scroll_layer[layers];
   assert_msg(scroll_layers, "Failed to alloc memory for bonus scroller!");
-    
+
   towerpos = fi.getbyte();
-    
+
   sl_tower_depth = towerpos;
 
   sl_tower_num = fi.getword();
@@ -573,8 +575,8 @@ static void loadscroller(void) {
 
     scr_read_palette(&fi, pal);
 
-    scroll_layers[l].image = scr_loadsprites(&layersprites, &fi, 1, 
-	scroll_layers[l].width, scroll_layers[l].height, 
+    scroll_layers[l].image = scr_loadsprites(&layersprites, &fi, 1,
+	scroll_layers[l].width, scroll_layers[l].height,
 	l != 0, pal, config.use_alpha_layers());
   }
 }
@@ -755,8 +757,8 @@ static void putwater(long height) {
           Uint8 * target = (Uint8*)display->pixels + ((SCREENHEI/2) + height + y) * display->pitch;
 
           for (int x = 0; x < SCREENWID; x++) {
-            Sint16 dx = waves[(x+y+12*wavetime) & 0x7f] + waves[2*x-y+11*wavetime & 0x7f];
-            Sint16 dy = waves[(x-y+13*wavetime) & 0x7f] + waves[2*x-3*y-14*wavetime & 0x7f];
+            Sint16 dx = waves[(x+y+12*wavetime) & 0x7f] + waves[(2*x-y+11*wavetime) & 0x7f];
+            Sint16 dy = waves[(x-y+13*wavetime) & 0x7f] + waves[(2*x-3*y-14*wavetime) & 0x7f];
 
             dx = dx * y / (SCREENHEI/2);
             dy = dy * y / (SCREENHEI/2);
@@ -867,13 +869,13 @@ void scr_writetext_broken_center(long y, const char *s) {
 
   // ok, we try to break the text into several lines, if the lines are longer then the
   // screenwidth
-  
+
   int len = strlen(s);
   int start = 0;
   int end = len;
 
   while (start < len) {
-    
+
     while (scr_textlength(s+start, end-start+1) > SCREENWID) {
       end--;
       while ((end > start) && (s[end] != ' ')) end--;
@@ -883,9 +885,9 @@ void scr_writetext_broken_center(long y, const char *s) {
         break;
       }
     }
-    
+
     if (s[end] == ' ') end--;
-    
+
     scr_writetext((SCREENWID - scr_textlength(s+start, end-start+1)) / 2, y, s+start, end-start+1);
 
     start = end+1;
@@ -893,7 +895,7 @@ void scr_writetext_broken_center(long y, const char *s) {
     while ((start < len) && (s[start] == ' ')) start++;
 
     y += 40;
-    
+
   }
 }
 
@@ -1182,26 +1184,26 @@ static void putrobot(int t, int m, long x, long h)
     case OBJ_KIND_JUMPBALL:
       nr = ballst;
       break;
-  
+
     case OBJ_KIND_FREEZEBALL:
     case OBJ_KIND_FREEZEBALL_FROZEN:
     case OBJ_KIND_FREEZEBALL_FALLING:
       nr = ballst + 1;
       break;
-  
+
     case OBJ_KIND_DISAPPEAR:
       nr = starst + m * 2;
       break;
-  
+
     case OBJ_KIND_APPEAR:
       nr = starst - m * 2 + 16;
       break;
-  
+
     case OBJ_KIND_ROBOT_VERT:
     case OBJ_KIND_ROBOT_HORIZ:
       nr = robots[lev_robotnr()].start + ((m / 2) % robots[lev_robotnr()].count);
       break;
-  
+
     default:
       nr = 40;
       break;
@@ -1479,11 +1481,11 @@ static void putthings(long vert, long a, long angle) {
     int ypos = SCREENHEI / 2 - SPR_SLICEHEI + vert;
 
     while ((ypos > -SPR_SLICEHEI) && (slice < lev_towerrows())) {
-  
+
       /* if we are over the bottom of the screen, draw the slice */
       if (ypos < SCREENHEI)
         putcase(lev_tower(slice, col), x, ypos);
-  
+
       slice++;
       ypos -= SPR_SLICEHEI;
     }
@@ -1522,11 +1524,11 @@ static void putthings_editor(long vert, long a, long angle, int state) {
     int ypos = SCREENHEI / 2 - SPR_SLICEHEI + vert;
 
     while ((ypos > -SPR_SLICEHEI) && (slice < lev_towerrows())) {
-  
+
       /* if we are over the bottom of the screen, draw the slice */
       if (ypos < SCREENHEI)
         putcase_editor(lev_tower(slice, col), x, ypos, state);
-  
+
       slice++;
       ypos -= SPR_SLICEHEI;
     }
@@ -1722,7 +1724,7 @@ void scr_drawedit(long vpos, long apos, bool showtime) {
   putwater(vert);
 
   if (boxstate & 1) {
-    scr_putrect((SCREENWID / 2) - (32 / 2), (SCREENHEI / 2) - 16, 32, 16, 
+    scr_putrect((SCREENWID / 2) - (32 / 2), (SCREENHEI / 2) - 16, 32, 16,
                 boxstate * 0xf, boxstate *0xf, boxstate *0xf, 128);
   }
 

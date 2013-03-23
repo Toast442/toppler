@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -145,7 +145,6 @@ static void falling(int nr) {
 
   state = STATE_FALLING;
   substate = 0;
-  //TTSound->startsound(SND_FALL);
 
   switch (nr) {
     case 0:
@@ -154,21 +153,21 @@ static void falling(int nr) {
       falling_minimum = -1;
       falling_howmuch = 1;
       break;
-  
+
     case 1:
       topplershape = 0xf;
       falling_direction = look_left ? -1 : 1;
       falling_minimum = -1;
       falling_howmuch = 1;
       break;
-  
+
     case 2:
       topplershape = 0xe;
       falling_direction = look_left ? 1 : -1;
       falling_minimum = -1;
       falling_howmuch = 1;
       break;
-  
+
     case 3:
       topplershape = 0;
       falling_direction = 0;
@@ -294,17 +293,17 @@ void top_updatetoppler(int left_right, int up_down, bool space) {
   static unsigned char umdreh[7] = {
     0x8, 0x9, 0xa, 0xb, 0xa, 0x9, 0x8
   };
-  
+
   /* the sprites if the animal turns to enter the door */
   static unsigned char door1[4] = {
     0x10, 0x11, 0x12, 0x13
   };
-  
+
   /* and when it enters the door */
   static unsigned char door2[6] = {
     0x13, 0x14, 0x14, 0x15, 0x15, 0x16
   };
-  
+
   /* when it leaves the door */
   static unsigned char door3[6] = {
     0x17, 0x18, 0x18, 0x19, 0x19, 0xb
@@ -312,21 +311,21 @@ void top_updatetoppler(int left_right, int up_down, bool space) {
 
   /* the shapes of the toppler when it turns after leaving a door*/
   static unsigned char door4[4] = { 0xa, 0x9, 0x8, 0x0 };
-  
+
   /* the height differences for jumping */
   static long jump0[12] = { 3, 2, 2, 1, 1, 0, 0, -1, -1, -2, -2, -3 };
   static long jump1[7] = { 2, 2, 1, 0, -1, -2, -2 };
-  
+
   /* sprites for throwing the snowball */
   static unsigned char schiessen[3] = {
     0x00, 0x1a, 0x1b
   };
-  
+
   /* the sprites for toppling over */
   static unsigned char toppler1[4] = {
     0x00, 0x1c, 0x1d, 0x1e
   };
-  
+
   /* the vertical movement for toppling */
   static long toppler2[16] = {
     3, 2, 1, 1, 1, 0, 0, -1, -2, -2, -3, -3, -3, -3, -3, -4
@@ -336,7 +335,7 @@ void top_updatetoppler(int left_right, int up_down, bool space) {
 
   switch (state) {
 
-  case STATE_STANDING: 
+  case STATE_STANDING:
     lev_removevanishstep(verticalpos / 4 - 1, anglepos / 8);
     switch (testunderground(verticalpos, anglepos, look_left)) {
       case 0:
@@ -400,22 +399,22 @@ void top_updatetoppler(int left_right, int up_down, bool space) {
           }
         }
         break;
-  
+
       case 1:
         falling(0);
         break;
-  
+
       case 2:
         falling(1);
         break;
-  
+
       case 3:
         falling(2);
         break;
     }
     break;
 
-  case STATE_JUMPING: 
+  case STATE_JUMPING:
     topplershape = substate & 7;
     movetoppler(jumping_direction, 0L);
     if (jumping_how == 0)
@@ -697,7 +696,7 @@ void top_testcollision(void) {
 
   if ((state == STATE_TOPPLING) ||
       (state == STATE_DROWN) ||
-      (state == STATE_DOOR) && (substate >= 10) && (substate < 31) ||
+      ((state == STATE_DOOR) && (substate >= 10) && (substate < 31)) ||
       (!tvisible))
     return;
 

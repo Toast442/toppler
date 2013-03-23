@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -81,8 +81,8 @@ static void QuitFunction(void) {
 }
 
 int main(int argc, char *argv[]) {
-  
-  // The following line was moved from a global variable to a pointer. 
+
+  // The following line was moved from a global variable to a pointer.
   // This was to allow the Mac OS X version of SDL to reposition the current
   // working directory so that the hardcoded paths in the binary to point
   // to the right spot without a lot of jiggery pokery.
@@ -96,14 +96,13 @@ int main(int argc, char *argv[]) {
 
   DIR *dir = opendir("locale");
   bindtextdomain("toppler", dir == NULL ? LOCALEDIR : "locale");
-  if(dir) closedir(dir);
+  closedir(dir);
   textdomain("toppler");
 #endif
 
   printf(_("Nebulous version %s"), VERSION);
   printf("\n");
 
-  printf("hsc init\n");
   hsc_init();
 
   if (parse_arguments(argc, argv)) {
@@ -119,6 +118,6 @@ int main(int argc, char *argv[]) {
     SDL_ShowCursor(mouse);
     SDL_Quit();
   }
-  
+
   return 0;
 }

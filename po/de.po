@@ -10,16 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-19 16:28+0200\n"
+"POT-Creation-Date: 2012-12-22 12:03+0100\n"
 "PO-Revision-Date: 2006-06-03 14:19+0200\n"
 "Last-Translator: Andreas Röver <roever@users.sf.net>\n"
 "Language-Team: Deutsch <de@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: bonus.cc:104 game.cc:480
+#: bonus.cc:104 game.cc:476
 msgid "Pause"
 msgstr "Pause"
 
@@ -29,49 +30,49 @@ msgstr "Pause"
 msgid "Assertion failure: %s\n"
 msgstr "Annahme gescheitert: %s\n"
 
-#: game.cc:85
+#: game.cc:84
 msgid "You are entering the"
 msgstr "Du betrittst"
 
-#: game.cc:90
+#: game.cc:89
 msgid "Nameless Tower"
 msgstr "den namenlosen Turm"
 
-#: game.cc:94
+#: game.cc:93
 #, c-format
 msgid "Password:   %s"
 msgstr "Passwort:   %s"
 
-#: game.cc:302
+#: game.cc:298
 msgid "Time over"
 msgstr "Zeit abgelaufen"
 
-#: game.cc:314 game.cc:323
+#: game.cc:310 game.cc:319
 #, c-format
 msgid "Time:      ~t35010 X %3d"
 msgstr "Zeit:       ~t35010 X %3d"
 
-#: game.cc:316 game.cc:325
+#: game.cc:312 game.cc:321
 #, c-format
 msgid "Technique: ~t35010 X %3d"
 msgstr "Technik: ~t35010 X %3d"
 
-#: game.cc:318 game.cc:327
+#: game.cc:314 game.cc:323
 #, c-format
 msgid "Extra:     ~t35010 X %3d"
 msgstr "Extra:     ~t35010 X %3d"
 
-#: game.cc:320
+#: game.cc:316
 #, c-format
 msgid "Lifes:     ~t3505000 X %3d"
 msgstr "Leben:       ~t35010 X %3d"
 
-#: keyb.cc:161
+#: keyb.cc:150
 #, c-format
 msgid "Wheee!!\n"
 msgstr "Huuuaaaa!\n"
 
-#: leveledit.cc:103 menu.cc:971
+#: leveledit.cc:103 menu.cc:969
 msgid "Quit"
 msgstr "Beenden"
 
@@ -441,11 +442,11 @@ msgstr "Ungültiger Debuglevel, benutze Voreinstellung.\n"
 msgid "Nebulous version %s"
 msgstr "Nebulous-Version %s"
 
-#: main.cc:111
+#: main.cc:110
 msgid "Nebulous"
 msgstr "Nebulous"
 
-#: main.cc:118
+#: main.cc:117
 #, c-format
 msgid "Thanks for playing!\n"
 msgstr "Danke für's spielen!\n"
@@ -634,23 +635,23 @@ msgstr "%c Start: %s %c"
 msgid "Highscores"
 msgstr "Siegerliste"
 
-#: menu.cc:863
+#: menu.cc:861
 msgid "Level Editor"
 msgstr "Leveleditor"
 
-#: menu.cc:919
+#: menu.cc:917
 msgid "Return to Game"
 msgstr "Zurück zum Spiel"
 
-#: menu.cc:929
+#: menu.cc:927
 msgid "Quit Game"
 msgstr "Beende Spiel"
 
-#: menu.cc:936
+#: menu.cc:934
 msgid "DEBUG MENU"
 msgstr "DEBUG MENÜ"
 
-#: menu.cc:941
+#: menu.cc:939
 msgid "Back to Game"
 msgstr "Zurück zum Spiel"
 
@@ -670,11 +671,11 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: screen.cc:1615
+#: screen.cc:1617
 msgid "REC"
 msgstr "REC"
 
-#: screen.cc:1616
+#: screen.cc:1618
 msgid "DEMO"
 msgstr "DEMO"
 
@@ -945,10 +946,10 @@ msgstr "die Spirale"
 msgid "Skygazer"
 msgstr "den Himmelsanbeter"
 
-#. David is the name of the autor and should not be translated
+#. Mission name
 #: levelnames.txt:113
-msgid "David 1"
-msgstr "David 1"
+msgid "Challenge 1"
+msgstr ""
 
 #. Tower name, you can translate freely
 #: levelnames.txt:115
@@ -989,6 +990,35 @@ msgstr "Verwirrenden"
 #: levelnames.txt:129
 msgid "Short but dangerous"
 msgstr "Kurz aber tödlich"
+
+#. Mission name
+#: levelnames.txt:132
+msgid "Challenge 2"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:134
+msgid "Waves"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:136
+#, fuzzy
+msgid "Dragon tower"
+msgstr "Laden"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:138
+msgid "Hullabaloo"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:140
+msgid "Labyrinth"
+msgstr ""
+
+#~ msgid "David 1"
+#~ msgstr "David 1"
 
 #~ msgid "Congratulations! You are"
 #~ msgstr "Gratulation! Du bist"

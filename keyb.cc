@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,7 +28,6 @@ static Uint16 mouse_x, mouse_y;
 static bool mouse_moved;
 static Uint16 mouse_button;
 static int joy_inited = 0;
-static bool joy_action = 0;
 SDL_Joystick *joy;
 
 class quit_action_class {};
@@ -49,10 +48,6 @@ struct _ttkeyconv {
    {fire_key, SDLK_RETURN},
    {break_key, SDLK_ESCAPE},
    {pause_key, SDLK_p},
-/*   {mousebttn1, SDLK_SPACE},
-   {mousebttn4, SDLK_UP},
-   {mousebttn5, SDLK_DOWN},*/
-
    {up_key, SDLK_UP},
    {down_key, SDLK_DOWN},
    {left_key, SDLK_LEFT},
@@ -85,11 +80,11 @@ void key_init(void) {
     } else {
       joy = SDL_JoystickOpen(0);
       if (!joy) {
-	joy_inited = 2;
+        joy_inited = 2;
       } else {
-	SDL_JoystickEventState(SDL_ENABLE);
-	printf("Joystick enabled\n");
-	joy_inited = 1;
+        SDL_JoystickEventState(SDL_ENABLE);
+        printf("Joystick enabled\n");
+        joy_inited = 1;
       }
     }
   }
@@ -103,12 +98,6 @@ void key_init(void) {
 
 static void handleEvents(void) {
   SDL_Event e;
-
-  if (joy_action) {
-    keydown = no_key;
-    keytyped = no_key;
-    joy_action = 0;
-  }
 
   while (SDL_PollEvent(&e)) {
 
@@ -124,32 +113,32 @@ static void handleEvents(void) {
       break;
     case SDL_JOYAXISMOTION:
       if (e.jaxis.axis == 0) {
-	if (e.jaxis.value < -JOYSTICK_DEADZONE) {
-	  keydown = left_key;
-	} else
-	if (e.jaxis.value > JOYSTICK_DEADZONE) {
-	  keydown = right_key;
-	} else {
-	  keydown = no_key;
-	}
+        if (e.jaxis.value < -JOYSTICK_DEADZONE) {
+          keydown = (ttkey) (keydown | left_key);
+        } else
+        if (e.jaxis.value > JOYSTICK_DEADZONE) {
+          keydown = (ttkey) (keydown | right_key);
+        } else
+          keydown = (ttkey) (keydown & ~(right_key|left_key));
       }
       if (e.jaxis.axis == 1) {
-	if (e.jaxis.value < -JOYSTICK_DEADZONE) {
-	  keydown = up_key;
-	} else
-	if (e.jaxis.value > JOYSTICK_DEADZONE) {
-	  keydown = down_key;
-	} else {
-	  keydown = no_key;
-	}
+        if (e.jaxis.value < -JOYSTICK_DEADZONE) {
+          keydown = (ttkey) (keydown | up_key);
+        } else
+        if (e.jaxis.value > JOYSTICK_DEADZONE) {
+          keydown = (ttkey) (keydown | down_key);
+        } else
+          keydown = (ttkey) (keydown & ~(up_key|down_key));
       }
       keytyped = keydown;
       break;
     case SDL_JOYBUTTONDOWN:
-    case SDL_JOYBUTTONUP:
       keydown = (ttkey)(keydown | fire_key);
       keytyped = keydown;
-      joy_action = 1;
+      break;
+    case SDL_JOYBUTTONUP:
+      keydown = (ttkey)(keydown & ~fire_key);
+      keytyped = keydown;
       break;
     case SDL_MOUSEBUTTONDOWN:
     case SDL_MOUSEBUTTONUP:
@@ -159,7 +148,7 @@ static void handleEvents(void) {
       break;
     case SDL_QUIT:
       fprintf(stderr, _("Wheee!!\n"));
-      throw new quit_action_class;
+      exit(0);
       break;
     case SDL_KEYDOWN:
     case SDL_KEYUP:
@@ -307,11 +296,6 @@ bool key_mouse(Uint16 *x, Uint16 *y, ttkey *bttn) {
   handleEvents();
   switch (mouse_button) {
   default: *bttn = no_key; break;
-/*  case 1: *bttn = mousebttn1; break;
-  case 2: *bttn = mousebttn2; break;
-  case 3: *bttn = mousebttn3; break;
-  case 4: *bttn = mousebttn4; break;
-  case 5: *bttn = mousebttn5; break;*/
   }
   mouse_moved = false;
   mouse_button = 0;
