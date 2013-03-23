@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -113,6 +113,7 @@ static int towerdemo_len = 0;
 typedef struct mission_node {
   char name[30];
   char fname[100];
+  bool archive;       // is the mission inside the archive, or not
   Uint8 prio;         // the lower prio, the further in front the mission will be in the list
   mission_node *next;
 } mission_node;
@@ -143,29 +144,46 @@ Uint8 conv_char2towercode(wchar_t ch) {
 }
 
 char conv_towercode2char(Uint8 code) {
-  if ((code < NUM_TBLOCKS) && (towerblockdata[code].ch)) 
+  if ((code < NUM_TBLOCKS) && (towerblockdata[code].ch))
       return towerblockdata[code].ch;
   return towerblockdata[TB_EMPTY].ch;
 }
 
 
-static void add_mission(char *fname) {
+static void add_mission(const char *fname, bool archive = false) {
 
   char mname[30];
   Uint8 prio;
 
-  FILE * f = fopen(fname, "rb");
+  if (archive) {
 
-  if (!f) return;
+    file f(dataarchive, fname);
 
-  unsigned char mnamelength;
-  fread(&mnamelength, 1, 1, f);
+    unsigned char mnamelength;
+    f.read(&mnamelength, 1);
 
-  if (mnamelength > 29) mnamelength = 29;
+    if (mnamelength > 29) mnamelength = 29;
 
-  fread(mname, mnamelength, 1, f);
-  mname[mnamelength] = 0;
-  fread(&prio, 1, 1, f);
+    f.read(mname, mnamelength);
+    mname[mnamelength] = 0;
+    f.read(&prio, 1);
+
+  } else {
+
+    FILE * f = fopen(fname, "rb");
+
+    if (!f) return;
+
+    unsigned char mnamelength;
+    fread(&mnamelength, 1, 1, f);
+
+    if (mnamelength > 29) mnamelength = 29;
+
+    fread(mname, mnamelength, 1, f);
+    mname[mnamelength] = 0;
+    fread(&prio, 1, 1, f);
+    fclose(f);
+  }
 
   mission_node * m = missions;
   mission_node * l = NULL;
@@ -176,7 +194,6 @@ static void add_mission(char *fname) {
     int erg = strcmp(m->name, mname);
     /* no two missions with the same name */
     if (erg == 0) {
-      fclose(f);
       return;
     }
     l = m;
@@ -197,13 +214,13 @@ static void add_mission(char *fname) {
       strcpy(n->fname, fname);
       n->prio = prio;
       n->next = m;
+      n->archive = archive;
 
       if (l)
         l->next = n;
       else
         missions = n;
 
-      fclose(f);
       return;
     }
     l = m;
@@ -216,13 +233,13 @@ static void add_mission(char *fname) {
   strcpy(m->fname, fname);
   m->prio = prio;
   m->next = NULL;
+  m->archive = archive;
 
   if (l)
     l->next = m;
   else
     missions = m;
 
-  fclose(f);
 }
 
 #ifndef CREATOR
@@ -240,6 +257,18 @@ void lev_findmissions() {
     mission_node *n = missions;
     missions = missions->next;
     delete n;
+  }
+
+  /* first check inside the archive */
+
+  for (int fn = 0; fn < dataarchive->fileNumber(); fn++) {
+    const char * n = dataarchive->fname(fn);
+
+    int len = strlen(n);
+
+    if ((len > 4) && (n[len - 1] == 'm') && (n[len - 2] == 't') &&
+        (n[len - 3] == 't') && (n[len - 4] == '.'))
+      add_mission(n, true);
   }
 
 #ifdef WIN32
@@ -271,7 +300,7 @@ void lev_findmissions() {
 
 #ifndef WIN32
 
-  snprintf(pathname, 100, "%s/.toppler/", getenv("HOME"));
+  snprintf(pathname, 100, "%s/.toppler/", homedir());
   n = alpha_scandir(pathname, &eps, missionfiles);
 
   if (n >= 0) {
@@ -358,20 +387,31 @@ bool lev_loadmission(Uint16 num) {
     m = m->next;
   }
 
-  FILE * in = fopen(m->fname, "rb");
-
   if (mission) delete [] mission;
 
-  /* find out file size */
-  fseek(in, 0, SEEK_END);
-  int fsize = ftell(in);
+  if (m->archive) {
 
-  /* get enough memory and load the whole file into memory */
-  mission = new unsigned char[fsize];
-  fseek(in, 0, SEEK_SET);
-  fread(mission, fsize, 1, in);
+    file f(dataarchive, m->fname);
+    int fsize = f.size();
 
-  fclose(in);
+    mission = new unsigned char[fsize];
+    f.read(mission, fsize);
+
+  } else {
+
+    FILE * in = fopen(m->fname, "rb");
+
+    /* find out file size */
+    fseek(in, 0, SEEK_END);
+    int fsize = ftell(in);
+
+    /* get enough memory and load the whole file into memory */
+    mission = new unsigned char[fsize];
+    fseek(in, 0, SEEK_SET);
+    fread(mission, fsize, 1, in);
+
+    fclose(in);
+  }
 
   for (int t = 0; t < lev_towercount(); t++) {
     lev_selecttower(t);
@@ -495,7 +535,7 @@ void lev_selecttower(Uint8 number) {
 }
 
 char *
-gen_passwd(int pwlen, char *allowed, int buflen, char *buf)
+gen_passwd(int pwlen, const char *allowed, int buflen, char *buf)
 {
   static char passwd[PASSWORD_LEN + 1];
   int len = buflen;
@@ -596,7 +636,7 @@ void lev_get_towerdemo(int &demolen, Uint16 *&demobuf) {
     demolen = towerdemo_len;
 }
 
-void lev_set_towername(char *str) {
+void lev_set_towername(const char *str) {
     (void) strncpy(towername, str, TOWERNAMELEN);
     towername[TOWERNAMELEN] = '\0';
 }
@@ -756,7 +796,7 @@ bool lev_is_box(int row, int col) {
 
 int lev_is_sliding(int row, int col) {
     return ((tower[row][col] == TB_STEP_LSLIDER) ? 1 :
-            (tower[row][col] == TB_STEP_RSLIDER) ? -1 : 
+            (tower[row][col] == TB_STEP_RSLIDER) ? -1 :
             0);
 }
 
@@ -792,11 +832,11 @@ bool lev_testfigure(long angle, long vert, long back,
     case 0:  /* toppler */
       x = (vert == 3) ? 3 : 2;
       break;
-  
+
     case 1:  /* robot */
       x = (vert == 0) ? 1 : 2;
       break;
-  
+
     case 2:  /* snowball */
       x = (vert == 0) ? 0 : 1;
       break;
@@ -851,7 +891,7 @@ bool lev_loadtower(const char *fname) {
   char line[200];
 
   if (in == NULL) return false;
-    
+
   lev_clear_tower();
   lev_set_towerdemo(0, NULL);
   towertime = 0;
@@ -892,19 +932,19 @@ bool lev_loadtower(const char *fname) {
       sscanf(line, "%hhu\n", &towerheight);
 
       for (int row = towerheight - 1; row >= 0; row--) {
-    
+
         fgets(line, 200, in);
-    
+
         for (int col = 0; col < TOWERWID; col++)
           tower[row][col] = conv_char2towercode(line[col]);
       }
     } else if (strncmp(&line[1], tss_string_demo, strlen(tss_string_demo)) == 0) {
       if (fgets(line, 200, in)) {
           sscanf(line, "%i\n", &towerdemo_len);
-    
+
           if (towerdemo_len > 0) {
               towerdemo = new Uint16[towerdemo_len];
-    
+
               for (int idx = 0; idx < towerdemo_len; idx++) {
                   fgets(line, 200, in);
                   sscanf(line, "%hu\n", &towerdemo[idx]);
@@ -1134,7 +1174,7 @@ lev_problem lev_is_consistent(int &row, int &col) {
   if (towerheight < 4) return TPROB_SHORTTOWER;
 
   for (int r = 0; r < towerheight; r++)
-    for (int c = 0; c < TOWERWID; c++) { 
+    for (int c = 0; c < TOWERWID; c++) {
       // check for undefined symbols
       if (tower[r][c] >= NUM_TBLOCKS) {
           row = r;
@@ -1293,7 +1333,7 @@ lev_problem lev_is_consistent(int &row, int &col) {
         bool D = (r + 1 < towerheight) && (tower[r+1][c] == tower[r][c]);
         bool E = (r + 2 < towerheight) && (tower[r+2][c] == tower[r][c]);
 
-        if (!(A&&B||A&&D||D&&E)) {
+        if (!((A&&B)||(A&&D)||(D&&E))) {
           row = r;
           col = c;
           return TPROB_BROKENDOOR;
@@ -1346,7 +1386,7 @@ bool lev_mission_new(char * name, Uint8 prio) {
 void write_fmission_section(Uint8 section, Uint32 section_len) {
     Uint8 tmp;
     fwrite(&section, 1, 1, fmission);
-    
+
     tmp = section_len & 0xff;
     fwrite(&tmp, 1, 1, fmission);
     tmp = (section_len >> 8) & 0xff;
@@ -1365,8 +1405,6 @@ void lev_mission_addtower(char * name) {
   Uint8 namelen, tmp;
   Uint32 section_len;
   int idx;
-
-  if (!tower) return;
 
   missionidx[nmission] = ftell(fmission);
   nmission++;

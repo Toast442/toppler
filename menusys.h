@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -91,7 +91,7 @@ typedef struct _menusystem {
 } _menusystem;
 
 /* input line; asks the user for a string.
- * 
+ *
  * This function returns immediately, and the return
  * value tells whether the user finished editing the string.
  */

@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -104,6 +104,12 @@ public:
   /* closes the archive and frees memory
    */
   ~archive();
+
+  /* number of files inside the archive */
+  Uint8 fileNumber(void) { return filecount; }
+
+  /* name of the n-th file */
+  const char * fname(Uint8 idx) { return files[idx].name; }
 
 private:
 

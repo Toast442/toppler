@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -169,7 +169,7 @@
 #define PASSWORD_CHARS "abcdefghijklmnopqrstuvwxyz0123456789"
 
 void dcl_setdebuglevel(int level);
-void debugprintf(int lvl, char *fmt, ...);
+void debugprintf(int lvl, const char *fmt, ...);
 
 /* waits around 1/18 of a second */
 void dcl_wait(void);
@@ -182,11 +182,11 @@ bool dcl_fileexists(const char *n);
 
 /* opens files looking into the right directories */
 FILE *open_data_file(const char *name);
-//FILE *open_global_config_file(const char *name);
 FILE *open_local_config_file(const char *name);
 FILE *create_local_config_file(const char *name);
 FILE *open_local_data_file(const char *name);
 FILE *create_local_data_file(const char *name);
+char * homedir();
 
 /* returns the filename that would be opened with open_data_file in
  * f, f is max len characters
@@ -205,8 +205,6 @@ int dcl_update_speed(int spd);
 
 /* for errorchecking */
 #define assert_msg(cond,text) if (!(cond)) { printf(_("Assertion failure: %s\n"), text); exit(1); }
-
-//#define CONFIGDIR "/etc"
 
 /* a function that returns a alphabetically sorted list of
  files in the given dir filtered dith the function given at

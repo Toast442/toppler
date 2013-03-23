@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.13)
-AC_INIT([toppler],[1.1.3])
+AC_INIT([toppler],[1.1.6])
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE

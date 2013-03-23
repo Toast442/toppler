@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -64,12 +64,12 @@ static void men_reload_sprites(Uint8 what) {
 }
 
 #ifdef GAME_DEBUG_KEYS
-static char *debug_menu_extralife(_menusystem *ms) {
+static const char *debug_menu_extralife(_menusystem *ms) {
   if (ms) lives_add();
   return _("Extra Life");
 }
 
-static char *debug_menu_extrascore(_menusystem *ms) {
+static const char *debug_menu_extrascore(_menusystem *ms) {
   if (ms) pts_add(200);
   return _("+200 Points");
 }
@@ -91,7 +91,7 @@ static int times_called = 0;
 static const char *redefine_menu_up(_menusystem *ms) {
   static char buf[50];
   const char *code[REDEFINEREC] = {_("Up"), _("Down"), _("Left"), _("Right"), _("Fire")};
-  char *keystr;
+  const char *keystr;
   static int blink, times_called;
   const ttkey key[REDEFINEREC] = {up_key, down_key, left_key, right_key, fire_key};
   const char *redef_fmt = "%s:  %s";
@@ -728,8 +728,14 @@ static void men_highscore(unsigned long pt, int twr) {
 
     char name[SCORENAMELEN+1];
 
+#ifndef WIN32
+    /* copy the login name into the name entered into the highscore table */
+    strncpy(name, getenv("LOGNAME"), SCORENAMELEN);
+    name[SCORENAMELEN] = 0; // to be sure we have a terminated string
+#else
     /* on systems without login we have no name */
     name[0] = 0;
+#endif
 
     while (!men_input(name, SCORENAMELEN)) ;
 
@@ -764,7 +770,7 @@ main_game_loop()
 
   gam_newgame();
   bns_restart();
-    
+
   do {
     ttsounds::instance()->startsound(SND_WATER);
     do {
@@ -849,10 +855,8 @@ static const char *
 men_main_leveleditor_proc(_menusystem *ms)
 {
   if (ms) {
-    //snd_stoptitle();
     le_edit();
     (void)key_sdlkey();
-    //snd_playtitle();
   }
   return _("Level Editor");
 }

@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,11 +33,6 @@ typedef enum {
   fire_key     =  0x0010,
   break_key    =  0x0020,
   pause_key    =  0x0040,
-/*  mousebttn1   =  0x0100,
-  mousebttn2   =  0x0200,
-  mousebttn3   =  0x0400,
-  mousebttn4   =  0x0800,
-  mousebttn5   =  0x1000,*/
   any_key      =  0xFFFF
 } ttkey;
 

@@ -109,8 +109,8 @@ _("Spiral")
 /* Tower name, you can translate freely */
 _("Skygazer")
 
-/*David is the name of the autor and should not be translated*/
-_("David 1")
+/* Mission name */
+_("Challenge 1")
 /* Tower name, you can translate freely */
 _("Difficult jumps!")
 /* Tower name, you can translate freely */
@@ -127,4 +127,15 @@ _("Turning up the heat")
 _("Confusing")
 /* Tower name, you can translate freely */
 _("Short but dangerous")
+
+/* Mission name */
+_("Challenge 2")
+/* Tower name, you can translate freely */
+_("Waves")
+/* Tower name, you can translate freely */
+_("Dragon tower")
+/* Tower name, you can translate freely */
+_("Hullabaloo")
+/* Tower name, you can translate freely */
+_("Labyrinth")
 

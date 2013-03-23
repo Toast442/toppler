@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2004  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -67,7 +67,7 @@ void configuration::parse(FILE * in) {
   }
 }
 
-void configuration::register_entry(char *cnf_name, cnf_type  cnf_typ, void *cnf_var, long maxlen) {
+void configuration::register_entry(const char *cnf_name, cnf_type  cnf_typ, void *cnf_var, long maxlen) {
   config_data *t = new config_data;
 
   t->next = first_data;
@@ -148,10 +148,10 @@ configuration::configuration(FILE *glob, FILE *local) {
 
 configuration::~configuration(void) {
 
-  if (need_save) {
-
-    if (!f) f = create_local_config_file(".toppler.rc");
-
+  if (need_save && !f)
+    f = create_local_config_file(".toppler.rc");
+  if (need_save && f)
+  {
     fseek(f, 0, SEEK_SET);
 
     config_data *t = first_data;
@@ -180,7 +180,7 @@ configuration::~configuration(void) {
       t = t->next;
     }
   }
-  fclose(f);
+  if (f) { fclose(f); f=NULL; }
 
   config_data *t = first_data;
 

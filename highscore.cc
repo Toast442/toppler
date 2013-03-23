@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -115,21 +115,6 @@ static void loadscores(FILE *f) {
   }
 }
 
-static char * homedir()
-{
-
-#ifndef WIN32
-
-  return getenv("HOME");
-
-#else
-
-  return "./";
-
-#endif
-
-}
-
 static bool hsc_lock(void) {
 
 #ifndef WIN32
@@ -138,8 +123,8 @@ static bool hsc_lock(void) {
 
     setegid(GameGroupID);
     int lockfd;
-    
-    while ((lockfd = open(HISCOREDIR "/" SCOREFNAME ".lck", O_CREAT | O_RDWR | O_EXCL)) == -1) {
+
+    while ((lockfd = open(HISCOREDIR "/" SCOREFNAME ".lck", O_CREAT | O_RDWR | O_EXCL, S_IRUSR | S_IWUSR)) == -1) {
       dcl_wait();
       scr_swap();
     }
@@ -189,7 +174,7 @@ void hsc_init(void) {
 
   setegid(UserGroupID);
 
-  /* asume we use local highscore table */ 
+  /* asume we use local highscore table */
   globalHighscore = false;
   snprintf(highscoreName, 199, "%s/.toppler/%s", homedir(), SCOREFNAME);
 
@@ -289,37 +274,37 @@ Uint8 hsc_enter(Uint32 points, Uint8 tower, char *name) {
   if (hsc_lock()) {
 
     int t = NUMHISCORES;
-      
+
     while ((t > 0) && (points > scores[t-1].points)) {
       if (t < NUMHISCORES)
         scores[t] = scores[t-1];
       t--;
     }
-  
+
     if (t < NUMHISCORES) {
-  
+
       strncpy(scores[t].name, name, SCORENAMELEN);
       scores[t].points = points;
       scores[t].tower = tower;
-  
+
       FILE *f;
-  
+
       if (globalHighscore) {
         if (globalHighscore) setegid(GameGroupID);
         f = fopen(highscoreName, "r+b");
         if (globalHighscore) setegid(UserGroupID);
       } else {
-  
+
         /* local highscore: this one might require creating the file */
         fclose(fopen(highscoreName, "a+"));
         f = fopen(highscoreName, "r+b");
       }
-  
+
       savescores(f);
       fclose(f);
 
       hsc_unlock();
-  
+
       return t;
     }
 

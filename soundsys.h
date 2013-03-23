@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -41,7 +41,7 @@ class ttsounds {
 public:
   ~ttsounds(void);
 
-  void addsound(char *fname, int id, int vol, int loops);
+  void addsound(const char *fname, int id, int vol, int loops);
 
   void play(void); //play all active sounds
   void stop(void); //stop all sounds

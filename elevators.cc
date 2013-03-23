@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -100,11 +100,11 @@ void ele_move(void) {
 
   if (ele_dir == 1) {
     elevators[active_ele].vertical++;
-  
+
     lev_empty2stick(elevators[active_ele].vertical, elevators[active_ele].angle);
   } else {
     lev_stick2empty(elevators[active_ele].vertical, elevators[active_ele].angle);
-  
+
     elevators[active_ele].vertical--;
   }
 }

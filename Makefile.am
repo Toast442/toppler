@@ -44,8 +44,7 @@ applications_DATA = $(PACKAGE).desktop
 dist_man_MANS = toppler.6
 dist_pkgdoc_DATA = AUTHORS COPYING ChangeLog NEWS README
 dist_pkgdata_DATA = \
-  toppler.dat toppler.ogg \
-  m1.ttm m2.ttm ball1.ttm ball2.ttm ball3.ttm abc.ttm pasi2.ttm david1.ttm
+  toppler.dat toppler.ogg
 
 dist_pkglocalstate_DATA = $(PACKAGE).hsc
 
@@ -69,9 +68,9 @@ win32dir = $(PACKAGE)-$(VERSION)-win32
 dist-win32: $(PACKAGE).exe
 	$(RM) -r $(win32dir)
 	$(INSTALL)                   -d $(win32dir)
-	$(INSTALL) -m755 $(PACKAGE).exe $(win32dir)/
+	$(INSTALL) -m755 .libs/$(PACKAGE).exe $(win32dir)/
 	$(STRIP) $(win32dir)/$(PACKAGE).exe
-	upx      $(win32dir)/$(PACKAGE).exe
+	upx --lzma $(win32dir)/$(PACKAGE).exe
 	cd $(srcdir) && $(INSTALL) -m644 \
 	    $(dist_pkgdata_DATA) $(dist_pkglocalstate_DATA) \
 	    $(abs_builddir)/$(win32dir)/
@@ -84,5 +83,4 @@ dist-win32: $(PACKAGE).exe
 	$(MAKE) -C po install localedir=$(abs_builddir)/$(win32dir)/locale
 	$(RM)   $(win32dir).zip
 	zip -r9 $(win32dir).zip $(win32dir)
-	makensis $(PACKAGE).nsi
 	$(RM) -r $(win32dir)

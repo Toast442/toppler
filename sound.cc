@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -46,11 +46,6 @@ void snd_init(void) {
       ttsounds::instance()->addsound("fanfare.wav",  SND_FANFARE,   MIX_MAX_VOLUME, 0);
       ttsounds::instance()->addsound("sonar.wav",    SND_SONAR,     MIX_MAX_VOLUME/6, 0);
       ttsounds::instance()->addsound("torpedo.wav",  SND_TORPEDO,   MIX_MAX_VOLUME, 0);
-      //TTSound->addsound("subfall.wav",  SND_SUB_DOWN,  MIX_MAX_VOLUME, 0);
-      //TTSound->addsound("subraise.wav", SND_SUB_RAISE, MIX_MAX_VOLUME, 0);
-      //TTSound->addsound("start.wav",    SND_START,     MIX_MAX_VOLUME, 0);
-      //TTSound->addsound("timeout.wav",  SND_TIMEOUT,   MIX_MAX_VOLUME, 0);
-      //TTSound->addsound("fall.wav",     SND_FALL,      MIX_MAX_VOLUME, 0);
 
       samplesloaded = true;
     }

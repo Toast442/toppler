@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -74,7 +74,6 @@ void gam_arrival(void) {
   b = 5;
   toppler = 1;
 
-  //TTSound->startsound(SND_START);
   top_hide();
 
   key_readkey();
@@ -100,7 +99,6 @@ void gam_arrival(void) {
     switch (b) {
 
     case 5:
-      //ttsounds::instance()->startsound(SND_START);
       b = 6;
       delay = 0;
       break;
@@ -109,7 +107,6 @@ void gam_arrival(void) {
       delay++;
       if (delay == 10) {
         b = 0;
-        //ttsounds::instance()->startsound(SND_SUB_RAISE);
       }
       break;
 
@@ -140,7 +137,6 @@ void gam_arrival(void) {
       subshape--;
       if (subshape == 9) {
         b = 4;
-        //ttsounds::instance()->startsound(SND_SUB_DOWN);
       }
       break;
 
@@ -298,7 +294,7 @@ static void timeout(int &tower_position, int &tower_anglepos) {
   bg_time = 0;
 
   set_men_bgproc(game_background_proc);
-   
+
   men_info(_("Time over"), 150);
 }
 
@@ -396,7 +392,7 @@ static void bonus(int &tower_position, int &tower_angle, int time, bool lifes) {
       writebonus(tower_position, tower_angle, zeit, tec, extra, time, lif, lifes);
     }
   }
-   
+
   delay = 0;
 
   do {
@@ -413,7 +409,7 @@ static void akt_time(int &time, int &timecount, gam_states &state) {
       timecount = 0;
       time--;
       if ((time >= 0) && (time <= 20 || (time <= 40 && (time % 2))))
-	  ttsounds::instance()->startsound(SND_ALARM);
+        ttsounds::instance()->startsound(SND_ALARM);
       if (time == 0)
         state = STATE_TIMEOUT;
     }
@@ -475,7 +471,7 @@ static void pause(int &tower_position, int tower_anglepos, int time) {
   bg_tower_pos = tower_position;
   bg_tower_angle = tower_anglepos;
   bg_time = time;
-   
+
   set_men_bgproc(game_background_proc);
   men_info(_("Pause"), -1, 1);
 

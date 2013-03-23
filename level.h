@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2006  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Röver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -76,7 +76,7 @@ typedef enum {
   TPROB_SHORTTIME,       // there's not enough time
   TPROB_SHORTTOWER,      // the tower is too short
   TPROB_NONAME,          // the tower has no name
-  NUM_TPROBLEMS,        
+  NUM_TPROBLEMS,
 } lev_problem;
 
 /* tries to find all missions installed on this system
@@ -90,7 +90,7 @@ const char * lev_missionname(Uint16 num);
 
 /* Convert a char into towerblock */
 Uint8 conv_char2towercode(wchar_t ch);
-  
+
 /* Get tower password. Note that the password changes when
    the tower changes. */
 char *lev_get_passwd(void);
@@ -133,7 +133,7 @@ Uint8 lev_towerrows(void);
 
 /* the name of the tower */
 char *lev_towername(void);
-void lev_set_towername(char *str);
+void lev_set_towername(const char *str);
 
 /* tower demo */
 void lev_set_towerdemo(int demolen, Uint16 *demobuf);
@@ -273,9 +273,9 @@ void lev_restore(unsigned char *&data);
  */
 lev_problem lev_is_consistent(int &row, int &col);
 
-/* mission creation: first call mission_new(), then 
+/* mission creation: first call mission_new(), then
  * for each tower mission_addtower() and finally to complete
- * the mission mission_finish(). never use another calling order 
+ * the mission mission_finish(). never use another calling order
  * or you may create corrupted mission files.
  */
 bool lev_mission_new(char * name, Uint8 prio = 255);

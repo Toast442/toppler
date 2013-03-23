@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: toppler\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-19 16:28+0200\n"
+"POT-Creation-Date: 2012-12-22 12:03+0100\n"
 "PO-Revision-Date: 2006-06-09 19:35+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bonus.cc:104 game.cc:480
+#: bonus.cc:104 game.cc:476
 msgid "Pause"
 msgstr "Pauza"
 
@@ -25,49 +26,49 @@ msgstr "Pauza"
 msgid "Assertion failure: %s\n"
 msgstr "Chyba aserce: %s\n"
 
-#: game.cc:85
+#: game.cc:84
 msgid "You are entering the"
 msgstr "Vstupujete do"
 
-#: game.cc:90
+#: game.cc:89
 msgid "Nameless Tower"
 msgstr "Bezejmenná věž"
 
-#: game.cc:94
+#: game.cc:93
 #, c-format
 msgid "Password:   %s"
 msgstr "Heslo:   %s"
 
-#: game.cc:302
+#: game.cc:298
 msgid "Time over"
 msgstr "Čas vypršel"
 
-#: game.cc:314 game.cc:323
+#: game.cc:310 game.cc:319
 #, c-format
 msgid "Time:      ~t35010 X %3d"
 msgstr "Čas:       ~t35010 X %3d"
 
-#: game.cc:316 game.cc:325
+#: game.cc:312 game.cc:321
 #, c-format
 msgid "Technique: ~t35010 X %3d"
 msgstr "Technika:  ~t35010 X %3d"
 
-#: game.cc:318 game.cc:327
+#: game.cc:314 game.cc:323
 #, c-format
 msgid "Extra:     ~t35010 X %3d"
 msgstr "Extra:     ~t35010 X %3d"
 
-#: game.cc:320
+#: game.cc:316
 #, c-format
 msgid "Lifes:     ~t3505000 X %3d"
 msgstr "Životy:    ~t3505000 X %3d"
 
-#: keyb.cc:161
+#: keyb.cc:150
 #, c-format
 msgid "Wheee!!\n"
 msgstr "Jééé!!\n"
 
-#: leveledit.cc:103 menu.cc:971
+#: leveledit.cc:103 menu.cc:969
 msgid "Quit"
 msgstr "Konec"
 
@@ -437,11 +438,11 @@ msgstr "Chybná ladicí úroveň, používám výchozí.\n"
 msgid "Nebulous version %s"
 msgstr "Nebulous verze %s"
 
-#: main.cc:111
+#: main.cc:110
 msgid "Nebulous"
 msgstr "Nebulous"
 
-#: main.cc:118
+#: main.cc:117
 #, c-format
 msgid "Thanks for playing!\n"
 msgstr "Děkujeme za hraní!\n"
@@ -630,23 +631,23 @@ msgstr "%c Start: %s %c"
 msgid "Highscores"
 msgstr "Nejvyšší skóre"
 
-#: menu.cc:863
+#: menu.cc:861
 msgid "Level Editor"
 msgstr "Editor úrovní"
 
-#: menu.cc:919
+#: menu.cc:917
 msgid "Return to Game"
 msgstr "Návrat do hry"
 
-#: menu.cc:929
+#: menu.cc:927
 msgid "Quit Game"
 msgstr "Ukončit hru"
 
-#: menu.cc:936
+#: menu.cc:934
 msgid "DEBUG MENU"
 msgstr "LADICÍ MENU"
 
-#: menu.cc:941
+#: menu.cc:939
 msgid "Back to Game"
 msgstr "Zpět do hry"
 
@@ -666,11 +667,11 @@ msgstr "Ano"
 msgid "No"
 msgstr "Ne"
 
-#: screen.cc:1615
+#: screen.cc:1617
 msgid "REC"
 msgstr "REC"
 
-#: screen.cc:1616
+#: screen.cc:1618
 msgid "DEMO"
 msgstr "DEMO"
 
@@ -941,10 +942,10 @@ msgstr "Spirála"
 msgid "Skygazer"
 msgstr "Okulár"
 
-#. David is the name of the autor and should not be translated
+#. Mission name
 #: levelnames.txt:113
-msgid "David 1"
-msgstr "David 1"
+msgid "Challenge 1"
+msgstr ""
 
 #. Tower name, you can translate freely
 #: levelnames.txt:115
@@ -985,6 +986,35 @@ msgstr "Zmatená"
 #: levelnames.txt:129
 msgid "Short but dangerous"
 msgstr "Krátká a nebezpečná"
+
+#. Mission name
+#: levelnames.txt:132
+msgid "Challenge 2"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:134
+msgid "Waves"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:136
+#, fuzzy
+msgid "Dragon tower"
+msgstr "Nahraje věž"
+
+#. Tower name, you can translate freely
+#: levelnames.txt:138
+msgid "Hullabaloo"
+msgstr ""
+
+#. Tower name, you can translate freely
+#: levelnames.txt:140
+msgid "Labyrinth"
+msgstr ""
+
+#~ msgid "David 1"
+#~ msgstr "David 1"
 
 #~ msgid "Congratulations! You are"
 #~ msgstr "Gratulujeme! Jste"
