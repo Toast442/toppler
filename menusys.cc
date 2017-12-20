@@ -63,7 +63,7 @@ _menusystem *
 add_menu_option(_menusystem *ms,
                 const char *name,
                 menuopt_callback_proc pr,
-                SDLKey quickkey,
+                SDL_Keycode quickkey,
                 menuoptflags flags,
                 int state) {
   _menuoption *tmp;
@@ -84,7 +84,7 @@ add_menu_option(_menusystem *ms,
   if (!name && pr) name = (*pr) (NULL);
 
   if (name) {
-    olen = strlen(name);
+    olen = (int)strlen(name);
     memcpy(tmp[ms->numoptions].oname, name, (olen < MENUOPTIONLEN) ? olen + 1 : (MENUOPTIONLEN-1));
   }
 
@@ -136,7 +136,7 @@ draw_menu_system(_menusystem *ms, Uint16 dx, Uint16 dy)
 
   int y, offs = 0, len, realy, minx, miny, maxx, maxy, scrlen,
     newhilite = -1, yz, titlehei;
-  bool has_title = (ms->title) && (strlen(ms->title) != 0);
+  bool has_title = (ms->title[0]) && (strlen(ms->title) != 0);
 
   if (ms->wraparound) {
     if (ms->hilited < 0)
@@ -157,7 +157,7 @@ draw_menu_system(_menusystem *ms, Uint16 dx, Uint16 dy)
   if (has_title) {
     int pos = 0;
     int start = 0;
-    int len = strlen(ms->title);
+    int len = (int)strlen(ms->title);
 
     while (pos <= len) {
 
@@ -190,7 +190,7 @@ draw_menu_system(_menusystem *ms, Uint16 dx, Uint16 dy)
 
   for (y = 0; (yz+y+1 < SCREENHEI) && (y+offs < ms->numoptions); y++) {
     realy = yz + y * FONTHEI;
-    len = strlen(ms->moption[y+offs].oname);
+    len = (int)strlen(ms->moption[y+offs].oname);
     scrlen = scr_textlength(ms->moption[y+offs].oname, len);
     minx = (SCREENWID - scrlen) / 2;
     miny = realy;
@@ -251,7 +251,7 @@ menu_system_caller(_menusystem *ms)
 {
   const char *tmpbuf = (*ms->moption[ms->hilited].oproc) (ms);
   if (tmpbuf) {
-    int olen = strlen(tmpbuf);
+    int olen = (int) strlen(tmpbuf);
     memset(ms->moption[ms->hilited].oname, '\0', MENUOPTIONLEN);
     memcpy(ms->moption[ms->hilited].oname, tmpbuf,
            (olen < MENUOPTIONLEN) ? olen + 1 : (MENUOPTIONLEN-1));
@@ -362,7 +362,7 @@ run_menu_system(_menusystem *ms, _menusystem *parent)
               ms->moption[ms->hilited].oproc) {
             const char *tmpbuf = (*ms->moption[ms->hilited].oproc) (ms);
             if (tmpbuf) {
-              int olen = strlen(tmpbuf);
+              int olen = (int)strlen(tmpbuf);
               memset(ms->moption[ms->hilited].oname, '\0', MENUOPTIONLEN);
               memcpy(ms->moption[ms->hilited].oname, tmpbuf,
                      (olen < MENUOPTIONLEN) ? olen + 1 : (MENUOPTIONLEN-1));
@@ -381,7 +381,7 @@ run_menu_system(_menusystem *ms, _menusystem *parent)
   return ms;
 }
 
-void men_info(char *s, long timeout, int fire) {
+void men_info(const char *s, long timeout, int fire) {
   bool ende = false;
   do {
     if (menu_background_proc) (*menu_background_proc) ();
@@ -445,10 +445,10 @@ draw_input_box(int x, int y, int len, int cursor, char *txt)
 }
 
 bool men_input(char *origs, int max_len, int xpos, int ypos, const char *allowed) {
-  SDLKey sdlinp;
+  SDL_Keycode sdlinp;
   char inpc;
   ttkey inptt;
-  static int pos = strlen(origs);
+  static int pos = (int) strlen(origs);
   int ztmp;
   static char s[256];
   static bool copy_origs = true;
@@ -460,7 +460,7 @@ bool men_input(char *origs, int max_len, int xpos, int ypos, const char *allowed
   if (copy_origs) {
     strcpy(s, origs);
     copy_origs = false;
-    pos = strlen(origs);
+    pos = (int)strlen(origs);
   }
 
   (void)key_readkey();
@@ -564,7 +564,7 @@ men_yn_option_no(_menusystem *ms)
   } else return _("No");
 }
 
-unsigned char men_yn(char *s, bool defchoice, menuopt_callback_proc pr) {
+unsigned char men_yn(const char *s, bool defchoice, menuopt_callback_proc pr) {
   _menusystem *ms = new_menu_system(s, pr, 0, SCREENHEI / 5);
 
   bool doquit = false;

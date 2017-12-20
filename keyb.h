@@ -21,8 +21,13 @@
 
 #include "decl.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL_types.h>
 #include <SDL_keyboard.h>
+#pragma clang diagnostic pop
+
 
 typedef enum {
   no_key       =  0x0000,
@@ -54,21 +59,21 @@ bool key_keypressed(ttkey key);
  the list */
 ttkey key_readkey(void);
 
-/* Returns the last pressed key, in SDLKey format */
-SDLKey key_sdlkey(void);
+/* Returns the last pressed key, in SDL_Keycode format */
+SDL_Keycode key_sdlkey(void);
 
 /* Converts sdlkey to internal key representation, or returns no_key
-   if SDLKey cannot be converted. */
-ttkey key_sdlkey2conv(SDLKey k, bool game);
+   if SDL_Keycode cannot be converted. */
+ttkey key_sdlkey2conv(SDL_Keycode k, bool game);
 
 /* Converts internal key to sdlkey, or returns SDLK_UNKNOWN. */
-SDLKey key_conv2sdlkey(ttkey k, bool game);
+SDL_Keycode key_conv2sdlkey(ttkey k, bool game);
 
 /* returns a typed character */
 char key_chartyped(void);
 
 /* combines key_sdlkey(), key_readkey() and key_chartyped() */
-void key_keydatas(SDLKey &sdlkey, ttkey &tkey, char &ch);
+void key_keydatas(SDL_Keycode &sdlkey, ttkey &tkey, char &ch);
 
 /* waits until no key is pressed, calling bg while waiting */
 void key_wait_for_none(keyb_wait_proc bg);
@@ -77,7 +82,7 @@ void key_wait_for_none(keyb_wait_proc bg);
 bool key_mouse(Uint16 *x, Uint16 *y, ttkey *bttn);
 
 /* redefine a key, so that it returns code  */
-void key_redefine(ttkey code, SDLKey key);
+void key_redefine(ttkey code, SDL_Keycode key);
 
 #endif
 

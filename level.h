@@ -213,8 +213,8 @@ void lev_platform2empty(int row, int col);
 
 /* checks the given figure for validity of its position (can
  it be there without colliding ?) */
-bool lev_testfigure(long angle, long vert, long back,
-                    long fore, long typ, long height, long width);
+bool lev_testfigure(int angle, int vert, int back,
+                    int fore, int typ, int height, int width);
 
 
 /* used for the elevator */

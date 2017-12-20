@@ -19,7 +19,11 @@
 #ifndef ARCHI_H
 #define ARCHI_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
 
 /* this module contains a simple archive access class. an archive
  * is a collection of zlib compressed files with a header defining
@@ -51,7 +55,7 @@ public:
 
   /* returns the size of the currently opened file
    */
-  Uint32 size(void) { return fsize; }
+  Uint32 size(void) { return (Uint32)fsize; }
 
   /* returns true if the current file is completely read
    */

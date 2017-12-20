@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-textsystem::textsystem(char *title, menuopt_callback_proc pr)
+textsystem::textsystem(const char *title, menuopt_callback_proc pr)
 {
   if (title) {
     this->title = new char[strlen(title)+1];
@@ -84,7 +84,7 @@ void textsystem::addline(char *line)
 void textsystem::run()
 {
   bool ende = false;
-  SDLKey key = SDLK_UNKNOWN;
+  SDL_Keycode key = SDLK_UNKNOWN;
 
   do {
     (void)key_readkey();

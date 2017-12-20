@@ -19,7 +19,12 @@
 #ifndef SPRITES_H
 #define SPRITES_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
+
 
 /* coordinates a collection of sprites */
 

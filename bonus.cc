@@ -42,13 +42,13 @@ static struct {
 } fish[fishcnt];
 
 /* position of the submarine and the torpedo,
- * the state is taken from time
+ * the state is taken from topplertime
  */
 static Sint32 torpedox, torpedoy, subposx, subposy;
 
-/* current game time
+/* current game topplertime
  */
-static Sint32 time;
+static Sint32 topplertime;
 
 /* current xposition, this is ongoing from tower to
  * tower so that you continue where you've left of in
@@ -62,10 +62,10 @@ static void show() {
   /* lets first calc the position of the tower on the screen */
   Sint32 towerpos;
 
-  if (time < gametime/2)
-    towerpos = -(4*time);
+  if (topplertime < gametime/2)
+    towerpos = -(4*topplertime);
   else
-    towerpos = gametime * scrollerspeed - 4*time + SCREENWID + (SPR_SLICEWID*2);
+    towerpos = gametime * scrollerspeed - 4*topplertime + SCREENWID + (SPR_SLICEWID*2);
 
   /* draw the background layers */
   scr_draw_bonus1(xpos, towerpos);
@@ -75,7 +75,7 @@ static void show() {
     scr_draw_torpedo(torpedoy, torpedox);
 
   /* output the submarine */
-  scr_draw_submarine(subposy - 20, subposx, time % 9);
+  scr_draw_submarine(subposy - 20, subposx, topplertime % 9);
 
   /* and the fishes */
   for (int b = 0; b < fishcnt; b++)
@@ -137,7 +137,7 @@ bool bns_game(void) {
   torpedox = -1;
 
   /* restart timer */
-  time = 0;
+  topplertime = 0;
 
   key_readkey();
 
@@ -254,22 +254,22 @@ bool bns_game(void) {
     }
 
     /* change towercolor in the middle of the game */
-    if ((time > gametime/2) && !newtowercol) {
+    if ((topplertime > gametime/2) && !newtowercol) {
       scr_settowercolor(lev_towercol_red(), lev_towercol_green(), lev_towercol_blue());
       newtowercol = true;
     }
 
     /* end of game, switch to automatic, stop scrolling */
-    if (time == gametime) {
+    if (topplertime == gametime) {
       automatic = true;
       if ((subposx == SUBM_TARGET_X) && (subposy == SUBM_TARGET_Y)) break;
     } else {
       xpos +=4;
       xpos_ofs += 4;
-      time++;
+      topplertime++;
     }
 
-    if (!((time + 20) & 0x3f)) ttsounds::instance()->startsound(SND_SONAR);
+    if (!((topplertime + 20) & 0x3f)) ttsounds::instance()->startsound(SND_SONAR);
 
     /* display screen and wait */
     show();

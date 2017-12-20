@@ -157,7 +157,7 @@ Uint16 file::getword(void) {
 }
 
 SDL_RWops *file::rwOps(void) {
-  return SDL_RWFromMem(buffer, fsize);
+  return SDL_RWFromMem(buffer, (int)fsize);
 }
 
 

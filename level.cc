@@ -124,7 +124,7 @@ mission_node * missions;
 
 static int missionfiles (const struct dirent *file)
 {
-  int len = strlen(file->d_name);
+  size_t len = strlen(file->d_name);
 
   return ((len > 4) &&
           (file->d_name[len - 1] == 'm') &&
@@ -264,7 +264,7 @@ void lev_findmissions() {
   for (int fn = 0; fn < dataarchive->fileNumber(); fn++) {
     const char * n = dataarchive->fname(fn);
 
-    int len = strlen(n);
+    size_t len = strlen(n);
 
     if ((len > 4) && (n[len - 1] == 'm') && (n[len - 2] == 't') &&
         (n[len - 3] == 't') && (n[len - 4] == '.'))
@@ -331,6 +331,27 @@ void lev_findmissions() {
   }
   free(eps);
   eps = NULL;
+
+#if __MACOSX__
+    char * bp = SDL_GetBasePath();
+    n = alpha_scandir(bp, &eps, missionfiles);
+
+    if (n >= 0) {
+
+        for (int i = 0; i < n; i++) {
+
+            char fname[200];
+            snprintf(fname, 200, "%s%s", bp, eps[i]->d_name);
+
+            add_mission(fname);
+        }
+    }
+    SDL_free(bp);
+    free(eps);
+    eps = NULL;
+#endif
+
+
 
 #endif
 
@@ -403,7 +424,7 @@ bool lev_loadmission(Uint16 num) {
 
     /* find out file size */
     fseek(in, 0, SEEK_END);
-    int fsize = ftell(in);
+    long fsize = ftell(in);
 
     /* get enough memory and load the whole file into memory */
     mission = new unsigned char[fsize];
@@ -539,7 +560,7 @@ gen_passwd(int pwlen, const char *allowed, int buflen, char *buf)
 {
   static char passwd[PASSWORD_LEN + 1];
   int len = buflen;
-  int alen;
+  size_t alen;
   int i;
 
   if (!allowed) return NULL;
@@ -705,7 +726,7 @@ bool lev_is_door(int row, int col) {
 
 /* returns true, if the given fiels contains a target door */
 bool lev_is_targetdoor(int row, int col) {
-  return tower[row][col] == TB_DOOR_TARGET;
+    return tower[row][col] == TB_DOOR_TARGET;
 }
 
 /**************** everything for elevators ******************/
@@ -817,9 +838,9 @@ static bool inside_cyclic_intervall(int x, int start, int end, int cycle) {
 
 /* returns true, if the given figure can be at the given position
  without colliding with fixed objects of the tower */
-bool lev_testfigure(long angle, long vert, long back,
-                    long fore, long typ, long height, long width) {
-  long hinten, vorn, y, x = 0, k, t;
+bool lev_testfigure(int angle, int vert, int back,
+                    int fore, int typ, int height, int width) {
+  int hinten, vorn, y, x = 0, k, t;
 
   hinten = ((angle + back) >> 3) & 0xf;
   vorn = (((angle + fore) >> 3) + 1) & 0xf;
@@ -1406,7 +1427,7 @@ void lev_mission_addtower(char * name) {
   Uint32 section_len;
   int idx;
 
-  missionidx[nmission] = ftell(fmission);
+  missionidx[nmission] = (Uint32)ftell(fmission);
   nmission++;
 
   if (!lev_loadtower(name)) return;
@@ -1531,7 +1552,7 @@ void lev_mission_finish() {
   Uint8 c;
 
   /* save indexstart and write out index */
-  Uint32 idxpos = ftell(fmission);
+  Uint32 idxpos = (Uint32)ftell(fmission);
   for (Uint8 i = 0; i < nmission; i++) {
 
     c = missionidx[i] & 0xff;

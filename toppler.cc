@@ -26,7 +26,7 @@
 
 /* the position of the animal on the tower */
 int anglepos;
-long verticalpos;
+int verticalpos;
 
 /* the state of the toppler */
 int state, substate;
@@ -36,7 +36,7 @@ bool targetdoor;
 
 /* some help variables for the falling toppler */
 int falling_howmuch;
-long falling_direction;
+int falling_direction;
 int falling_minimum;
 
 /* some variables defining how to jump */
@@ -257,7 +257,7 @@ static void topple(void) {
 /* tries to move the toppler by the given amount, returns true on
  success and false if the move is not possible (collision with
  a tower element) */
-static bool movetoppler(long x, long y) {
+static bool movetoppler(int x, int y) {
 
   if (verticalpos + y < 0) {
     drown();
@@ -282,7 +282,7 @@ static void slidestep(int left_right, bool look_left) {
   else
     dir = lev_is_sliding(verticalpos / 4 - 1, (anglepos-1) / 8);
 
-  movetoppler((long)dir, 0);
+  movetoppler(dir, 0);
 }
 
 /* the state machine of the animal */
@@ -313,8 +313,8 @@ void top_updatetoppler(int left_right, int up_down, bool space) {
   static unsigned char door4[4] = { 0xa, 0x9, 0x8, 0x0 };
 
   /* the height differences for jumping */
-  static long jump0[12] = { 3, 2, 2, 1, 1, 0, 0, -1, -1, -2, -2, -3 };
-  static long jump1[7] = { 2, 2, 1, 0, -1, -2, -2 };
+  static int jump0[12] = { 3, 2, 2, 1, 1, 0, 0, -1, -1, -2, -2, -3 };
+  static int jump1[7] = { 2, 2, 1, 0, -1, -2, -2 };
 
   /* sprites for throwing the snowball */
   static unsigned char schiessen[3] = {

@@ -19,7 +19,12 @@
 #include "decl.h"
 #include "configuration.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
+
 
 #include <stdlib.h>
 #include <string.h>
@@ -34,39 +39,49 @@
 
 static bool wait_overflow = false;
 /* Not read from config file */
-int  curr_scr_update_speed = MENU_DCLSPEED;
+int curr_scr_update_speed = MENU_DCLSPEED;
 
-int dcl_update_speed(int spd) {
+int dcl_update_speed(int spd)
+{
     int tmp = curr_scr_update_speed;
+
     curr_scr_update_speed = spd;
     return tmp;
 }
 
-void dcl_wait(void) {
-  static Uint32 last;
+void dcl_wait(void)
+{
+    static Uint32 last;
 
-  if (SDL_GetTicks() >= last + (Uint32)(55-(curr_scr_update_speed*5))) {
-    wait_overflow = true;
+    if(SDL_GetTicks() >= last + (Uint32)(55 - (curr_scr_update_speed * 5))) {
+        wait_overflow = true;
+        last = SDL_GetTicks();
+        return;
+    }
+
+    wait_overflow = false;
+    while((SDL_GetTicks() - last) < (Uint32)(55 - (curr_scr_update_speed * 5)) ) {
+        SDL_Delay(2);
+    }
     last = SDL_GetTicks();
-    return;
-  }
-
-  wait_overflow = false;
-  while ((SDL_GetTicks() - last) < (Uint32)(55-(curr_scr_update_speed*5)) ) SDL_Delay(2);
-  last = SDL_GetTicks();
 }
 
-bool dcl_wait_overflow(void) { return wait_overflow; }
+bool dcl_wait_overflow(void)
+{
+    return wait_overflow;
+}
 
 static int current_debuglevel;
 
-void dcl_setdebuglevel(int level) {
-  current_debuglevel = level;
+void dcl_setdebuglevel(int level)
+{
+    current_debuglevel = level;
 }
 
 
-void debugprintf(int lvl, const char *fmt, ...) {
-    if (lvl <= current_debuglevel) {
+void debugprintf(int lvl, const char * fmt, ...)
+{
+    if(lvl <= current_debuglevel) {
         va_list args;
         va_start(args, fmt);
         vprintf(fmt, args);
@@ -79,303 +94,380 @@ void debugprintf(int lvl, const char *fmt, ...) {
  the dir the file is supposed to be in and look there
  but this is not really portable so this
  */
-bool dcl_fileexists(const char *n) {
+bool dcl_fileexists(const char * n)
+{
 
-  FILE *f = fopen(n, "r");
+    FILE * f = fopen(n, "r");
 
-  if (f) {
-    fclose(f);
-    return true;
-  } else
-    return false;
+    if(f) {
+        fclose(f);
+        return true;
+    } else {
+        return false;
+    }
 }
+
+
+#if __MACOSX__
+static char homeDir[FILENAME_MAX] = {0};
+#endif
 
 char * homedir()
 {
 
 #ifndef WIN32
 
-  return getenv("HOME");
+#if __MACOSX__
+    if(0 == homeDir[0]) {
+        char * bp = SDL_GetPrefPath("Toast442.org", "Toppler");
+        strcpy(homeDir,bp);
+        SDL_free(bp);
+    }
+
+    return homeDir;
+#else
+    return getenv("HOME");
+#endif // __MACOSX__
 
 #else
 
-  return "./";
+    return "./";
 
 #endif
 
 }
 
-static char * acat(const char *a, const char *b)
+static char * acat(const char * a, const char * b)
 {
-  size_t len = strlen(a)+strlen(b)+2;
-  char *s = (char*)malloc(len);
-  snprintf(s, len-1,"%s%s",a,b);
-  return s;
+    size_t len = strlen(a) + strlen(b) + 2;
+    char * s = (char *)malloc(len);
+
+    snprintf(s, len - 1, "%s%s", a, b);
+    return s;
 }
 
 
 /* checks if home/.toppler exists and creates it, if not */
-static void checkdir(void) {
-
+static void checkdir(void)
+{
 #ifndef WIN32
 
-  char *n = acat(homedir(),"/.toppler");
+    char * n = acat(homedir(), "/.toppler");
 
-  DIR *d = opendir(n);
+    DIR * d = opendir(n);
 
-  if (!d) {
-    mkdir(n, S_IRWXU);
-  }
+    if(!d) {
+        mkdir(n, S_IRWXU);
+    }
 
-  closedir(d);
+    if(d) {
+        closedir(d);
+    }
 
-  free(n);
-#endif
-
-}
-
-FILE *open_data_file(const char *name) {
-
-
-#ifndef WIN32
-  FILE *f = NULL;
-  // look into actual directory
-  if (dcl_fileexists(name))
-    return fopen(name, "rb");
-
-  // look into the data dir
-  char *n = acat(TOP_DATADIR"/", name);
-
-  if (dcl_fileexists(n))
-    f = fopen(n, "rb");
-
-  free(n);
-
-  return f;
-
-#else
-
-  if (dcl_fileexists(name))
-    return fopen(name, "rb");
-
-  return NULL;
-
-#endif
-}
-
-bool get_data_file_path(const char * name, char * f, int len) {
-
-#ifndef WIN32
-  // look into actual directory
-  if (dcl_fileexists(name)) {
-    snprintf(f, len, "%s", name);
-    return true;
-  }
-
-  // look into the data dir
-  char *n = acat(TOP_DATADIR"/", name);
-
-  if (dcl_fileexists(n)) {
-    snprintf(f, len, "%s", n);
     free(n);
-    return true;
-  }
+#endif
 
-  free(n);
-  return false;
+}
+
+FILE * open_data_file(const char * name)
+{
+
+#ifndef WIN32
+    FILE * f = NULL;
+    // look into actual directory
+    if(dcl_fileexists(name)) {
+        return fopen(name, "rb");
+    }
+
+    // look into the data dir
+    char * n = acat(TOP_DATADIR "/", name);
+
+    if(dcl_fileexists(n)) {
+        f = fopen(n, "rb");
+    }
+
+    free(n);
+
+#if __MACOSX__
+    // Look in MacOS Resource directory
+    char * bp = SDL_GetBasePath();
+
+    n = acat(bp, name);
+
+    if(dcl_fileexists(n)) {
+        f = fopen(n, "rb");
+    }
+
+    free(n);
+    SDL_free(bp);
+#endif
+
+    return f;
 
 #else
 
-  if (dcl_fileexists(name)) {
-    snprintf(f, len, name);
-    return true;
-  }
+    if(dcl_fileexists(name)) {
+        return fopen(name, "rb");
+    }
 
-  return false;
+    return NULL;
 
-#endif
+#endif // ifndef WIN32
 }
 
-static char * acat3(const char *a, const char *b, const char *c)
+bool get_data_file_path(const char * name, char * f, int len)
 {
-  size_t len = strlen(a)+strlen(b)+strlen(c)+2;
-  char *s = (char*)malloc(len);
-  snprintf(s, len-1,"%s%s%s",a,b,c);
-  return s;
+
+#ifndef WIN32
+    // look into actual directory
+    if(dcl_fileexists(name)) {
+        snprintf(f, len, "%s", name);
+        return true;
+    }
+
+    // look into the data dir
+    char * n = acat(TOP_DATADIR "/", name);
+
+    if(dcl_fileexists(n)) {
+        snprintf(f, len, "%s", n);
+        free(n);
+        return true;
+    }
+
+#if __MACOSX__
+    // Look in MacOS Resource directory
+    char * bp = SDL_GetBasePath();
+
+    n = acat(bp, name);
+    SDL_free(bp);
+
+    if(dcl_fileexists(n)) {
+        snprintf(f, len, "%s", n);
+        free(n);
+        return true;
+    }
+#endif
+
+    free(n);
+    return false;
+
+#else
+
+    if(dcl_fileexists(name)) {
+        snprintf(f, len, name);
+        return true;
+    }
+
+    return false;
+
+#endif // ifndef WIN32
 }
 
-static char * topplername(const char *name)
+static char * acat3(const char * a, const char * b, const char * c)
+{
+    size_t len = strlen(a) + strlen(b) + strlen(c) + 2;
+    char * s = (char *)malloc(len);
+
+    snprintf(s, len - 1, "%s%s%s", a, b, c);
+    return s;
+}
+
+static char * topplername(const char * name)
 {
 #ifndef WIN32
-  return acat3(homedir(),"/.toppler/", name);
+    return acat3(homedir(), "/.toppler/", name);
 #else
-  return strdup(name);
+    return strdup(name);
 #endif
 }
 
-FILE *open_local_config_file(const char *name) {
+FILE * open_local_config_file(const char * name)
+{
 
-  FILE *f = NULL;
-  checkdir();
+    FILE * f = NULL;
 
-  char *n = topplername(name);
+    checkdir();
 
-  if (dcl_fileexists(n))
-    f = fopen(n, "r+");
+    char * n = topplername(name);
 
-  free(n);
-  return f;
+    if(dcl_fileexists(n)) {
+        f = fopen(n, "r+");
+    }
+
+    free(n);
+    return f;
 }
 
-FILE *create_local_config_file(const char *name) {
+FILE * create_local_config_file(const char * name)
+{
 
-  checkdir();
+    checkdir();
 
-  char *n = topplername(name);
-  FILE *f = fopen(n, "wb+");
-  free(n);
-  return f;
+    char * n = topplername(name);
+    FILE * f = fopen(n, "wb+");
+    free(n);
+    return f;
 }
 
 /* used for tower and mission saving */
 
-FILE *open_local_data_file(const char *name) {
+FILE * open_local_data_file(const char * name)
+{
 
-  checkdir();
+    checkdir();
 
-  char *n = topplername(name);
-  FILE *f = fopen(n, "rb");
-  free(n);
-  return f;
+    char * n = topplername(name);
+    FILE * f = fopen(n, "rb");
+    free(n);
+    return f;
 }
 
-FILE *create_local_data_file(const char *name) {
+FILE * create_local_data_file(const char * name)
+{
 
-  checkdir();
+    checkdir();
 
-  char *n = topplername(name);
-  FILE * f = fopen(n, "wb+");
-  free(n);
-  return f;
+    char * n = topplername(name);
+    FILE * f = fopen(n, "wb+");
+    free(n);
+    return f;
 }
 
-static int sort_by_name(const void *a, const void *b) {
-  return(strcmp((*((struct dirent **)a))->d_name, ((*(struct dirent **)b))->d_name));
+static int sort_by_name(const void * a, const void * b)
+{
+    return (strcmp((*((struct dirent **)a))->d_name, ((*(struct dirent **)b))->d_name));
 }
 
-int alpha_scandir(const char *dir, struct dirent ***namelist,
-            int (*select)(const struct dirent *)) {
-  DIR *d;
-  struct dirent *entry;
-  int i = 0;
-  size_t entrysize;
+int alpha_scandir(const char * dir, struct dirent *** namelist,
+                  int (*select)(const struct dirent *))
+{
+    DIR * d;
+    struct dirent * entry;
+    int i = 0;
+    size_t entrysize;
 
-  if ((d = opendir(dir)) == NULL)
-     return(-1);
-
-  *namelist = NULL;
-  while ((entry = readdir(d)) != NULL)
-  {
-    if (select == NULL || (select != NULL && (*select)(entry)))
-    {
-      *namelist = (struct dirent **)realloc((void *)(*namelist), (size_t)((i + 1) * sizeof(struct dirent *)));
-      if (*namelist == NULL)
-        return(-1);
-      entrysize = sizeof(struct dirent) - sizeof(entry->d_name) + strlen(entry->d_name) + 1;
-      (*namelist)[i] = (struct dirent *)malloc(entrysize);
-      if ((*namelist)[i] == NULL)
-        return(-1);
-      memcpy((*namelist)[i], entry, entrysize);
-      i++;
+    if((d = opendir(dir)) == NULL) {
+        return (-1);
     }
-  }
-  if (closedir(d))
-    return(-1);
 
-  if (i == 0)
-    return(-1);
+    *namelist = NULL;
+    while((entry = readdir(d)) != NULL) {
+        if(select == NULL || (select != NULL && (*select)(entry))) {
+            *namelist = (struct dirent **)realloc((void *)(*namelist), (size_t)((i + 1) * sizeof(struct dirent *)));
+            if(*namelist == NULL) {
+                return (-1);
+            }
+            entrysize = sizeof(struct dirent) - sizeof(entry->d_name) + strlen(entry->d_name) + 1;
+            (*namelist)[i] = (struct dirent *)malloc(entrysize);
+            if((*namelist)[i] == NULL) {
+                return (-1);
+            }
+            memcpy((*namelist)[i], entry, entrysize);
+            i++;
+        }
+    }
+    if(closedir(d)) {
+        return (-1);
+    }
 
-  qsort((void *)(*namelist), (size_t)i, sizeof(struct dirent *), sort_by_name);
+    if(i == 0) {
+        return (-1);
+    }
 
-  return(i);
+    qsort((void *)(*namelist), (size_t)i, sizeof(struct dirent *), sort_by_name);
+
+    return (i);
 }
 
 #ifdef WIN32
 
 static int
-utf8_mbtowc (void * conv, wchar_t *pwc, const unsigned char *s, int n)
+utf8_mbtowc(void * conv, wchar_t * pwc, const unsigned char * s, int n)
 {
-  unsigned char c = s[0];
+    unsigned char c = s[0];
 
-  if (c < 0x80) {
-    *pwc = c;
-    return 1;
-  } else if (c < 0xc2) {
-    return -1;
-  } else if (c < 0xe0) {
-    if (n < 2)
-      return -2;
-    if (!((s[1] ^ 0x80) < 0x40))
-      return -1;
-    *pwc = ((wchar_t) (c & 0x1f) << 6)
-           | (wchar_t) (s[1] ^ 0x80);
-    return 2;
-  } else if (c < 0xf0) {
-    if (n < 3)
-      return -2;
-    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
-          && (c >= 0xe1 || s[1] >= 0xa0)))
-      return -1;
-    *pwc = ((wchar_t) (c & 0x0f) << 12)
-           | ((wchar_t) (s[1] ^ 0x80) << 6)
-           | (wchar_t) (s[2] ^ 0x80);
-    return 3;
-  } else if (c < 0xf8 && sizeof(wchar_t)*8 >= 32) {
-    if (n < 4)
-      return -2;
-    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
-          && (s[3] ^ 0x80) < 0x40
-          && (c >= 0xf1 || s[1] >= 0x90)))
-      return -1;
-    *pwc = ((wchar_t) (c & 0x07) << 18)
-           | ((wchar_t) (s[1] ^ 0x80) << 12)
-           | ((wchar_t) (s[2] ^ 0x80) << 6)
-           | (wchar_t) (s[3] ^ 0x80);
-    return 4;
-  } else if (c < 0xfc && sizeof(wchar_t)*8 >= 32) {
-    if (n < 5)
-      return -2;
-    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
-          && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
-          && (c >= 0xf9 || s[1] >= 0x88)))
-      return -1;
-    *pwc = ((wchar_t) (c & 0x03) << 24)
-           | ((wchar_t) (s[1] ^ 0x80) << 18)
-           | ((wchar_t) (s[2] ^ 0x80) << 12)
-           | ((wchar_t) (s[3] ^ 0x80) << 6)
-           | (wchar_t) (s[4] ^ 0x80);
-    return 5;
-  } else if (c < 0xfe && sizeof(wchar_t)*8 >= 32) {
-    if (n < 6)
-      return -2;
-    if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
-          && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
-          && (s[5] ^ 0x80) < 0x40
-          && (c >= 0xfd || s[1] >= 0x84)))
-      return -1;
-    *pwc = ((wchar_t) (c & 0x01) << 30)
-           | ((wchar_t) (s[1] ^ 0x80) << 24)
-           | ((wchar_t) (s[2] ^ 0x80) << 18)
-           | ((wchar_t) (s[3] ^ 0x80) << 12)
-           | ((wchar_t) (s[4] ^ 0x80) << 6)
-           | (wchar_t) (s[5] ^ 0x80);
-    return 6;
-  } else
-    return -1;
+    if(c < 0x80) {
+        *pwc = c;
+        return 1;
+    } else if(c < 0xc2) {
+        return -1;
+    } else if(c < 0xe0) {
+        if(n < 2) {
+            return -2;
+        }
+        if(!((s[1] ^ 0x80) < 0x40)) {
+            return -1;
+        }
+        *pwc = ((wchar_t)(c & 0x1f) << 6)
+        | (wchar_t)(s[1] ^ 0x80);
+        return 2;
+    } else if(c < 0xf0) {
+        if(n < 3) {
+            return -2;
+        }
+        if(!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+             && (c >= 0xe1 || s[1] >= 0xa0))) {
+            return -1;
+        }
+        *pwc = ((wchar_t)(c & 0x0f) << 12)
+        | ((wchar_t)(s[1] ^ 0x80) << 6)
+        | (wchar_t)(s[2] ^ 0x80);
+        return 3;
+    } else if(c < 0xf8 && sizeof(wchar_t) * 8 >= 32) {
+        if(n < 4) {
+            return -2;
+        }
+        if(!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+             && (s[3] ^ 0x80) < 0x40
+             && (c >= 0xf1 || s[1] >= 0x90))) {
+            return -1;
+        }
+        *pwc = ((wchar_t)(c & 0x07) << 18)
+        | ((wchar_t)(s[1] ^ 0x80) << 12)
+        | ((wchar_t)(s[2] ^ 0x80) << 6)
+        | (wchar_t)(s[3] ^ 0x80);
+        return 4;
+    } else if(c < 0xfc && sizeof(wchar_t) * 8 >= 32) {
+        if(n < 5) {
+            return -2;
+        }
+        if(!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+             && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
+             && (c >= 0xf9 || s[1] >= 0x88))) {
+            return -1;
+        }
+        *pwc = ((wchar_t)(c & 0x03) << 24)
+        | ((wchar_t)(s[1] ^ 0x80) << 18)
+        | ((wchar_t)(s[2] ^ 0x80) << 12)
+        | ((wchar_t)(s[3] ^ 0x80) << 6)
+        | (wchar_t)(s[4] ^ 0x80);
+        return 5;
+    } else if(c < 0xfe && sizeof(wchar_t) * 8 >= 32) {
+        if(n < 6) {
+            return -2;
+        }
+        if(!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
+             && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
+             && (s[5] ^ 0x80) < 0x40
+             && (c >= 0xfd || s[1] >= 0x84))) {
+            return -1;
+        }
+        *pwc = ((wchar_t)(c & 0x01) << 30)
+        | ((wchar_t)(s[1] ^ 0x80) << 24)
+        | ((wchar_t)(s[2] ^ 0x80) << 18)
+        | ((wchar_t)(s[3] ^ 0x80) << 12)
+        | ((wchar_t)(s[4] ^ 0x80) << 6)
+        | (wchar_t)(s[5] ^ 0x80);
+        return 6;
+    } else {
+        return -1;
+    }
 }
 
-size_t mbrtowc (wchar_t * out, const char *s, int n, mbstate_t * st) {
-  return utf8_mbtowc(0, out, (const unsigned char *)s, n);
+size_t mbrtowc(wchar_t * out, const char * s, int n, mbstate_t * st)
+{
+    return utf8_mbtowc(0, out, (const unsigned char *)s, n);
 }
 
-#endif
+#endif // ifdef WIN32
+

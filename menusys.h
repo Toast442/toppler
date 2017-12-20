@@ -21,7 +21,11 @@
 
 #include "decl.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include "SDL_keyboard.h"
+#pragma clang diagnostic pop
 
 /* This module defines a menu system that has the following features
 */
@@ -57,7 +61,7 @@ typedef struct {
    menuopt_callback_proc oproc;  /* callback proc, supplies actions and the name */
    int  ostate;                  /* callback proc can use this */
    menuoptflags  oflags;         /* MOF_foo */
-   SDLKey quickkey;              /* quick jump key; if user presses this key,
+   SDL_Keycode quickkey;              /* quick jump key; if user presses this key,
                                   * this menu option is hilited.
                                   */
 } _menuoption;
@@ -84,7 +88,7 @@ typedef struct _menusystem {
                                   * keys passed to it, and normal key/mouse
                                   * processing doesn't happen.
                                   */
-   SDLKey key;                   /* the key that was last pressed */
+   SDL_Keycode key;                   /* the key that was last pressed */
 
    struct _menusystem * parent;  /* the current parrent, or NULL */
 
@@ -101,11 +105,11 @@ bool men_input(char *origs, int max_len, int xpos = -1,
 
 /* asks a yes/no question; return 0 if "no",
    1 if "yes" */
-unsigned char men_yn(char *s, bool defchoice, menuopt_callback_proc pr = 0);
+unsigned char men_yn(const char *s, bool defchoice, menuopt_callback_proc pr = 0);
 
 /* shows string s, waits a certain time, (-1 = indefinitely),
    and if fire = 1 -> "press fire", if fire = 2 -> "press space" */
-void men_info(char *s, long timeout = -1, int fire = 0);
+void men_info(const char *s, long timeout = -1, int fire = 0);
 
 
 /* sets the function that gets called whenever the background
@@ -119,7 +123,7 @@ _menusystem *new_menu_system(const char *title, menuopt_callback_proc pr,
 
 /* add an option to the menu */
 _menusystem *add_menu_option(_menusystem *ms, const char *name, menuopt_callback_proc pr,
-                                    SDLKey quickkey = SDLK_UNKNOWN, menuoptflags flags = MOF_NONE, int state = 0);
+                                    SDL_Keycode quickkey = SDLK_UNKNOWN, menuoptflags flags = MOF_NONE, int state = 0);
 
 /* displays the given menu on screen and lets the user interact with it*/
 _menusystem *run_menu_system(_menusystem *ms, _menusystem *parent);

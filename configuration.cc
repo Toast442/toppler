@@ -55,7 +55,7 @@ void configuration::parse(FILE * in) {
             break;
           case CT_KEY:
             if (atoi(param) > 0)
-              key_redefine((ttkey)t->maxlen, (SDLKey)atoi(param));
+              key_redefine((ttkey)t->maxlen, (SDL_Keycode)atoi(param));
             break;
           default: assert_msg(0, "Unknown config data type.");
           }
