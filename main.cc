@@ -43,6 +43,11 @@ static void printhelp(void) {
 }
 
 static bool parse_arguments(int argc, char *argv[]) {
+#if __MACOSX__
+    // no sense parsing arguments, plus this breaks gatekeeper
+    // on first run
+    return true;
+#endif
   for (int t = 1; t < argc; t++) {
     if (!strncmp(argv[t], "-f", 2)) config.fullscreen(true);
     else if (!strncmp(argv[t], "-s", 2)) config.nosound(true);
