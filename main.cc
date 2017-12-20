@@ -107,12 +107,11 @@ int main(int argc, char *argv[]) {
 
   if (parse_arguments(argc, argv)) {
     SDL_InitSubSystem(SDL_INIT_VIDEO);
-    SDL_WM_SetCaption(_("Nebulous"), NULL);
 
     int mouse = SDL_ShowCursor(config.fullscreen() ? 0 : 1);
     tt_has_focus = true;
     atexit(QuitFunction);
-    srand(time(0));
+    srand((int)time(0));
     startgame();
     printf(_("Thanks for playing!\n"));
     SDL_ShowCursor(mouse);

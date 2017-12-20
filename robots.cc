@@ -33,16 +33,16 @@ static struct {
 
   /* the position of the robot */
   int anglepos;
-  long verticalpos;
+  int verticalpos;
 
   /* what kind of robot it is, an under classification
    and what kind it will be after the appearing animation */
   rob_kinds kind;
-  long subKind;
+  int subKind;
   rob_kinds futureKind;
 
   /* a timer for the animations of the robots */
-  long time;
+  int time;
 } object[MAX_OBJECTS];
 
 
@@ -92,7 +92,7 @@ static int figurecollision(int nr) {
 /* returns true, if the robot cannot be at the given position without colliding
  with an element from the tower */
 static bool testroboter(int nr) {
-  return (!lev_testfigure((long)object[nr].anglepos, object[nr].verticalpos, -2L, 1L, 1L, 1L, 7L));
+  return (!lev_testfigure(object[nr].anglepos, object[nr].verticalpos, -2L, 1L, 1L, 1L, 7L));
 }
 
 /* makes the robot disappear when it falls into water */
@@ -214,7 +214,6 @@ void rob_initialize(void) {
     object[b].kind = OBJ_KIND_NOTHING;
     object[b].time = -1;
   }
-
   next_cross_timer = 125;
   nextcrosscolor = rand() / (RAND_MAX / 8);
   cross_direction = 1;
@@ -395,7 +394,7 @@ void rob_new(int verticalpos) {
 void rob_update(void) {
 
   /* the vertical movement of the jumping ball */
-  static long jumping_ball[11] = {
+  static int jumping_ball[11] = {
     2, 2, 1, 1, 0, 0, -1, -1, -2, -2, -4
   };
 

@@ -19,11 +19,15 @@
 #include "keyb.h"
 #include "decl.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
 
 static ttkey keydown, keytyped;
 static char chartyped;
-static SDLKey sdlkeytyped;
+static SDL_Keycode sdlkeytyped;
 static Uint16 mouse_x, mouse_y;
 static bool mouse_moved;
 static Uint16 mouse_button;
@@ -38,7 +42,7 @@ bool tt_has_focus;
 
 struct _ttkeyconv {
    ttkey outval;
-   SDLKey key;
+   SDL_Keycode key;
 } static ttkeyconv[] = {
    {up_key, SDLK_UP},
    {down_key, SDLK_DOWN},
@@ -57,7 +61,7 @@ struct _ttkeyconv {
    {pause_key, SDLK_p},
 };
 
-void key_redefine(ttkey code, SDLKey key) {
+void key_redefine(ttkey code, SDL_Keycode key) {
   int i;
 
   for (i = SIZE(ttkeyconv) - 1; i >= 0; i--)
@@ -68,11 +72,6 @@ void key_redefine(ttkey code, SDLKey key) {
 }
 
 void key_init(void) {
-  SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
-  SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_IGNORE);
-  SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
-
-  SDL_EnableUNICODE(1);
 
   if (joy_inited == 0) {
     if (SDL_Init(SDL_INIT_JOYSTICK) < 0) {
@@ -102,10 +101,6 @@ static void handleEvents(void) {
   while (SDL_PollEvent(&e)) {
 
     switch (e.type) {
-    case SDL_ACTIVEEVENT:
-      if ((e.active.state & SDL_APPINPUTFOCUS) || (e.active.state & SDL_APPACTIVE))
-        tt_has_focus = (e.active.gain == 1);
-      break;
     case SDL_MOUSEMOTION:
       mouse_x = e.motion.x;
       mouse_y = e.motion.y;
@@ -162,8 +157,8 @@ static void handleEvents(void) {
 
       if (e.key.state == SDL_PRESSED) {
 
-        if ((e.key.keysym.unicode & 0xff80) == 0) {
-          chartyped = e.key.keysym.unicode & 0x7f;
+        if ((e.key.keysym.sym & 0xff80) == 0) {
+          chartyped = e.key.keysym.sym & 0x7f;
         } else
           chartyped = 0;
 
@@ -194,16 +189,16 @@ bool key_keypressed(ttkey key) {
   return (keytyped & key) != 0;
 }
 
-SDLKey key_sdlkey(void) {
+SDL_Keycode key_sdlkey(void) {
   handleEvents();
-  SDLKey tmp = sdlkeytyped;
+  SDL_Keycode tmp = sdlkeytyped;
   sdlkeytyped = SDLK_UNKNOWN;
   keytyped = no_key;
   chartyped = 0;
   return tmp;
 }
 
-void key_keydatas(SDLKey &sdlkey, ttkey &tkey, char &ch) {
+void key_keydatas(SDL_Keycode &sdlkey, ttkey &tkey, char &ch) {
   handleEvents();
   sdlkey = sdlkeytyped;
   tkey = keytyped;
@@ -214,8 +209,8 @@ void key_keydatas(SDLKey &sdlkey, ttkey &tkey, char &ch) {
 }
 
 
-SDLKey key_conv2sdlkey(ttkey k, bool game) {
-  register int i;
+SDL_Keycode key_conv2sdlkey(ttkey k, bool game) {
+  int i;
 
   if (game) {
     for (i = SIZE(ttkeyconv) - 1; i >= 0; i--)
@@ -230,8 +225,8 @@ SDLKey key_conv2sdlkey(ttkey k, bool game) {
   return SDLK_UNKNOWN;
 }
 
-ttkey key_sdlkey2conv(SDLKey k, bool game) {
-  register int i;
+ttkey key_sdlkey2conv(SDL_Keycode k, bool game) {
+  int i;
 
   if (k != SDLK_UNKNOWN) {
     if (game) {

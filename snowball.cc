@@ -23,7 +23,7 @@
 
 static int an;
 static long subKind;
-static long ve;
+static int ve;
 static long time;
 
 void snb_init(void) {

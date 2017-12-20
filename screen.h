@@ -22,7 +22,12 @@
 #include "archi.h"
 #include "sprites.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
+
 
 /* this module handles nearly all the output onto the screen */
 
@@ -74,15 +79,15 @@ void scr_setcrosscolor(Uint8 red, Uint8 green, Uint8 blue);
  call scr_swap() */
 
 /* writes some text onto the screen */
-void scr_writetext(long x, long y, const char *s, int maxchars = -1);
+void scr_writetext(int x, int y, const char *s, int maxchars = -1);
 
 /* centers the text horizontally */
-void scr_writetext_center(long y, const char *s);
+void scr_writetext_center(int y, const char *s);
 
 /* like scr_writetext_center, but tries to break the lines of text so
  * that they are not longer than the screen is wide
  */
-void scr_writetext_broken_center(long y, const char *s);
+void scr_writetext_broken_center(int y, const char *s);
 
 /* output text that can be interleaved with commands. these commands
  have the form ~ followed by letter followed by a fixed set of parameters.
@@ -97,9 +102,9 @@ void scr_writetext_broken_center(long y, const char *s);
  e#  : displays tower blocks in level editor style. The '#' is a character,
        as represented in towerblockdata[].ch.
  */
-void scr_writeformattext(long x, long y, const char *s);
+void scr_writeformattext(int x, int y, const char *s);
 /* returns the length of formatted text in pixels. */
-long scr_formattextlength(long x, long y, const char *s);
+int scr_formattextlength(int x, int y, const char *s);
 
 /* returns the number of pixels the first chars characters in
  text needs in the display (if the string is only n chars long
@@ -122,10 +127,10 @@ void scr_swap(void);
 void scr_blit(SDL_Surface * s, int x, int y);
 
 /* draws everything necessary for the towergame */
-void scr_drawall(long vert, long angle, long time, bool svisible, int subshape, int substart, screenflag flags);
+void scr_drawall(int vert, int angle, int time, bool svisible, int subshape, int substart, screenflag flags);
 
 /* draws everything for the edit mode */
-void scr_drawedit(long vert, long angle, bool showtime);
+void scr_drawedit(int vert, int angle, bool showtime);
 
 /* draws the bonus game layers behind the tower */
 void scr_draw_bonus1(long horiz, long towerpos);

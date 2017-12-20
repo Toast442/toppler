@@ -22,13 +22,18 @@
 #include "sprites.h"
 #include "screen.h"
 
-#include "SDL.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
+#include <SDL.h>
+#pragma clang diagnostic pop
+
 #include "stdlib.h"
 
 #define starstep 5
 
 typedef struct {
-  long x, y;
+  int x, y;
   int state;
   int size;
 } _star;

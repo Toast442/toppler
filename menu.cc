@@ -584,13 +584,7 @@ men_hiscores_background_proc(_menusystem *ms)
         bool filled_page = false;
         bool firstpage = (hiscores_pager == 0);
         int pager = (hiscores_pager + 1) % (NUMHISCORES / HISCORES_PER_PAGE);
-        for (int tmp = 0; tmp < HISCORES_PER_PAGE; tmp++) {
-          //          int cs = tmp + (pager * HISCORES_PER_PAGE);
-          //          if (scores[cs].points || strlen(scores[cs].name)) {
-          filled_page = true;
-          break;
-          //          }
-        }
+        filled_page = true;
         if (!filled_page && firstpage) {
           hiscores_timer = 0;
           break;
@@ -711,7 +705,7 @@ congrats_background_proc(void)
  * pt = points,
  * twr = tower reached, -1 = mission finished
  */
-static void men_highscore(unsigned long pt, int twr) {
+static void men_highscore(unsigned int pt, int twr) {
 
   Uint8 pos = 0xff;
 
@@ -881,7 +875,7 @@ men_main_timer_proc(_menusystem *ms)
       if (lev_loadmission(tmiss)) {
         num_towers = lev_towercount();
 
-        for (Uint8 idx = 0; (idx < num_towers) && (num_demos < 256); idx++) {
+        for (Uint8 idx = 0; (idx < num_towers) && (num_demos <= 255); idx++) {
           lev_selecttower(idx);
           lev_get_towerdemo(demolen, demobuf);
           if (demolen) demos[num_demos++] = idx;

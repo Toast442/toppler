@@ -19,13 +19,18 @@
 #ifndef TXTSYS_H
 #define TXTSYS_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include <SDL.h>
+#pragma clang diagnostic pop
+
 #include "menu.h"
 
 class textsystem {
 
 public:
-  textsystem(char *title, menuopt_callback_proc pr);
+  textsystem(const char *title, menuopt_callback_proc pr);
   ~textsystem();
   void addline(char *line);
   void run();
@@ -37,13 +42,13 @@ private:
   int  numlines;                  // # of lines
   int  shownlines;                // # of lines shown on screen
   int  ystart;                    // screen y coord where text starts
-  long max_length;                // how long is the longest line?
+  int max_length;                // how long is the longest line?
   char **lines;
   menuopt_callback_proc mproc;    // background drawing proc
-  long xoffs;                     // current x offset
-  long yoffs;                     // current y offset
-  long disp_xoffs;                // displayed x offset
-  long disp_yoffs;                // displayed y offset
+  int xoffs;                     // current x offset
+  int yoffs;                     // current y offset
+  int disp_xoffs;                // displayed x offset
+  int disp_yoffs;                // displayed y offset
 };
 
 #endif /* TXTSYS_H */

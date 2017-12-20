@@ -20,9 +20,13 @@
 #define MENU_H
 
 #include "decl.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
 #include <SDL_types.h>
 #include <SDL_keyboard.h>
+#pragma clang diagnostic pop
+
 
 #include "menusys.h"
 

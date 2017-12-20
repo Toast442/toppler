@@ -91,7 +91,7 @@ typedef enum {
 
 struct _ed_key {
    key_actions action;
-   SDLKey key;
+   SDL_Keycode key;
    char   character;
    Uint16 mod; /* KMOD_NONE|KMOD_SHIFT|KMOD_CTRL|KMOD_ALT */
 };
@@ -169,7 +169,7 @@ const struct _ed_key _ed_keys[] = {
 
 static int bg_row;
 static int bg_col;
-static char *bg_text = NULL;
+static const char *bg_text = NULL;
 static bool bg_darken = false;
 
 /* men_yn() background drawing callback proc */
@@ -186,22 +186,16 @@ static const char *editor_background_menu_proc(_menusystem *ms) {
 
 static bool really_quit(int row, int col) {
   bg_darken = true;
-  if (men_yn(_("Tower changed, really quit"), false)) {
-    return true;
-  } else {
-    return false;
-  }
+  bool quit = men_yn(_("Tower changed, really quit"), false);
   bg_darken = false;
+  return quit;
 }
 
 static bool really_load(int row, int col) {
   bg_darken = true;
-  if (men_yn(_("Tower changed, really load"), false)) {
-    return true;
-  } else {
-    return false;
-  }
+  bool load = men_yn(_("Tower changed, really load"), false);
   bg_darken = false;
+  return load;
 }
 
 static bool edit_towercolor(int row, int col) {
@@ -211,7 +205,7 @@ static bool edit_towercolor(int row, int col) {
   char cbuf[32];
   int tmpcol, z, tmp;
   int oldc[3], newc[3], curc[3];
-  SDLKey c;
+  SDL_Keycode c;
 
   const char *colorname[] = {_("Red"), _("Green"), _("Blue")};
 
@@ -301,7 +295,7 @@ static void edit_checktower(int &row, int &col) {
   r = row;
   c = -col;
 
-  static char *problemstr[NUM_TPROBLEMS] = {
+  static const char *problemstr[NUM_TPROBLEMS] = {
     _("No problems found"),
     _("No starting step"),
     _("Start is blocked"),
@@ -486,7 +480,7 @@ void le_edit(void) {
 
   bool ende = false;
   bool changed = false;
-  SDLKey inp = SDLK_UNKNOWN;
+  SDL_Keycode inp = SDLK_UNKNOWN;
   char inp_char;
   Uint16 keymod;
   int row = 0, col = 0;
@@ -548,7 +542,7 @@ void le_edit(void) {
     if (keymod & KMOD_SHIFT) keymod |= KMOD_SHIFT;
     if (keymod & KMOD_CTRL) keymod |= KMOD_CTRL;
     if (keymod & KMOD_ALT) keymod |= KMOD_ALT;
-    if (keymod & KMOD_META) keymod |= KMOD_META;
+    if (keymod & KMOD_GUI) keymod |= KMOD_GUI;
 
 
     int k, action = -1;
