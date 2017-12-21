@@ -19,11 +19,7 @@
 #ifndef ELEVATORS_H
 #define ELEVATORS_H
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL.h>
-#pragma clang diagnostic pop
+#include "sdlinc.h"
 
 
 /* this module handles all the necessities for up to 10

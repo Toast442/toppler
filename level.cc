@@ -487,7 +487,7 @@ void lev_selecttower(Uint8 number) {
       towername[section_len] = 0;
       break;
     case TSS_TOWERTIME:
-      towertime = mission[towerstart] + (int(mission[towerstart + 1]) << 8);
+      towertime = mission[towerstart] + (int(mission[towerstart + 1]) << 8) * 1000;
       break;
     case TSS_TOWERCOLOR:
       towercolor_red = mission[towerstart];
@@ -601,7 +601,9 @@ int lev_tower_passwd_entry(const char *passwd) {
   if (!passwd) return 0;
   for (i = 0; i < lev_towercount(); i++) {
     lev_selecttower(i);
+      printf("%s: passwd = %s\n",__FUNCTION__, passwd);
     if (!strcmp(passwd,lev_get_passwd())) return i;
+
   }
   return 0;
 }

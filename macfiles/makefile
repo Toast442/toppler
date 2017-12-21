@@ -1,11 +1,12 @@
 OBJS=archi.o bonus.o configuration.o decl.o elevators.o game.o highscore.o keyb.o level.o leveledit.o main.o menu.o menusys.o points.o robots.o screen.o snowball.o sound.o soundsys.o sprites.o stars.o toppler.o txtsys.o
-HOME=/Users/jasonk
+XCODE=$(shell xcode-select -p)
+SDK=$(XCODE)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk 
 FRAMEWORKS=$(HOME)/projects/root/Library/Frameworks/SDL_2.0
-INCPATH=-I ./ -I $(FRAMEWORKS)/SDL2.framework/Headers -I $(FRAMEWORKS)/SDL2_image.framework/Headers -I $(FRAMEWORKS)/SDL2_mixer.framework/Headers
-GCC=gcc
-GPP=g++
-CFLAGS=-g -isysroot /Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -DTOP_DATADIR=\".\" -DHISCOREDIR=\".\" -D__MACOSX__=1
-LDFLAGS=-g -F $(FRAMEWORKS) -framework SDL2 -framework SDL2_image -framework SDL2_mixer -framework Cocoa -lz
+INCPATH=-I ./ -F $(FRAMEWORKS)
+GCC=$(shell xcodebuild -find-executable gcc)
+GPP=$(shell xcodebuild -find-executable g++)
+CFLAGS=-g -DTOP_DATADIR=\".\" -DHISCOREDIR=\".\" -D__MACOSX__=1 -mmacosx-version-min=10.9
+LDFLAGS=-g -F $(FRAMEWORKS) -framework SDL2 -framework SDL2_mixer -framework Cocoa -lz
 
 all: toppler
 

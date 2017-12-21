@@ -19,7 +19,7 @@
 #ifndef DECL_H
 #define DECL_H
 
-#include <config.h>
+#include "config.h"
 
 #include <stdio.h>
 #include <stdarg.h>
@@ -133,9 +133,7 @@
 /* define this if you want debugging keys during game.
    (press up+down+left+right at the same time.)
    debuggers don't get their name on hiscore table.  */
-#ifdef TESTER
 #define GAME_DEBUG_KEYS
-#endif
 
 /*   define this if you want the bonus game to be accessible
  from the main menu. */

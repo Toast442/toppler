@@ -19,12 +19,7 @@
 #include "decl.h"
 #include "configuration.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL.h>
-#pragma clang diagnostic pop
-
+#include "sdlinc.h"
 
 #include <stdlib.h>
 #include <string.h>

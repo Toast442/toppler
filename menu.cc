@@ -34,7 +34,7 @@
 #include "configuration.h"
 #include "highscore.h"
 
-#include <SDL_endian.h>
+#include "sdlinc.h"
 
 #include <stdlib.h>
 #include <string.h>

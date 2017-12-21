@@ -19,11 +19,7 @@
 #ifndef ARCHI_H
 #define ARCHI_H
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL.h>
-#pragma clang diagnostic pop
+#include "sdlinc.h"
 
 /* this module contains a simple archive access class. an archive
  * is a collection of zlib compressed files with a header defining

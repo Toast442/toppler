@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2012  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas RË†ver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,29 +16,28 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef MENU_H
-#define MENU_H
+#ifndef sdlinc_h
+#define sdlinc_h
 
-#include "decl.h"
-#include "sdlinc.h"
+#if __MACOSX__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 
+#include <SDL2/SDL.h>
+#include <SDL2_mixer/SDL_mixer.h>
+#include <SDL2/SDL_types.h>
+#include <SDL2/SDL_endian.h>
+#include <SDL2/SDL_keyboard.h>
 
-#include "menusys.h"
+#pragma clang diagnostic pop
 
-/* load graphics */
-void men_init(void);
+#else
 
-/* the main menu */
-void men_main(void);
-
-/* free graphics */
-void men_done(void);
-
-#ifdef GAME_DEBUG_KEYS
-void run_debug_menu(void);
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_types.h>
+#include <SDL_endian.h>
+#include <SDL_keyboard.h>
 #endif
 
-/* menu shown to user when he presses esc during play */
-bool men_game(void);
-
-#endif
+#endif /* sdlinc_h */

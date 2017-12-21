@@ -19,7 +19,7 @@
 #ifndef HIGHSCORE_H
 #define HIGHSCORE_H
 
-#include <SDL_types.h>
+#include "sdlinc.h"
 
 /* this modules contains all the function for highscoretable access
  * because this is the only section that needs the sticky bit privileges

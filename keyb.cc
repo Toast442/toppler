@@ -19,11 +19,7 @@
 #include "keyb.h"
 #include "decl.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL.h>
-#pragma clang diagnostic pop
+#include "sdlinc.h"
 
 static ttkey keydown, keytyped;
 static char chartyped;

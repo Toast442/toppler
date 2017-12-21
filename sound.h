@@ -19,11 +19,11 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-#include <config.h>
+#include "config.h"
 #include "soundsys.h"
 
 #ifdef HAVE_LIBSDL_MIXER
-#include <SDL_mixer.h>
+#include "sdlinc.h"
 #endif
 
 /* this module handles all the soundoutput necessary for the game */

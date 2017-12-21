@@ -19,7 +19,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include <SDL_types.h>
+#include "sdlinc.h"
 
 /* handles one mission with towers and the necessary manipulations
  on the towerlayout when the game is going on */

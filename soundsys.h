@@ -20,11 +20,7 @@
 #define SOUNDSYS_H
 
 #ifdef HAVE_LIBSDL_MIXER
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL_mixer.h>
-#pragma clang diagnostic pop
+#include "sdlinc.h"
 
 #else
 #define MIX_MAX_VOLUME 0

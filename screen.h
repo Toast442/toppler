@@ -22,11 +22,7 @@
 #include "archi.h"
 #include "sprites.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
-
-#include <SDL.h>
-#pragma clang diagnostic pop
+#include "sdlinc.h"
 
 
 /* this module handles nearly all the output onto the screen */

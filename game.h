@@ -19,7 +19,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL_types.h>
+#include "sdlinc.h"
 
 /* return values of towergame */
 typedef enum {
