@@ -5,7 +5,7 @@ FRAMEWORKS=$(HOME)/projects/root/Library/Frameworks/SDL_2.0
 INCPATH=-I ./ -F $(FRAMEWORKS)
 GCC=$(shell xcodebuild -find-executable cc)
 GPP=$(shell xcodebuild -find-executable c++)
-CFLAGS=-g -DTOP_DATADIR=\".\" -DHISCOREDIR=\".\" -D__MACOSX__=1 -mmacosx-version-min=10.9
+CFLAGS=-g -isysroot ${SDK} -DTOP_DATADIR=\".\" -DHISCOREDIR=\".\" -D__MACOSX__=1 -mmacosx-version-min=10.9
 LDFLAGS=-g -F $(FRAMEWORKS) -framework SDL2 -framework SDL2_mixer -framework Cocoa -lz
 
 all: toppler
@@ -13,10 +13,10 @@ all: toppler
 bundle: toppler
 	./macfiles/make-bundle.sh
 
-rmversion:
-	rm -f version
+config.h: macfiles/config.h
+	cp -f macfiles/config.h .
 
-toppler: rmversion $(OBJS)
+toppler: config.h $(OBJS)
 	$(GPP) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 .cc.o:
@@ -31,3 +31,5 @@ toppler: rmversion $(OBJS)
 clean:
 	rm -f *.o toppler
 	rm -rf Toppler.app
+	rm -f config.h
+
