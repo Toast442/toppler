@@ -487,7 +487,7 @@ void lev_selecttower(Uint8 number) {
       towername[section_len] = 0;
       break;
     case TSS_TOWERTIME:
-      towertime = mission[towerstart] + (int(mission[towerstart + 1]) << 8) * 1000;
+      towertime = mission[towerstart] + (int(mission[towerstart + 1]) << 8);
       break;
     case TSS_TOWERCOLOR:
       towercolor_red = mission[towerstart];
