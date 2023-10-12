@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Get SDL2 frameworks from https://github.com/libsdl-org
+# SDL2, SDL_mixer, SDL_image
 SDL=$HOME/projects/root/Library/Frameworks/SDL_2.0
 BUNDLE=Toppler.app
 
