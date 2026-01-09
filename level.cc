@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2012  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Rï¿½ver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -275,10 +275,10 @@ void lev_findmissions() {
   {
     char n[100];
     getcwd(n, 100);
-    sprintf(pathname, "%s\\", n);
+    snprintf(pathname, sizeof(pathname), "%s\\", n);
   }
 #else
-  sprintf(pathname, "%s", "./");
+  snprintf(pathname, sizeof(pathname), "%s", "./");
 #endif
 
   int n = alpha_scandir(pathname, &eps, missionfiles);
@@ -288,7 +288,7 @@ void lev_findmissions() {
     for (int i = 0; i < n; i++) {
 
       char fname[200];
-      sprintf(fname, "%s%s", pathname, eps[i]->d_name);
+      snprintf(fname, sizeof(fname), "%s%s", pathname, eps[i]->d_name);
 
       add_mission(fname);
 

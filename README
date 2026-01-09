@@ -1,18 +1,19 @@
 TOWER TOPPLER
 -------------
 
-Installation - Mac OS X
+Installation - macOS
 -----------------------
 
 This version of tower toppler is modified from the original from
 http://toppler.sourceforge.net. This contains some changes to make
 it run build and run smoothly on the mac.
 
-For the Mac, run:
+You will need to get the SDL libraries downloaded for the mac.
+See the notes in macfiles/makefile to set the path to those.
 
-./configure-macosx
-make
-make install
+... then run:
+
+make -f macfiles/makefile clean all
 ./macfiles/make-bundle.sh
 
 You should end up with a Toppler.app in the top level directory

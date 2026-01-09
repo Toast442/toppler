@@ -1,5 +1,5 @@
 /* Tower Toppler - Nebulus
- * Copyright (C) 2000-2012  Andreas Röver
+ * Copyright (C) 2000-2012  Andreas Rï¿½ver
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -151,8 +151,8 @@ static const char *game_options_menu_statustop(_menusystem *prevmenu) {
   if (prevmenu) {
     config.status_top(!config.status_top());
   }
-  if (config.status_top()) sprintf(txt, "%s %c", _("Status on top"), 4);
-  else sprintf(txt, "%s %c", _("Status on top"), 3);
+  if (config.status_top()) snprintf(txt, sizeof(txt), "%s %c", _("Status on top"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Status on top"), 3);
 
   return txt;
 }
@@ -173,9 +173,9 @@ static const char *game_options_menu_lives(_menusystem *prevmenu) {
     default: return NULL;
     }
   }
-  sprintf(buf, _("Lives: "));
+  snprintf(buf, sizeof(buf), _("Lives: "));
   for (i = 0; i < config.start_lives(); i++)
-    sprintf(buf + strlen(buf), "%c", fonttoppler);
+    snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "%c", fonttoppler);
   return buf;
 }
 
@@ -212,8 +212,8 @@ game_options_bonus(_menusystem *ms)
   if (ms) {
     config.nobonus(!config.nobonus());
   }
-  if (config.nobonus()) sprintf(txt, "%s %c", _("Bonus"), 3);
-  else sprintf(txt, "%s %c", _("Bonus"), 4);
+  if (config.nobonus()) snprintf(txt, sizeof(txt), "%s %c", _("Bonus"), 3);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Bonus"), 4);
 
   return txt;
 }
@@ -271,8 +271,8 @@ men_options_windowed(_menusystem *ms)
     scr_reinit();
     SDL_ShowCursor(config.fullscreen() ? 0 : 1);
   }
-  if (config.fullscreen()) sprintf(txt, "%s %c", _("Fullscreen"), 4);
-  else sprintf(txt, "%s %c", _("Fullscreen"), 3);
+  if (config.fullscreen()) snprintf(txt, sizeof(txt), "%s %c", _("Fullscreen"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Fullscreen"), 3);
 
   return txt;
 }
@@ -294,8 +294,8 @@ men_options_sounds(_menusystem *ms)
       config.nosound(true);
     }
   }
-  if (config.nosound()) sprintf(txt, "%s %c", _("Sounds"), 3);
-  else sprintf(txt, "%s %c", _("Sounds"), 4);
+  if (config.nosound()) snprintf(txt, sizeof(txt), "%s %c", _("Sounds"), 3);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Sounds"), 4);
 
   return txt;
 }
@@ -313,8 +313,8 @@ men_options_music(_menusystem *ms)
       config.nomusic(true);
     }
   }
-  if (config.nomusic()) sprintf(txt, "%s %c", _("Music"), 3);
-  else sprintf(txt, "%s %c", _("Music"), 4);
+  if (config.nomusic()) snprintf(txt, sizeof(txt), "%s %c", _("Music"), 3);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Music"), 4);
 
   return txt;
 }
@@ -348,8 +348,8 @@ men_alpha_font(_menusystem *ms)
     config.use_alpha_font(!config.use_alpha_font());
     reload_font_graphics();
   }
-  if (config.use_alpha_font()) sprintf(txt, "%s %c", _("Font alpha"), 4);
-  else sprintf(txt, "%s %c", _("Font alpha"), 3);
+  if (config.use_alpha_font()) snprintf(txt, sizeof(txt), "%s %c", _("Font alpha"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Font alpha"), 3);
 
   return txt;
 }
@@ -362,8 +362,8 @@ men_alpha_sprites(_menusystem *ms)
     config.use_alpha_sprites(!config.use_alpha_sprites());
     reload_robot_graphics();
   }
-  if (config.use_alpha_sprites()) sprintf(txt, "%s %c", _("Sprites alpha"), 4);
-  else sprintf(txt, "%s %c", _("Sprites alpha"), 3);
+  if (config.use_alpha_sprites()) snprintf(txt, sizeof(txt), "%s %c", _("Sprites alpha"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Sprites alpha"), 3);
 
   return txt;
 }
@@ -376,8 +376,8 @@ men_alpha_layer(_menusystem *ms)
     config.use_alpha_layers(!config.use_alpha_layers());
     reload_layer_graphics();
   }
-  if (config.use_alpha_layers()) sprintf(txt, "%s %c", _("Scroller alpha"), 4);
-  else sprintf(txt, "%s %c", _("Scroller alpha"), 3);
+  if (config.use_alpha_layers()) snprintf(txt, sizeof(txt), "%s %c", _("Scroller alpha"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Scroller alpha"), 3);
 
   return txt;
 }
@@ -389,8 +389,8 @@ men_alpha_menu(_menusystem *ms)
   if (ms) {
     config.use_alpha_darkening(!config.use_alpha_darkening());
   }
-  if (config.use_alpha_darkening()) sprintf(txt, "%s %c", _("Shadowing"), 4);
-  else sprintf(txt, "%s %c", _("Shadowing"), 3);
+  if (config.use_alpha_darkening()) snprintf(txt, sizeof(txt), "%s %c", _("Shadowing"), 4);
+  else snprintf(txt, sizeof(txt), "%s %c", _("Shadowing"), 3);
 
   return txt;
 }
